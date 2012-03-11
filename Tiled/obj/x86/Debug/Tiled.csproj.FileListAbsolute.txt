@@ -1,6 +1,0 @@
-C:\Users\jormundgard\Documents\Visual Studio 2010\Projects\Tiled\Tiled\bin\x86\Debug\Tiled.dll
-C:\Users\jormundgard\Documents\Visual Studio 2010\Projects\Tiled\Tiled\bin\x86\Debug\Tiled.pdb
-C:\Users\jormundgard\Documents\Visual Studio 2010\Projects\Tiled\Tiled\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\jormundgard\Documents\Visual Studio 2010\Projects\Tiled\Tiled\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\jormundgard\Documents\Visual Studio 2010\Projects\Tiled\Tiled\obj\x86\Debug\Tiled.dll
-C:\Users\jormundgard\Documents\Visual Studio 2010\Projects\Tiled\Tiled\obj\x86\Debug\Tiled.pdb
