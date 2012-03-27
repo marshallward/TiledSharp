@@ -9,8 +9,8 @@ description:
 design goals:
     - Parse TMX files
     - Maximally abstract data without using XNA framework
-    - Avoid proprietary dependencies (particularly XNA, ZLib)
-    - C# experience (especially C#4 concepts)
+    - Avoid dependencies (e.g. XNA, ZLib)
+    - Develop C# programming experience (especially C#4 concepts)
 
 contact:
     author: Marshall Ward
