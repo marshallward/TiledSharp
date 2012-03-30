@@ -34,11 +34,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="src\Layer.cs" />
     <Compile Include="src\Map.cs" />
     <Compile Include="src\ObjectGroup.cs" />
     <Compile Include="src\Tileset.cs" />
+    <Compile Include="src\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
