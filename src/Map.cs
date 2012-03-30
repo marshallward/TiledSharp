@@ -31,7 +31,7 @@ namespace Tiled
         public List<Layer> layer = new List<Layer>();
         public List<ObjectGroup> objectgroup = new List<ObjectGroup>();
         public PropertyDict property;
-
+		
         public Map(string xml_path)
         {
             var xml_doc = XDocument.Load(xml_path);
@@ -53,7 +53,6 @@ namespace Tiled
 
             property = new PropertyDict(xml_map.Element("properties"));
         }
-
     }
 
     public class PropertyDict : Dictionary<string, string>
