@@ -3,7 +3,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.IO.Compression;
 
-namespace Tiled
+namespace TiledSharp
 {
     public class Layer
     {

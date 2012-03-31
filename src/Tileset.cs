@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Globalization;
 
-namespace Tiled
+namespace TiledSharp
 {
     public class Tileset
     {

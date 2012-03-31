@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
-namespace Tiled
+namespace TiledSharp
 {
     /// <summary>
     /// C# abstraction of Tile Map XML format
