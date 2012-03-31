@@ -9,8 +9,14 @@ description:
 design goals:
     - Parse TMX files
     - Maximally abstract data without using XNA framework
-    - Avoid dependencies (e.g. XNA, ZLib)
     - Develop C# programming experience (especially C#4 concepts)
+
+unimplemented features:
+    - Objectgroups
+    - ZLib decompression
+    - TSX (tileset XML) source
+    - Layer Tiles
+    - orientation checking
 
 contact:
     author: Marshall Ward

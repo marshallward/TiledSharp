@@ -4,22 +4,6 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    /// <summary>
-    /// C# abstraction of Tile Map XML format
-    /// Design goal:
-    ///     - Maximum abstraction without invoking XML framework
-    ///     - Learn and adopt code-efficient C# techniques
-    /// Unimplemented list:
-    ///     - objectgroups
-    ///     - ZLib decompression
-    ///     - TSX (Tileset XML) sources
-    ///     - Layer Tile XElements
-    ///     - orientation type checking
-    /// Refactoring:
-    ///     - 'null' handling, default cases
-    ///     - Function separation
-    ///     - File separation
-    /// </summary>
     public class Map
     {
         public string version;              // TMX version
