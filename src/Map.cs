@@ -32,9 +32,8 @@ namespace TiledSharp
         public List<ObjectGroup> objectgroup = new List<ObjectGroup>();
         public PropertyDict property;
 		
-        public Map(string xml_path)
+        public Map(XDocument xml_doc)
         {
-            var xml_doc = XDocument.Load(xml_path);
             var xml_map = xml_doc.Element("map");
 			
             version = (string)xml_map.Attribute("version");
