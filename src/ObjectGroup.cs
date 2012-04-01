@@ -12,15 +12,18 @@ namespace TiledSharp
         public bool visible = true;
         
         public ObjectGroup(XElement xml_objectgroup)
-        { }
+        {
+            
+        }
         
         public class Object
-        { }
-        
-        public class Polygon
-        { }
-        
-        public class Polyline
-        { }
+        {
+            public string name;
+            public string type;
+            public int x, y;
+            public int width, height;
+            public string gid;
+            public List<Tuple<int,int>> points;
+        }
     }
 }
