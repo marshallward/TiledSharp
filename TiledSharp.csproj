@@ -40,6 +40,19 @@
     <Compile Include="src\Tileset.cs" />
     <Compile Include="src\AssemblyInfo.cs" />
     <Compile Include="src\TiledIO.cs" />
+    <Compile Include="src\zlib\CRC32.cs" />
+    <Compile Include="src\zlib\Deflate.cs" />
+    <Compile Include="src\zlib\DeflateStream.cs" />
+    <Compile Include="src\zlib\GZipStream.cs" />
+    <Compile Include="src\zlib\InfTree.cs" />
+    <Compile Include="src\zlib\Inflate.cs" />
+    <Compile Include="src\zlib\ParallelDeflateOutputStream.cs" />
+    <Compile Include="src\zlib\Tree.cs" />
+    <Compile Include="src\zlib\Zlib.cs" />
+    <Compile Include="src\zlib\ZlibBaseStream.cs" />
+    <Compile Include="src\zlib\ZlibCodec.cs" />
+    <Compile Include="src\zlib\ZlibConstants.cs" />
+    <Compile Include="src\zlib\ZlibStream.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -42,7 +42,8 @@ namespace TiledSharp
                             stream = new GZipStream(stream, CompressionMode.Decompress, false);
                             break;
                         case "zlib":
-                            throw new Exception("Tiled: zlib compression unsupported.");
+                            stream = new Ionic.Zlib.ZlibStream(stream, Ionic.Zlib.CompressionMode.Decompress, false);
+                            break;
                         case null:
                             // stream unmodified
                             break;

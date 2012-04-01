@@ -13,8 +13,13 @@ design goals:
 
 unimplemented features:
     - Objectgroups
-    - ZLib decompression
     - Layer Tiles
+    - Bit flipping flag support?
+
+known issues:
+    - In Tileset, firstgid should be required in *.tmx tileset elements, but
+      explicity not present in *.tsx tileset elements.
+      The current code does not require firstgid to be present.
 
 contact:
     author: Marshall Ward
