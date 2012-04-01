@@ -20,7 +20,7 @@ namespace TiledSharp
         
         public Map(string filename)
         {
-            XDocument xml_doc = TiledIO.ReadXML(filename);
+            XDocument xml_doc = TiledIO.ReadXml(filename);
             var xml_map = xml_doc.Element("map");
             
             version = (string)xml_map.Attribute("version");

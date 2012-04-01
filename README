@@ -14,9 +14,7 @@ design goals:
 unimplemented features:
     - Objectgroups
     - ZLib decompression
-    - TSX (tileset XML) source
     - Layer Tiles
-    - orientation checking
 
 contact:
     author: Marshall Ward

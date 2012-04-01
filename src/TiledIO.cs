@@ -7,7 +7,7 @@ namespace TiledSharp
 {
     public static class TiledIO
     {
-        public static XDocument ReadXML(string filepath)
+        public static XDocument ReadXml(string filepath)
         {
             XDocument xDoc;
             
