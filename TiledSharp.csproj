@@ -39,6 +39,7 @@
     <Compile Include="src\ObjectGroup.cs" />
     <Compile Include="src\Tileset.cs" />
     <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\TiledIO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

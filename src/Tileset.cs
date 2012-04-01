@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Globalization;
+using System.Reflection;
 
 namespace TiledSharp
 {
@@ -20,10 +21,6 @@ namespace TiledSharp
         
         public Tileset(XElement xml_tileset)
         {
-            // Testing
-            string[] manifest = this.GetType().Assembly.GetManifestResourceNames();
-            foreach (var s in manifest) Console.WriteLine(s);
-            
             source = (string)xml_tileset.Attribute("source");
             firstgid = (int)xml_tileset.Attribute("firstgid");            
             if (source == null)
@@ -33,7 +30,11 @@ namespace TiledSharp
                 tilewidth = (int?)xml_tileset.Attribute("tilewidth");
                 tileheight = (int?)xml_tileset.Attribute("tileheight");
             }
-//            else throw new Exception("Tiled: TSX tilesets unsupported.");
+            else
+            {
+                //var xTileset = new XDocument();
+                var xTileset = TiledIO.ReadXML(source);
+            }
             
             spacing = (int?)xml_tileset.Attribute("spacing");
             margin = (int?)xml_tileset.Attribute("margin");

@@ -20,23 +20,7 @@ namespace TiledSharp
         
         public Map(string filename)
         {
-            XDocument xml_doc;
-            
-            var assembly = Assembly.GetCallingAssembly();
-            var manifest = assembly.GetManifestResourceNames();
-            
-            // Process path with respect to asm manifest
-            var file_asm = filename.Replace(
-                                Path.DirectorySeparatorChar.ToString(), ".");
-            var asm_path = Array.Find(manifest, s => s.EndsWith(file_asm));
-            
-            if (asm_path != null)
-            {
-                Stream map_stream = assembly.GetManifestResourceStream(asm_path);
-                xml_doc = XDocument.Load(map_stream);
-            }
-            else xml_doc = XDocument.Load(filename);
-            
+            XDocument xml_doc = TiledIO.ReadXML(filename);
             var xml_map = xml_doc.Element("map");
             
             version = (string)xml_map.Attribute("version");
