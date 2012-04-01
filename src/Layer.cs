@@ -10,32 +10,32 @@ namespace TiledSharp
         public string name;
         public double opacity = 1.0;
         public bool visible = true;
-		
+        
         public PropertyDict property;
         public uint[,] data;
-		
+        
         public Layer(XElement xml_layer, int width, int height)
         {
             name = (string)xml_layer.Attribute("name");
-			
+            
             var xml_opacity = xml_layer.Attribute("opacity");
             if (xml_opacity != null)
                 opacity = (double)xml_opacity;
-			
+            
             var xml_visible = xml_layer.Attribute("visible");
             if (xml_visible != null)
                 visible = (bool)xml_visible;
-			
+            
             // Allocate the tile index map
             data = new uint[width, height];
-			
+            
             var xml_data = xml_layer.Element("data");
             switch ((string)xml_data.Attribute("encoding"))
             {
                 case "base64":
                     var base64_data = Convert.FromBase64String((string)xml_data.Value);
                     Stream stream = new MemoryStream(base64_data, false);
-					
+                    
                     switch ((string)xml_data.Attribute("compression"))
                     {
                         case "gzip":
@@ -49,7 +49,7 @@ namespace TiledSharp
                         default:
                             throw new Exception("Tiled: Unknown compression.");
                     } // compression switch
-					
+                    
                     using (stream)
                     using (var br = new BinaryReader(stream))
                         for (int j = 0; j < height; j++)
@@ -77,7 +77,7 @@ namespace TiledSharp
                 default:
                     throw new Exception("Tiled: Unknown encoding.");
             } // encoding switch
-			
+            
             property = new PropertyDict(xml_layer.Element("properties"));
         }
     }
