@@ -6,7 +6,7 @@
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E4130F8D-D301-4E0C-916D-489C4A23C9B1}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>TiledSharp</RootNamespace>
     <AssemblyName>TiledSharp</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -59,12 +59,5 @@
   <ItemGroup>
     <EmbeddedResource Include="test\units\empty.tmx" />
     <EmbeddedResource Include="test\units\default.tmx" />
-    <EmbeddedResource Include="test\units\demo_map.tmx" />
-    <EmbeddedResource Include="test\units\demo_tiles.png" />
-    <EmbeddedResource Include="test\units\demo_tiles2.png" />
-    <EmbeddedResource Include="test\units\demo_tiles3.png" />
-    <EmbeddedResource Include="test\units\demo_tiles.tsx" />
-    <EmbeddedResource Include="test\units\demo_tiles2.tsx" />
-    <EmbeddedResource Include="test\units\demo_tiles3.tsx" />
   </ItemGroup>
 </Project>

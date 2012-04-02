@@ -60,7 +60,7 @@ namespace TiledSharp
                 width = (int?)xObject.Attribute("width");
                 height = (int?)xObject.Attribute("height");
                 gid = (string)xObject.Attribute("gid");
-                    
+                
                 // Polygon, Polyline
                 // Treat as identical?
                 

@@ -21,6 +21,7 @@ To-do list:
     - Layer Tiles
     - Bit flipping flag support?
     - Replace List<> with using Dictionary<"name",>
+    - Testing suite should have a separate project
 
 known issues:
     - In Tileset, firstgid should be required in *.tmx tileset elements, but
