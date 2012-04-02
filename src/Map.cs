@@ -15,31 +15,33 @@ namespace TiledSharp
         
         public List<Tileset> tileset = new List<Tileset>();
         public List<Layer> layer = new List<Layer>();
-        public List<ObjectGroup> objectgroup = new List<ObjectGroup>();
+        public MapObjectGroup objectgroup;
         public PropertyDict property;
         
         public Map(string filename)
         {
-            XDocument xml_doc = TiledIO.ReadXml(filename);
-            var xml_map = xml_doc.Element("map");
+            XDocument xDoc = TiledIO.ReadXml(filename);
+            var xMap = xDoc.Element("map");
             
-            version = (string)xml_map.Attribute("version");
+            version = (string)xMap.Attribute("version");
             orientation = (Orientation) Enum.Parse(
                             typeof(Orientation),
-                            xml_map.Attribute("orientation").Value,
+                            xMap.Attribute("orientation").Value,
                             true);
-            width = (int)xml_map.Attribute("width");
-            height = (int)xml_map.Attribute("height");
-            tilewidth = (int)xml_map.Attribute("tilewidth");
-            tileheight = (int)xml_map.Attribute("tileheight");
+            width = (int)xMap.Attribute("width");
+            height = (int)xMap.Attribute("height");
+            tilewidth = (int)xMap.Attribute("tilewidth");
+            tileheight = (int)xMap.Attribute("tileheight");
             
-            foreach (var e in xml_map.Elements("tileset"))
+            foreach (var e in xMap.Elements("tileset"))
                 tileset.Add(new Tileset(e));
             
-            foreach (var e in xml_map.Elements("layer"))
+            foreach (var e in xMap.Elements("layer"))
                 layer.Add(new Layer(e, width, height));
             
-            property = new PropertyDict(xml_map.Element("properties"));
+            objectgroup = new MapObjectGroup(xMap.Element("objectgroup"));
+            
+            property = new PropertyDict(xMap.Element("properties"));
         }
         
         public enum Orientation : byte
