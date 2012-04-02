@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Xml.Linq;
 
 namespace TiledSharp
@@ -12,11 +13,18 @@ namespace TiledSharp
         public bool visible = true;
         
         public List<MapObject> obj = new List<MapObject>();
+        public PropertyDict prop;
         
         public MapObjectGroup(XElement xObjectGroup)
         {
             name = (string)xObjectGroup.Attribute("name");
-            color = (uint?)xObjectGroup.Attribute("color");
+            
+            var xColor = (string)xObjectGroup.Attribute("color");
+            if (xColor != null)
+            {
+                xColor = xColor.TrimStart("#".ToCharArray());
+                color = UInt32.Parse(xColor, NumberStyles.HexNumber);
+            }
             
             var xOpacity = xObjectGroup.Attribute("opacity");
             if (xOpacity != null)
@@ -28,6 +36,8 @@ namespace TiledSharp
             
             foreach (var e in xObjectGroup.Elements("object"))
                 obj.Add(new MapObject(e));
+            
+            prop = new PropertyDict(xObjectGroup.Element("properties"));
         }
         
         public class MapObject
@@ -35,9 +45,11 @@ namespace TiledSharp
             public string name;
             public string type;
             public int x, y;
-            public int width, height;
+            public int? width, height;
             public string gid;
+            
             public List<Tuple<int,int>> points;
+            public PropertyDict prop;
             
             public MapObject(XElement xObject)
             {
@@ -45,11 +57,14 @@ namespace TiledSharp
                 type = (string)xObject.Attribute("type");
                 x = (int)xObject.Attribute("x");
                 y = (int)xObject.Attribute("y");
-                width = (int)xObject.Attribute("width");
-                height = (int)xObject.Attribute("height");
+                width = (int?)xObject.Attribute("width");
+                height = (int?)xObject.Attribute("height");
                 gid = (string)xObject.Attribute("gid");
                     
                 // Polygon, Polyline
+                // Treat as identical?
+                
+                prop = new PropertyDict(xObject.Element("properties"));
             }
         }
     }

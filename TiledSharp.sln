@@ -25,7 +25,6 @@ Global
 		$2.inheritsScope = text/x-csharp
 		$2.scope = text/x-csharp
 		$0.TextStylePolicy = $3
-		$3.FileWidth = 120
 		$3.NoTabsAfterNonTabs = True
 		$3.EolMarker = Unix
 		$3.inheritsSet = VisualStudio
