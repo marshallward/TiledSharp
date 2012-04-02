@@ -90,9 +90,9 @@ namespace TiledSharp
             {
                 var points = new List<Tuple<int, int>>();
                 
-                var pathString = (string)xPoints.Attribute("points");
-                var pointList = pathString.Split(' ');
-                foreach (var s in pointList)
+                var pointString = (string)xPoints.Attribute("points");
+                var pointStringPair = pointString.Split(' ');
+                foreach (var s in pointStringPair)
                 {
                     var pt = s.Split(',');
                     var x = int.Parse(pt[0]);

@@ -11,13 +11,7 @@ license:
     I have not yet chosen a license, although I soon plan to release it under
     one permitting public use and modification.
 
-design goals:
-    - Parse TMX and TSX files
-    - Maximally abstract data without using XNA framework
-    - Develop C# programming experience (especially C#4 concepts)
-
 To-do list:
-    - Objectgroups
     - Layer Tiles
     - Bit flipping flag support?
     - Replace List<> with using Dictionary<"name",>
