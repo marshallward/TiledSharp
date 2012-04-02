@@ -13,7 +13,7 @@ namespace TiledSharp
         public bool visible = true;
         
         public List<MapObject> obj = new List<MapObject>();
-        public PropertyDict prop;
+        public PropertyDict property;
         
         public MapObjectGroup(XElement xObjectGroup)
         {
@@ -37,7 +37,7 @@ namespace TiledSharp
             foreach (var e in xObjectGroup.Elements("object"))
                 obj.Add(new MapObject(e));
             
-            prop = new PropertyDict(xObjectGroup.Element("properties"));
+            property = new PropertyDict(xObjectGroup.Element("properties"));
         }
         
         public class MapObject
@@ -49,7 +49,7 @@ namespace TiledSharp
             public string gid;
             
             public List<Tuple<int,int>> points;
-            public PropertyDict prop;
+            public PropertyDict property;
             
             public MapObject(XElement xObject)
             {
@@ -64,7 +64,7 @@ namespace TiledSharp
                 // Polygon, Polyline
                 // Treat as identical?
                 
-                prop = new PropertyDict(xObject.Element("properties"));
+                property = new PropertyDict(xObject.Element("properties"));
             }
         }
     }

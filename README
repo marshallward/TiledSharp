@@ -16,10 +16,11 @@ design goals:
     - Maximally abstract data without using XNA framework
     - Develop C# programming experience (especially C#4 concepts)
 
-unimplemented features:
+To-do list:
     - Objectgroups
     - Layer Tiles
     - Bit flipping flag support?
+    - Replace List<> with using Dictionary<"name",>
 
 known issues:
     - In Tileset, firstgid should be required in *.tmx tileset elements, but

@@ -14,29 +14,29 @@ namespace TiledSharp
         public PropertyDict property;
         public uint[,] data;
         
-        public Layer(XElement xml_layer, int width, int height)
+        public Layer(XElement xLayer, int width, int height)
         {
-            name = (string)xml_layer.Attribute("name");
+            name = (string)xLayer.Attribute("name");
             
-            var xml_opacity = xml_layer.Attribute("opacity");
-            if (xml_opacity != null)
-                opacity = (double)xml_opacity;
+            var xOpacity = xLayer.Attribute("opacity");
+            if (xOpacity != null)
+                opacity = (double)xOpacity;
             
-            var xml_visible = xml_layer.Attribute("visible");
-            if (xml_visible != null)
-                visible = (bool)xml_visible;
+            var xVisible = xLayer.Attribute("visible");
+            if (xVisible != null)
+                visible = (bool)xVisible;
             
             // Allocate the tile index map
             data = new uint[width, height];
             
-            var xml_data = xml_layer.Element("data");
-            switch ((string)xml_data.Attribute("encoding"))
+            var xData = xLayer.Element("data");
+            switch ((string)xData.Attribute("encoding"))
             {
                 case "base64":
-                    var base64_data = Convert.FromBase64String((string)xml_data.Value);
-                    Stream stream = new MemoryStream(base64_data, false);
+                    var base64data = Convert.FromBase64String((string)xData.Value);
+                    Stream stream = new MemoryStream(base64data, false);
                     
-                    switch ((string)xml_data.Attribute("compression"))
+                    switch ((string)xData.Attribute("compression"))
                     {
                         case "gzip":
                             stream = new GZipStream(stream, CompressionMode.Decompress, false);
@@ -58,9 +58,9 @@ namespace TiledSharp
                                 data[i, j] = br.ReadUInt32();
                     break;
                 case "csv":
-                    var csv_data = (string)xml_data.Value;
+                    var csvData = (string)xData.Value;
                     int k = 0;
-                    foreach (var s in csv_data.Split(','))
+                    foreach (var s in csvData.Split(','))
                     {
                         data[k % width, k / width] = uint.Parse(s.Trim());
                         k++;
@@ -68,7 +68,7 @@ namespace TiledSharp
                     break;
                 case null:
                     k = 0;  // Declared in case "csv"
-                    foreach (var e in xml_data.Elements("tile"))
+                    foreach (var e in xData.Elements("tile"))
                     {
                         var gid = (int)e.Attribute("gid");
                         data[k % width, k / width] = (uint)gid;
@@ -79,7 +79,7 @@ namespace TiledSharp
                     throw new Exception("Tiled: Unknown encoding.");
             } // encoding switch
             
-            property = new PropertyDict(xml_layer.Element("properties"));
+            property = new PropertyDict(xLayer.Element("properties"));
         }
     }
 }

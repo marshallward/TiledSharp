@@ -22,26 +22,26 @@ namespace TiledSharp
         // Assumes one tileset entry per TSX file
         public Tileset(XDocument xDoc) : this(xDoc.Element("tileset")) { }
         
-        public Tileset(XElement xml_tileset)
+        public Tileset(XElement xTileset)
         {
-            source = (string)xml_tileset.Attribute("source");
-            firstgid = (int?)xml_tileset.Attribute("firstgid");            
+            source = (string)xTileset.Attribute("source");
+            firstgid = (int?)xTileset.Attribute("firstgid");            
             if (source == null)
             {
-                name = (string)xml_tileset.Attribute("name");
-                image = new Image(xml_tileset.Element("image"));
-                tilewidth = (int?)xml_tileset.Attribute("tilewidth");
-                tileheight = (int?)xml_tileset.Attribute("tileheight");
+                name = (string)xTileset.Attribute("name");
+                image = new Image(xTileset.Element("image"));
+                tilewidth = (int?)xTileset.Attribute("tilewidth");
+                tileheight = (int?)xTileset.Attribute("tileheight");
                 
-                spacing = (int?)xml_tileset.Attribute("spacing");
-                margin = (int?)xml_tileset.Attribute("margin");
+                spacing = (int?)xTileset.Attribute("spacing");
+                margin = (int?)xTileset.Attribute("margin");
                 
                 tile = new Dictionary<int, PropertyDict>();
-                foreach (var xml_tile in xml_tileset.Elements("tile"))
+                foreach (var xml_tile in xTileset.Elements("tile"))
                 {
                     var id = (int)xml_tile.Attribute("id");
-                    var xml_prop = xml_tile.Element("properties");
-                    tile.Add(id, new PropertyDict(xml_prop));
+                    var xProp = xml_tile.Element("properties");
+                    tile.Add(id, new PropertyDict(xProp));
                 }
             }
             else
@@ -63,11 +63,11 @@ namespace TiledSharp
             public string source;
             public uint? trans;  // 24-bit RGB transparent color
             
-            public Image(XElement xml_image)
+            public Image(XElement xImage)
             {
-                source = (string)xml_image.Attribute("source");
+                source = (string)xImage.Attribute("source");
                 
-                var xml_trans = (string)xml_image.Attribute("trans");
+                var xml_trans = (string)xImage.Attribute("trans");
                 if (xml_trans != null)
                     trans = UInt32.Parse(xml_trans, NumberStyles.HexNumber);
             }
