@@ -12,8 +12,7 @@ license:
     one permitting public use and modification.
 
 To-do list:
-    - Layer Tiles
-    - Bit flipping flag support?
+    - Recast tile gid array as List, with bit-flipped elements
     - Replace List<e> with Dictionary<"name", e>?
     - Testing suite should have a separate project
 
