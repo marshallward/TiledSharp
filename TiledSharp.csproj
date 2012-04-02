@@ -53,11 +53,6 @@
     <Compile Include="src\zlib\ZlibCodec.cs" />
     <Compile Include="src\zlib\ZlibConstants.cs" />
     <Compile Include="src\zlib\ZlibStream.cs" />
-    <Compile Include="test\Main.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <EmbeddedResource Include="test\units\empty.tmx" />
-    <EmbeddedResource Include="test\units\default.tmx" />
-  </ItemGroup>
 </Project>

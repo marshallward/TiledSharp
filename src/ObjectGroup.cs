@@ -43,10 +43,11 @@ namespace TiledSharp
         public class MapObject
         {
             public string name;
+            public MapObjectType objType;
             public string type;
             public int x, y;
             public int? width, height;
-            public string gid;
+            public int? gid;
             
             public List<Tuple<int,int>> points;
             public PropertyDict property;
@@ -59,13 +60,55 @@ namespace TiledSharp
                 y = (int)xObject.Attribute("y");
                 width = (int?)xObject.Attribute("width");
                 height = (int?)xObject.Attribute("height");
-                gid = (string)xObject.Attribute("gid");
                 
-                // Polygon, Polyline
-                // Treat as identical?
+                // Assess object type and assign appropriate content
+                var xGid = xObject.Attribute("gid");
+                var xPolygon = xObject.Element("polygon");
+                var xPolyline = xObject.Element("polyline");
+                
+                if (xGid != null)
+                {
+                    gid = (int?)xGid;
+                    objType = MapObjectType.Tile;
+                }
+                else if (xPolygon != null)
+                {
+                    points = ParsePoints(xPolygon);  // Fill this in
+                    objType = MapObjectType.Polygon;
+                }
+                else if (xPolyline != null)
+                {
+                    points = ParsePoints(xPolyline);  // Fill in
+                    objType = MapObjectType.Polyline;
+                }
+                else objType = MapObjectType.Basic;
                 
                 property = new PropertyDict(xObject.Element("properties"));
             }
+            
+            public List<Tuple<int, int>> ParsePoints(XElement xPoints)
+            {
+                var points = new List<Tuple<int, int>>();
+                
+                var pathString = (string)xPoints.Attribute("points");
+                var pointList = pathString.Split(' ');
+                foreach (var s in pointList)
+                {
+                    var pt = s.Split(',');
+                    var x = int.Parse(pt[0]);
+                    var y = int.Parse(pt[1]);
+                    points.Add(Tuple.Create<int, int>(x, y));
+                }
+                return points;
+            }
+        }
+        
+        public enum MapObjectType : byte
+        {
+            Basic,
+            Tile,
+            Polygon,
+            Polyline
         }
     }
 }
