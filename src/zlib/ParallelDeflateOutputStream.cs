@@ -1154,7 +1154,6 @@ namespace Ionic.Zlib
             WorkItem workitem = (WorkItem) wi;
             try
             {
-                int myItem = workitem.index;
                 Ionic.Crc.CRC32 crc = new Ionic.Crc.CRC32();
 
                 // calc CRC on the buffer
@@ -1200,7 +1199,7 @@ namespace Ionic.Zlib
         private bool DeflateOneSegment(WorkItem workitem)
         {
             ZlibCodec compressor = workitem.compressor;
-            int rc= 0;
+            int rc = 0;
             compressor.ResetDeflate();
             compressor.NextIn = 0;
 
@@ -1217,6 +1216,10 @@ namespace Ionic.Zlib
 
             // step 2: flush (sync)
             rc = compressor.Deflate(FlushType.Sync);
+            
+            // The rc is not processed here, this is only to eliminate the warning
+            if (rc != ZlibConstants.Z_OK | rc != ZlibConstants.Z_STREAM_END)
+                throw new ZlibException("Deflate: unknown return code");
 
             workitem.compressedBytesAvailable= (int) compressor.TotalBytesOut;
             return true;

@@ -35,7 +35,7 @@ notes: >
     If you are a game developer and seek greater integration with XNA, please
     consider Nick Gravelyn's TiledLib.
     
-    Zlib compression uses the ZlibStream class of DotNetZip, by Dino Chiesa.
+    Zlib compression uses the ZlibStream class of DotNetZip v1.9.1.8.
 
 references:
     tiled:
