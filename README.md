@@ -1,5 +1,6 @@
 TiledSharp
 ==========
+A .NET C# library for importing Tiled TMX tile maps
 
 About TiledSharp
 ----------------
@@ -16,7 +17,6 @@ To import a TMX file into your C# application:
 - Include the TiledSharp namespace:
 
     using TiledSharp;
-
 - Create a Map object:
 
     Map map = new Map("your_file.tmx");
