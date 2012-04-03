@@ -7,9 +7,9 @@ namespace TiledSharp
 {
     public static class TiledIO
     {
-        const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
-        const uint FLIPPED_VERTICALLY_FLAG   = 0x40000000;
-        const uint FLIPPED_DIAGONALLY_FLAG   = 0x20000000;
+        public const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
+        public const uint FLIPPED_VERTICALLY_FLAG   = 0x40000000;
+        public const uint FLIPPED_DIAGONALLY_FLAG   = 0x20000000;
         
         public static XDocument ReadXml(string filepath)
         {

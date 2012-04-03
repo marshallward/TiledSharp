@@ -93,6 +93,19 @@ namespace TiledSharp
                 gid = id;
                 x = xi;
                 y = yi;
+                
+                // Scan for flip flags
+                if ( (gid & TiledIO.FLIPPED_HORIZONTALLY_FLAG) != 0)
+                    hflip = true;
+                if ( (gid & TiledIO.FLIPPED_VERTICALLY_FLAG) != 0)
+                    vflip = true;
+                if ( (gid & TiledIO.FLIPPED_DIAGONALLY_FLAG) != 0)
+                    dflip = true;
+                
+                // Zero the top three bits
+                gid &= ~(TiledIO.FLIPPED_HORIZONTALLY_FLAG |
+                        TiledIO.FLIPPED_VERTICALLY_FLAG |
+                        TiledIO.FLIPPED_DIAGONALLY_FLAG);
             }
         }
     }
