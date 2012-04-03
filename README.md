@@ -50,12 +50,6 @@ I have not yet chosen a license, although I soon plan to release it under
 one permitting public use and modification. Please feel free to use or modify
 the code as necessary.
 
-Unimplemeneted Features
------------------------
-- Recast tile gid array as List, with bit-flipped elements
-- Replace `List<e>` with `Dictionary<"name", e>`?
-- Testing suite should have a separate project
-
 Contact
 -------
 Marshall Ward (<marshall.ward@gmail.com>)
