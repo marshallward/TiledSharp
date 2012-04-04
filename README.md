@@ -20,29 +20,38 @@ Usage
 To import a TMX file into your C# application:
 
 - Include TiledSharp into your project, either as source or a DLL
-- Include the TiledSharp namespace:
+- Use the TiledSharp namespace:
 
   `using TiledSharp;`
 
 - Create a Map object:
 
-  `Map map = new Map("yourFile.tmx");`
+  `var map = new Map("yourFile.tmx");`
 
-TiledSharp supports both resource names and explicit paths, and should work as
+TiledSharp supports both resource names and file paths, and should work as
 expected in most situations. A detailed description will be placed in the wiki.
 
-Map fields generally correspond with the XML structure. For example:
+Map fields generally correspond with the XML structure:
 
-    Map map = new Map("yourFile.tmx");
-    string version = map.version;
-    List<Layer> layers = map.layer;
-    int width = map.layer[0].width;
-    MapObject town = map.objectgroup[0].object[0];
+    var map = new Map("yourFile.tmx");
+    
+    var version = map.version;
+    var myTileset = map.tileset["myTileset"];
+    var myLayer = map.layer[2];
+    var hiddenChest = map.objectgroup["Chests"].object["hiddenChest"];
 
-Details will be placed in the wiki.
+A detailed explanation of data access will be provided in the wiki.
 
-Tilesets, layers, objects, and other lists are currently accessed as arrays.
-In the future, they will hopefully be accessible by name.
+__Please Note:__
+
+Currently all tilesets, layers, object groups, and objects must have
+unique names. In the future, I hope to use an interface that integrates Lists
+and Dictionaries. For example, a map with one layer named "Ocean" and two
+layers with identical name "Lake" could be accessed as follows:
+
+    var ocean = map.layer["Ocean"]
+    var lake1 = map.layer["Lake"][0]
+    var lake2 = map.layer["Lake"][1]
 
 Licensing
 ---------
