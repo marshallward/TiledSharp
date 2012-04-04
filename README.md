@@ -34,12 +34,12 @@ expected in most situations. A detailed description will be placed in the wiki.
 Map fields generally correspond with the XML structure:
 
 ```csharp
-    var map = new Map("yourFile.tmx");
-    
-    var version = map.version;
-    var myTileset = map.tileset["myTileset"];
-    var myLayer = map.layer[2];
-    var hiddenChest = map.objectgroup["Chests"].object["hiddenChest"];
+var map = new Map("yourFile.tmx");
+
+var version = map.version;
+var myTileset = map.tileset["myTileset"];
+var myLayer = map.layer[2];
+var hiddenChest = map.objectgroup["Chests"].object["hiddenChest"];
 ```
 
 A detailed explanation of data access will be provided in the wiki.
@@ -51,9 +51,11 @@ unique names. In the future, I hope to use an interface that integrates Lists
 and Dictionaries. For example, a map with one layer named "Ocean" and two
 layers with identical name "Lake" could be accessed as follows:
 
-    var ocean = map.layer["Ocean"]
-    var lake1 = map.layer["Lake"][0]
-    var lake2 = map.layer["Lake"][1]
+```csharp
+var ocean = map.layer["Ocean"]
+var lake1 = map.layer["Lake"][0]
+var lake2 = map.layer["Lake"][1]
+```
 
 Licensing
 ---------
