@@ -21,14 +21,13 @@ To import a TMX file into your C# application:
 
 - Include TiledSharp into your project, either as source or a DLL
 - Use the TiledSharp namespace:
-
-  ```csharp
-  using TiledSharp;
-  ```
-
+```csharp
+using TiledSharp;
+```
 - Create a Map object:
-
-  `var map = new Map("yourFile.tmx");`
+```csharp
+var map = new Map("yourFile.tmx");`
+```
 
 TiledSharp supports both resource names and file paths, and should work as
 expected in most situations. A detailed description will be placed in the wiki.
