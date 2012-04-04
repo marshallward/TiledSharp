@@ -5,9 +5,10 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public class MapObjectGroup
+    public class MapObjectGroup : ITiledClass
     {
-        public string name;
+        public string Name {get; set;}
+        
         public uint? color;
         public double opacity = 1.0;
         public bool visible = true;
@@ -17,7 +18,7 @@ namespace TiledSharp
         
         public MapObjectGroup(XElement xObjectGroup)
         {
-            name = (string)xObjectGroup.Attribute("name");
+            Name = (string)xObjectGroup.Attribute("name");
             
             var xColor = (string)xObjectGroup.Attribute("color");
             if (xColor != null)

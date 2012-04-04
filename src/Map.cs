@@ -13,9 +13,9 @@ namespace TiledSharp
         public int width, height;           // Tile count
         public int tilewidth, tileheight;   // Grid size
         
-        public List<Tileset> tileset = new List<Tileset>();
-        public List<Layer> layer = new List<Layer>();
-        public List<MapObjectGroup> objectgroup = new List<MapObjectGroup>();
+        public TiledList tileset = new TiledList();
+        public TiledList layer = new TiledList();
+        public TiledList objectgroup = new TiledList();
         public PropertyDict property;
         
         public Map(string filename)

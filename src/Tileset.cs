@@ -6,11 +6,12 @@ using System.Reflection;
 
 namespace TiledSharp
 {
-    public class Tileset
+    public class Tileset : ITiledClass
     {
+        public string Name {get; set;}
+        
         public string source;
         public int? firstgid;   // Required for TMX, but not TSX
-        public string name;
         public int? tilewidth, tileheight;
         public int? spacing;
         public int? margin;
@@ -28,7 +29,7 @@ namespace TiledSharp
             firstgid = (int?)xTileset.Attribute("firstgid");            
             if (source == null)
             {
-                name = (string)xTileset.Attribute("name");
+                Name = (string)xTileset.Attribute("name");
                 image = new Image(xTileset.Element("image"));
                 tilewidth = (int?)xTileset.Attribute("tilewidth");
                 tileheight = (int?)xTileset.Attribute("tileheight");
@@ -48,7 +49,7 @@ namespace TiledSharp
             {
                 var xDocTileset = TiledIO.ReadXml(source);
                 var ts = new Tileset(xDocTileset);
-                name = ts.name;
+                Name = ts.Name;
                 tilewidth = ts.tilewidth;
                 tileheight = ts.tileheight;
                 spacing = ts.spacing;

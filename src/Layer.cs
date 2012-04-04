@@ -6,9 +6,9 @@ using System.IO.Compression;
 
 namespace TiledSharp
 {
-    public class Layer
+    public class Layer : ITiledClass
     {
-        public string name;
+        public string Name {get; set;}
         public double opacity = 1.0;
         public bool visible = true;
         
@@ -17,7 +17,7 @@ namespace TiledSharp
         
         public Layer(XElement xLayer, int width, int height)
         {
-            name = (string)xLayer.Attribute("name");
+            Name = (string)xLayer.Attribute("name");
             
             var xOpacity = xLayer.Attribute("opacity");
             if (xOpacity != null)

@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Xml.Linq;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace TiledSharp
 {
@@ -32,6 +34,19 @@ namespace TiledSharp
             else xDoc = XDocument.Load(filepath);
             
             return xDoc;
+        }
+    }
+    
+    public interface ITiledClass
+    {
+        string Name {get; set;}
+    }
+    
+    public class TiledList : KeyedCollection<string, ITiledClass>
+    {
+        protected override string GetKeyForItem(ITiledClass value)
+        {
+            return value.Name;
         }
     }
 }
