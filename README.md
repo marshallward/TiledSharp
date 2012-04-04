@@ -30,7 +30,7 @@ To import a TMX file into your C# application:
 - Create a Map object:
 
     ```csharp
-    var map = new Map("yourFile.tmx");`
+    var map = new Map("yourFile.tmx");
     ```
 
 TiledSharp supports both resource names and file paths, and should work as
