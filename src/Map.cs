@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Xml.Linq;
-using System.Reflection;
 using System.IO;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace TiledSharp
 {
@@ -47,20 +46,5 @@ namespace TiledSharp
         
         public enum Orientation : byte
             { Orthogonal, Isometric, Hexagonal, Shifted }
-    }
-    
-    public class PropertyDict : Dictionary<string, string>
-    {
-        public PropertyDict(XElement xml_prop)
-        {
-            if (xml_prop == null) return;
-            
-            foreach (var p in xml_prop.Elements("property"))
-            {
-                var pname = p.Attribute("name").Value;
-                var pval = p.Attribute("value").Value;
-                Add(pname, pval);
-            }
-        }
     }
 }

@@ -13,7 +13,7 @@ namespace TiledSharp
         public double opacity = 1.0;
         public bool visible = true;
         
-        public List<MapObject> obj = new List<MapObject>();
+        public TiledList obj = new TiledList();
         public PropertyDict property;
         
         public MapObjectGroup(XElement xObjectGroup)
@@ -41,9 +41,10 @@ namespace TiledSharp
             property = new PropertyDict(xObjectGroup.Element("properties"));
         }
         
-        public class MapObject
+        public class MapObject : ITiledClass
         {
-            public string name;
+            public string Name {get; set;}
+            
             public MapObjectType objType;
             public string type;
             public int x, y;
@@ -55,7 +56,7 @@ namespace TiledSharp
             
             public MapObject(XElement xObject)
             {
-                name = (string)xObject.Attribute("name");
+                Name = (string)xObject.Attribute("name");
                 type = (string)xObject.Attribute("type");
                 x = (int)xObject.Attribute("x");
                 y = (int)xObject.Attribute("y");

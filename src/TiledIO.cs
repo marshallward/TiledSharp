@@ -1,9 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 using System.Xml.Linq;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace TiledSharp
 {
@@ -44,9 +44,31 @@ namespace TiledSharp
     
     public class TiledList : KeyedCollection<string, ITiledClass>
     {
+        public new void Add(ITiledClass value)
+        {
+            // Need some logic to handle duplicate keys
+            // (especially Name=null)
+            base.Add(value);
+        }            
+        
         protected override string GetKeyForItem(ITiledClass value)
         {
             return value.Name;
+        }
+    }
+    
+    public class PropertyDict : Dictionary<string, string>
+    {
+        public PropertyDict(XElement xml_prop)
+        {
+            if (xml_prop == null) return;
+            
+            foreach (var p in xml_prop.Elements("property"))
+            {
+                var pname = p.Attribute("name").Value;
+                var pval = p.Attribute("value").Value;
+                Add(pname, pval);
+            }
         }
     }
 }
