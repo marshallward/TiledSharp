@@ -33,7 +33,7 @@ expected in most situations. A detailed description will be placed in the wiki.
 
 Map fields generally correspond with the XML structure:
 
-```c#
+```csharp
     var map = new Map("yourFile.tmx");
     
     var version = map.version;
