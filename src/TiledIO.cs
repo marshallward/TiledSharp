@@ -44,16 +44,25 @@ namespace TiledSharp
     
     public class TiledList : KeyedCollection<string, ITiledClass>
     {
-        public new void Add(ITiledClass value)
-        {
-            // Need some logic to handle duplicate keys
-            // (especially Name=null)
-            base.Add(value);
-        }            
+        public static Dictionary<string, int> dupeCount
+            = new Dictionary<string, int>();
         
-        protected override string GetKeyForItem(ITiledClass value)
+        public new void Add(ITiledClass tList)
         {
-            return value.Name;
+            // Rename duplicate entries by appending a number
+            if (this.Contains(tList.Name))
+            {
+                dupeCount[tList.Name] += 1;
+                tList.Name = tList.Name + " " + dupeCount[tList.Name];
+            }
+            else dupeCount.Add(tList.Name, 0);
+            
+            base.Add(tList);
+        }
+        
+        protected override string GetKeyForItem(ITiledClass tList)
+        {
+            return tList.Name;
         }
     }
     
