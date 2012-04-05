@@ -9,6 +9,7 @@ namespace TiledSharp
     public class Layer : ITiledClass
     {
         public string Name {get; set;}
+        
         public double opacity = 1.0;
         public bool visible = true;
         

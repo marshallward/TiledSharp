@@ -14,7 +14,7 @@ namespace TiledSharp
         
         public TiledList tileset = new TiledList();
         public TiledList layer = new TiledList();
-        public TiledList objectgroup = new TiledList();
+        public TiledList objGroup = new TiledList();
         public PropertyDict property;
         
         public Map(string filename)
@@ -39,7 +39,7 @@ namespace TiledSharp
                 layer.Add(new Layer(e, width, height));
             
             foreach (var e in xMap.Elements("objectgroup"))
-                objectgroup.Add(new MapObjectGroup(e));
+                objGroup.Add(new MapObjectGroup(e));
             
             property = new PropertyDict(xMap.Element("properties"));
         }

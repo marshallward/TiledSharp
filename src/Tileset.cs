@@ -11,10 +11,10 @@ namespace TiledSharp
         public string Name {get; set;}
         
         public string source;
-        public int? firstGid;   // Required for TMX, but not TSX
+        public int? firstGid;       // Required for TMX, but not TSX
         public int? tileWidth, tileHeight;
-        public int? spacing;
-        public int? margin;
+        public int spacing = 0;
+        public int margin = 0;
         
         public Image image;
         public PropertyDict property;
@@ -34,8 +34,13 @@ namespace TiledSharp
                 tileWidth = (int?)xTileset.Attribute("tilewidth");
                 tileHeight = (int?)xTileset.Attribute("tileheight");
                 
-                spacing = (int?)xTileset.Attribute("spacing");
-                margin = (int?)xTileset.Attribute("margin");
+                var xSpacing = xTileset.Attribute("spacing");
+                if (xSpacing != null)
+                    spacing = (int)xSpacing;
+                
+                var xMargin = (int?)xTileset.Attribute("margin");
+                if (xMargin != null)
+                    margin = (int)xMargin;
                 
                 tile = new Dictionary<int, PropertyDict>();
                 foreach (var xml_tile in xTileset.Elements("tile"))
