@@ -16,12 +16,13 @@ namespace TiledSharp
         public int margin = 0;
         
         public Image image;
-        public PropertyDict property;
         public Dictionary<int, PropertyDict> tile;
+        public PropertyDict property;
         
-        // Assumes one tileset entry per TSX file
+        // TSX file
         public Tileset(XDocument xDoc) : this(xDoc.Element("tileset")) { }
         
+        // TMX tileset element
         public Tileset(XElement xTileset)
         {
             var source = (string)xTileset.Attribute("source");
