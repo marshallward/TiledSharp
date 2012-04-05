@@ -10,7 +10,7 @@ namespace TiledSharp
     {
         public string Name {get; set;}
         
-        public uint firstGid;       // Required for TMX, but not TSX
+        public uint firstGid;
         public int tileWidth, tileHeight;
         public int spacing = 0;
         public int margin = 0;
