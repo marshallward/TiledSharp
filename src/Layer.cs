@@ -13,7 +13,7 @@ namespace TiledSharp
         public double opacity = 1.0;
         public bool visible = true;
         
-        public List<Tile> tiles = new List<Tile>();
+        public List<LayerTile> tile = new List<LayerTile>();
         public PropertyDict property;
         
         public Layer(XElement xLayer, int width, int height)
@@ -50,7 +50,7 @@ namespace TiledSharp
                 using (var br = new BinaryReader(stream))
                     for (int j = 0; j < height; j++)
                         for (int i = 0; i < width; i++)
-                            tiles.Add(new Tile(br.ReadUInt32(), i, j));
+                            tile.Add(new LayerTile(br.ReadUInt32(), i, j));
             }
             else if (encoding == "csv")
             {
@@ -61,7 +61,7 @@ namespace TiledSharp
                     var gid = uint.Parse(s.Trim());
                     var x = k % width;
                     var y = k / width;
-                    tiles.Add(new Tile(gid, x, y));
+                    tile.Add(new LayerTile(gid, x, y));
                     k++;
                 }
             }
@@ -73,7 +73,7 @@ namespace TiledSharp
                     var gid = (uint)e.Attribute("gid");
                     var x = k % width;
                     var y = k / width;
-                    tiles.Add(new Tile(gid, x, y));
+                    tile.Add(new LayerTile(gid, x, y));
                     k++;
                 }
             }
@@ -82,7 +82,7 @@ namespace TiledSharp
             property = new PropertyDict(xLayer.Element("properties"));
         }
         
-        public class Tile
+        public class LayerTile
         {
             public uint gid;            // Global tile ID
             public int x, y;            // Coordinate position
@@ -90,7 +90,7 @@ namespace TiledSharp
             public bool vflip = false;  // Vertical flip
             public bool dflip = false;  // Diagonal flip 
             
-            public Tile(uint id, int xi, int yi)
+            public LayerTile(uint id, int xi, int yi)
             {
                 gid = id;
                 x = xi;

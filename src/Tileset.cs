@@ -10,8 +10,7 @@ namespace TiledSharp
     {
         public string Name {get; set;}
         
-        public string source;
-        public int? firstGid;       // Required for TMX, but not TSX
+        public uint firstGid;       // Required for TMX, but not TSX
         public int? tileWidth, tileHeight;
         public int spacing = 0;
         public int margin = 0;
@@ -25,8 +24,7 @@ namespace TiledSharp
         
         public Tileset(XElement xTileset)
         {
-            source = (string)xTileset.Attribute("source");
-            firstGid = (int?)xTileset.Attribute("firstgid");            
+            var source = (string)xTileset.Attribute("source");
             if (source == null)
             {
                 Name = (string)xTileset.Attribute("name");
@@ -52,6 +50,10 @@ namespace TiledSharp
             }
             else
             {
+                // Get firstGid from the TMX file
+                firstGid = (uint)xTileset.Attribute("firstgid");
+                
+                // Everything else is in the TSX file
                 var xDocTileset = TiledIO.ReadXml(source);
                 var ts = new Tileset(xDocTileset);
                 Name = ts.Name;
