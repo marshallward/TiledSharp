@@ -91,12 +91,11 @@ namespace TiledSharp
             
             public Tile(uint id, int xi, int yi)
             {
-                // Temporary
                 gid = id;
                 x = xi;
                 y = yi;
                 
-                // Scan for flip flags
+                // Scan for tile flip bit flags
                 if ( (gid & TiledIO.FLIPPED_HORIZONTALLY_FLAG) != 0)
                     hflip = true;
                 if ( (gid & TiledIO.FLIPPED_VERTICALLY_FLAG) != 0)
@@ -104,7 +103,7 @@ namespace TiledSharp
                 if ( (gid & TiledIO.FLIPPED_DIAGONALLY_FLAG) != 0)
                     dflip = true;
                 
-                // Zero the top three bits
+                // Zero the bit flags
                 gid &= ~(TiledIO.FLIPPED_HORIZONTALLY_FLAG |
                          TiledIO.FLIPPED_VERTICALLY_FLAG |
                          TiledIO.FLIPPED_DIAGONALLY_FLAG);
