@@ -10,7 +10,7 @@ namespace TiledSharp
         public string version;              // TMX version
         public Orientation orientation;     // Grid layout
         public int width, height;           // Tile count
-        public int tilewidth, tileheight;   // Grid size
+        public int tileWidth, tileHeight;   // Grid size
         
         public TiledList tileset = new TiledList();
         public TiledList layer = new TiledList();
@@ -29,8 +29,8 @@ namespace TiledSharp
                             true);
             width = (int)xMap.Attribute("width");
             height = (int)xMap.Attribute("height");
-            tilewidth = (int)xMap.Attribute("tilewidth");
-            tileheight = (int)xMap.Attribute("tileheight");
+            tileWidth = (int)xMap.Attribute("tilewidth");
+            tileHeight = (int)xMap.Attribute("tileheight");
             
             foreach (var e in xMap.Elements("tileset"))
                 tileset.Add(new Tileset(e));

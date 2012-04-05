@@ -49,22 +49,13 @@ var myLayer = map.layer[2];
 var hiddenChest = map.objectgroup["Chests"].object["hiddenChest"];
 ```
 
-Duplicate names are resolved by appending a counter to subsequent appearances.
-For this reason, it is recommended that all elements have unique names. If you
-still wish to use duplicate names, I would recommend to access them by index.
+Duplicate names are resolved by appending a counter to the name in subsequent
+appearances.  For this reason, it is recommended that all elements have unique
+names. If you still wish to use duplicate names, I would recommend to access
+them by index.
 
 For a listing of all Map fields, see the [Map class specification]
 (https://github.com/marshallward/TiledSharp/wiki/Tiled-Map-Class) in the wiki.
-
-Licensing
----------
-I have not yet chosen a license, although I soon plan to release it under
-one permitting public use and modification. Please feel free to use or modify
-the code as necessary.
-
-Contact
--------
-Marshall Ward (<marshall.ward@gmail.com>)
 
 Notes
 -----
@@ -73,5 +64,18 @@ Thorbjørn Lindeijer.
 
 Zlib decompression uses the Zlib implementation of [DotNetZip][] v1.9.1.8.
 
+Licensing
+---------
+[TiledSharp][] is distributed under the [Apache 2.0 License][].
+
+[DotNetZip][] is distributed under the [Microsoft Public License][Ms-PL].
+
+Contact
+-------
+Marshall Ward (<marshall.ward@gmail.com>)
+
+[TiledSharp]: https://github.com/marshallward/TiledSharp
 [Tiled]: http://mapeditor.org
 [DotNetZip]: http://dotnetzip.codeplex.com
+[Apache 2.0 License]: http://www.apache.org/licenses/LICENSE-2.0.txt
+[Ms-PL]: http://www.microsoft.com/en-us/openness/licenses.aspx#MPL

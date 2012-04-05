@@ -37,9 +37,11 @@ namespace TiledSharp
                 
                 var compression = (string)xData.Attribute("compression");
                 if (compression == "gzip")
-                    stream = new GZipStream(stream, CompressionMode.Decompress, false);
+                    stream = new GZipStream(stream, CompressionMode.Decompress,
+                                            false);
                 else if (compression == "zlib")
-                    stream = new Ionic.Zlib.ZlibStream(stream, Ionic.Zlib.CompressionMode.Decompress, false);
+                    stream = new Ionic.Zlib.ZlibStream(stream,
+                                Ionic.Zlib.CompressionMode.Decompress, false);
                 else if (compression != null)
                     throw new Exception("Tiled: Unknown compression.");
                 
@@ -104,8 +106,8 @@ namespace TiledSharp
                 
                 // Zero the top three bits
                 gid &= ~(TiledIO.FLIPPED_HORIZONTALLY_FLAG |
-                        TiledIO.FLIPPED_VERTICALLY_FLAG |
-                        TiledIO.FLIPPED_DIAGONALLY_FLAG);
+                         TiledIO.FLIPPED_VERTICALLY_FLAG |
+                         TiledIO.FLIPPED_DIAGONALLY_FLAG);
             }
         }
     }
