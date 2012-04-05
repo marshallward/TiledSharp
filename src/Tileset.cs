@@ -11,7 +11,7 @@ namespace TiledSharp
         public string Name {get; set;}
         
         public uint firstGid;       // Required for TMX, but not TSX
-        public int? tileWidth, tileHeight;
+        public int tileWidth, tileHeight;
         public int spacing = 0;
         public int margin = 0;
         
@@ -29,8 +29,8 @@ namespace TiledSharp
             {
                 Name = (string)xTileset.Attribute("name");
                 image = new Image(xTileset.Element("image"));
-                tileWidth = (int?)xTileset.Attribute("tilewidth");
-                tileHeight = (int?)xTileset.Attribute("tileheight");
+                tileWidth = (int)xTileset.Attribute("tilewidth");
+                tileHeight = (int)xTileset.Attribute("tileheight");
                 
                 var xSpacing = xTileset.Attribute("spacing");
                 if (xSpacing != null)
