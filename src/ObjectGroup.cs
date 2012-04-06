@@ -56,7 +56,10 @@ namespace TiledSharp
             
             public MapObject(XElement xObject)
             {
-                Name = (string)xObject.Attribute("name");
+                var xName = xObject.Attribute("name");
+                if (xName == null) Name = "";
+                else Name = (string)xName;
+                
                 type = (string)xObject.Attribute("type");
                 x = (int)xObject.Attribute("x");
                 y = (int)xObject.Attribute("y");

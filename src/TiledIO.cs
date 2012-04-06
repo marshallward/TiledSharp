@@ -44,6 +44,7 @@ namespace TiledSharp
     
     public class TiledList : KeyedCollection<string, ITiledClass>
     {
+        // This is going across _all_ types, need to resolve this
         public static Dictionary<string, int> dupeCount
             = new Dictionary<string, int>();
         
