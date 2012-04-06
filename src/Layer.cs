@@ -6,7 +6,7 @@ using System.IO.Compression;
 
 namespace TiledSharp
 {
-    public class Layer : ITiledClass
+    public class Layer : ITiledElement
     {
         public string Name {get; set;}
         
@@ -84,6 +84,11 @@ namespace TiledSharp
         
         public class LayerTile
         {
+            // Tile flip bit flags
+            const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
+            const uint FLIPPED_VERTICALLY_FLAG   = 0x40000000;
+            const uint FLIPPED_DIAGONALLY_FLAG   = 0x20000000;
+            
             public uint gid;            // Global tile ID
             public int x, y;            // Coordinate position
             public bool hflip = false;  // Horizontal flip
@@ -97,17 +102,17 @@ namespace TiledSharp
                 y = yi;
                 
                 // Scan for tile flip bit flags
-                if ( (gid & TiledIO.FLIPPED_HORIZONTALLY_FLAG) != 0)
+                if ( (gid & FLIPPED_HORIZONTALLY_FLAG) != 0)
                     hflip = true;
-                if ( (gid & TiledIO.FLIPPED_VERTICALLY_FLAG) != 0)
+                if ( (gid & FLIPPED_VERTICALLY_FLAG) != 0)
                     vflip = true;
-                if ( (gid & TiledIO.FLIPPED_DIAGONALLY_FLAG) != 0)
+                if ( (gid & FLIPPED_DIAGONALLY_FLAG) != 0)
                     dflip = true;
                 
                 // Zero the bit flags
-                gid &= ~(TiledIO.FLIPPED_HORIZONTALLY_FLAG |
-                         TiledIO.FLIPPED_VERTICALLY_FLAG |
-                         TiledIO.FLIPPED_DIAGONALLY_FLAG);
+                gid &= ~(FLIPPED_HORIZONTALLY_FLAG |
+                         FLIPPED_VERTICALLY_FLAG |
+                         FLIPPED_DIAGONALLY_FLAG);
             }
         }
     }

@@ -34,11 +34,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Layer.cs" />
+    <Compile Include="src\TiledCore.cs" />
     <Compile Include="src\Map.cs" />
-    <Compile Include="src\ObjectGroup.cs" />
+    <Compile Include="src\Layer.cs" />
     <Compile Include="src\Tileset.cs" />
-    <Compile Include="src\TiledIO.cs" />
+    <Compile Include="src\ObjectGroup.cs" />
     <Compile Include="src\AssemblyInfo.cs" />
     <Compile Include="src\zlib\CRC32.cs" />
     <Compile Include="src\zlib\Deflate.cs" />

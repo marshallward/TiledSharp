@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public class MapObjectGroup : ITiledClass
+    public class MapObjectGroup : ITiledElement
     {
         public string Name {get; set;}
         
@@ -41,7 +41,7 @@ namespace TiledSharp
             property = new PropertyDict(xObjectGroup.Element("properties"));
         }
         
-        public class MapObject : ITiledClass
+        public class MapObject : ITiledElement
         {
             public string Name {get; set;}
             

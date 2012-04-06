@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Globalization;
@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace TiledSharp
 {
-    public class Tileset : ITiledClass
+    public class Tileset : TiledXML, ITiledElement
     {
         public string Name {get; set;}
         
@@ -55,7 +55,7 @@ namespace TiledSharp
                 firstGid = (uint)xTileset.Attribute("firstgid");
                 
                 // Everything else is in the TSX file
-                var xDocTileset = TiledIO.ReadXml(source);
+                var xDocTileset = ReadXml(source);
                 var ts = new Tileset(xDocTileset);
                 Name = ts.Name;
                 tileWidth = ts.tileWidth;

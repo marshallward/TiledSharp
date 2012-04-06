@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public class Map
+    public class Map : TiledXML
     {
         public string version;              // TMX version
         public Orientation orientation;     // Grid layout
@@ -19,7 +19,7 @@ namespace TiledSharp
         
         public Map(string filename)
         {
-            XDocument xDoc = TiledIO.ReadXml(filename);
+            XDocument xDoc = ReadXml(filename);
             var xMap = xDoc.Element("map");
             
             version = (string)xMap.Attribute("version");

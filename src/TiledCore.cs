@@ -7,13 +7,9 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public static class TiledIO
+    public class TiledXML
     {
-        public const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
-        public const uint FLIPPED_VERTICALLY_FLAG   = 0x40000000;
-        public const uint FLIPPED_DIAGONALLY_FLAG   = 0x20000000;
-        
-        public static XDocument ReadXml(string filepath)
+        protected XDocument ReadXml(string filepath)
         {
             XDocument xDoc;
             
@@ -37,17 +33,17 @@ namespace TiledSharp
         }
     }
     
-    public interface ITiledClass
+    public interface ITiledElement
     {
         string Name {get; set;}
     }
     
-    public class TiledList : KeyedCollection<string, ITiledClass>
+    public class TiledList : KeyedCollection<string, ITiledElement>
     {
         public static Dictionary<Tuple<TiledList, string>, int> nameCount
             = new Dictionary<Tuple<TiledList, string>, int>();
         
-        public new void Add(ITiledClass tList)
+        public new void Add(ITiledElement tList)
         {
             // Rename duplicate entries by appending a number
             var key = Tuple.Create<TiledList, string> (this, tList.Name);
@@ -61,7 +57,7 @@ namespace TiledSharp
             base.Add(tList);
         }
         
-        protected override string GetKeyForItem(ITiledClass tList)
+        protected override string GetKeyForItem(ITiledElement tList)
         {
             return tList.Name;
         }
