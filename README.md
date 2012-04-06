@@ -71,6 +71,7 @@ Marshall Ward (<marshall.ward@gmail.com>)
 
 [TiledSharp]: https://github.com/marshallward/TiledSharp
 [Tiled]: http://mapeditor.org
+[Map]: https://github.com/marshallward/TiledSharp/wiki/Map
 [TMX]: https://github.com/bjorn/tiled/wiki/TMX-Map-Format
 [TiledSharp Data Hierarchy]: https://github.com/marshallward/TiledSharp/wiki/TiledSharp-Data-Hierarchy
 [TiledList]: https://github.com/marshallward/TiledSharp/wiki/TiledList
