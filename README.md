@@ -18,15 +18,15 @@ Usage
 -----
 To import a TMX file into your C# application:
 
-- Include a reference to TiledSharp, either as source or DLL
+- Include a reference to TiledSharp, either as source or DLL.
 
-- Import the TiledSharp namespace
+- Import the TiledSharp namespace.
 
     ```csharp
     using TiledSharp;
     ```
 
-- Create a Map object using the constructor
+- Create a Map object using the constructor.
 
     ```csharp
     var map = new Map("yourFile.tmx");
@@ -35,26 +35,23 @@ To import a TMX file into your C# application:
    TiledSharp supports both resource names and file paths, and should work as
    expected in most situations. For more details, please consult the wiki.
 
-Map fields generally correspond with the XML structure. Layers, Tilesets,
-Objects, and Objectgroups can be accessed by either their names or by index
-(following their order in the TMX/TSX file). Some examples are shown below:
+- Access the TMX data as Map fields. Principal classes can be accessed by
+  either name or index.
 
-```csharp
-var map = new Map("yourFile.tmx");
+    ```csharp
+    var map = new Map("yourFile.tmx");
 
-var version = map.version;
-var myTileset = map.tileset["myTileset"];
-var myLayer = map.layer[2];
-var hiddenChest = map.objectgroup["Chests"].object["hiddenChest"];
-```
+    var version = map.version;
+    var myTileset = map.tileset["myTileset"];
+    var myLayer = map.layer[2];
+    var hiddenChest = map.objectgroup["Chests"].object["hiddenChest"];
+    ```
 
-Duplicate names are resolved by appending a counter to the name in subsequent
-appearances.  For this reason, it is recommended that all elements have unique
-names. If you still wish to use duplicate names, I would recommend to access
-them by index.
-
-For a listing of all Map fields, see the [Map class specification]
-(https://github.com/marshallward/TiledSharp/wiki/Tiled-Map-Class) in the wiki.
+Map fields generally correspond with the TMX file structure. For a complete
+listing, see the [TiledSharp Data Hierarchy][].
+    
+Although TiledSharp can handle objects with the same name, it is not
+recommended. For more information, see the [TiledList][] specification.
 
 Notes
 -----
@@ -75,6 +72,8 @@ Marshall Ward (<marshall.ward@gmail.com>)
 
 [TiledSharp]: https://github.com/marshallward/TiledSharp
 [Tiled]: http://mapeditor.org
+[TiledSharp Data Hierarchy]: https://github.com/marshallward/TiledSharp/wiki/TiledSharp-Data-Hierarchy
+[TiledList]: https://github.com/marshallward/TiledSharp/wiki/TiledList
 [DotNetZip]: http://dotnetzip.codeplex.com
 [Apache 2.0 License]: http://www.apache.org/licenses/LICENSE-2.0.txt
 [Ms-PL]: http://www.microsoft.com/en-us/openness/licenses.aspx#MPL
