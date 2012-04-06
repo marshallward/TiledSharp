@@ -44,19 +44,19 @@ namespace TiledSharp
     
     public class TiledList : KeyedCollection<string, ITiledClass>
     {
-        // This is going across _all_ types, need to resolve this
-        public static Dictionary<string, int> dupeCount
-            = new Dictionary<string, int>();
+        public static Dictionary<Tuple<TiledList, string>, int> nameCount
+            = new Dictionary<Tuple<TiledList, string>, int>();
         
         public new void Add(ITiledClass tList)
         {
             // Rename duplicate entries by appending a number
+            var key = Tuple.Create<TiledList, string> (this, tList.Name);
             if (this.Contains(tList.Name))
             {
-                dupeCount[tList.Name] += 1;
-                tList.Name = tList.Name + " " + dupeCount[tList.Name];
+                nameCount[key] += 1;
+                tList.Name = tList.Name + " " + nameCount[key];
             }
-            else dupeCount.Add(tList.Name, 0);
+            else nameCount.Add(key, 0);
             
             base.Add(tList);
         }
