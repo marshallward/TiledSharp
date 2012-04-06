@@ -18,23 +18,22 @@ Usage
 -----
 To import a TMX file into your C# application:
 
-- Include TiledSharp into your project, either as source or a DLL
+- Include a reference to TiledSharp, either as source or DLL
 
-- Use the TiledSharp namespace:
+- Import the TiledSharp namespace
 
     ```csharp
     using TiledSharp;
     ```
 
-- Create a Map object:
+- Create a Map object using the constructor
 
     ```csharp
     var map = new Map("yourFile.tmx");
     ```
-
-TiledSharp supports both resource names and file paths, and should work as
-expected in most situations. For more details on loading, please consult the
-wiki.
+   
+   TiledSharp supports both resource names and file paths, and should work as
+   expected in most situations. For more details, please consult the wiki.
 
 Map fields generally correspond with the XML structure. Layers, Tilesets,
 Objects, and Objectgroups can be accessed by either their names or by index
