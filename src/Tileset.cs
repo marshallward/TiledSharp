@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Globalization;
-using System.Reflection;
 
 namespace TiledSharp
 {
