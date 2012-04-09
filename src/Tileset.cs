@@ -70,6 +70,8 @@ namespace TiledSharp
         {
             public string source;
             public uint? trans;  // 24-bit RGB transparent color
+            public int width;
+            public int height;
             
             public Image(XElement xImage)
             {
@@ -78,6 +80,9 @@ namespace TiledSharp
                 var xml_trans = (string)xImage.Attribute("trans");
                 if (xml_trans != null)
                     trans = UInt32.Parse(xml_trans, NumberStyles.HexNumber);
+                
+                width = (int)xImage.Attribute("width");
+                height = (int)xImage.Attribute("height");
             }
         }
     }
