@@ -53,10 +53,11 @@ recommended. For more information, see the [TiledList][] specification.
 
 Notes
 -----
-[Tiled][] is an open-source (GPL) tile map editor developed and maintained by
-Thorbjørn Lindeijer.
+TiledSharp parses XML files produced by [Tiled][], an open-source (GPL) tile
+map editor developed and maintained by Thorbjørn Lindeijer.
 
-Zlib decompression uses the Zlib implementation of [DotNetZip][] v1.9.1.8.
+Zlib decompression in TiledSharp uses the Zlib implementation of [DotNetZip][]
+v1.9.1.8.
 
 Licensing
 ---------
