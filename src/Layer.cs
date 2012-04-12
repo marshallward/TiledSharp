@@ -81,39 +81,39 @@ namespace TiledSharp
             
             property = new PropertyDict(xLayer.Element("properties"));
         }
+    }
+    
+    public class LayerTile
+    {
+        // Tile flip bit flags
+        const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
+        const uint FLIPPED_VERTICALLY_FLAG   = 0x40000000;
+        const uint FLIPPED_DIAGONALLY_FLAG   = 0x20000000;
         
-        public class LayerTile
+        public uint gid;            // Global tile ID
+        public int x, y;            // Coordinate position
+        public bool hflip = false;  // Horizontal flip
+        public bool vflip = false;  // Vertical flip
+        public bool dflip = false;  // Diagonal flip 
+        
+        public LayerTile(uint id, int xi, int yi)
         {
-            // Tile flip bit flags
-            const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
-            const uint FLIPPED_VERTICALLY_FLAG   = 0x40000000;
-            const uint FLIPPED_DIAGONALLY_FLAG   = 0x20000000;
+            gid = id;
+            x = xi;
+            y = yi;
             
-            public uint gid;            // Global tile ID
-            public int x, y;            // Coordinate position
-            public bool hflip = false;  // Horizontal flip
-            public bool vflip = false;  // Vertical flip
-            public bool dflip = false;  // Diagonal flip 
+            // Scan for tile flip bit flags
+            if ( (gid & FLIPPED_HORIZONTALLY_FLAG) != 0)
+                hflip = true;
+            if ( (gid & FLIPPED_VERTICALLY_FLAG) != 0)
+                vflip = true;
+            if ( (gid & FLIPPED_DIAGONALLY_FLAG) != 0)
+                dflip = true;
             
-            public LayerTile(uint id, int xi, int yi)
-            {
-                gid = id;
-                x = xi;
-                y = yi;
-                
-                // Scan for tile flip bit flags
-                if ( (gid & FLIPPED_HORIZONTALLY_FLAG) != 0)
-                    hflip = true;
-                if ( (gid & FLIPPED_VERTICALLY_FLAG) != 0)
-                    vflip = true;
-                if ( (gid & FLIPPED_DIAGONALLY_FLAG) != 0)
-                    dflip = true;
-                
-                // Zero the bit flags
-                gid &= ~(FLIPPED_HORIZONTALLY_FLAG |
-                         FLIPPED_VERTICALLY_FLAG |
-                         FLIPPED_DIAGONALLY_FLAG);
-            }
+            // Zero the bit flags
+            gid &= ~(FLIPPED_HORIZONTALLY_FLAG |
+                     FLIPPED_VERTICALLY_FLAG |
+                     FLIPPED_DIAGONALLY_FLAG);
         }
     }
 }
