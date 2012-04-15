@@ -5,14 +5,16 @@ namespace TiledSharp
 {
     public class Map : TiledXML
     {
-        public string version;              // TMX version
-        public Orientation orientation;     // Grid layout
-        public int width, height;           // Tile count
-        public int tileWidth, tileHeight;   // Grid size
+        public string version;
+        public OrientationType orientation;
+        public int width;
+        public int height;
+        public int tileWidth;
+        public int tileHeight;
         
-        public TiledList tileset = new TiledList();
-        public TiledList layer = new TiledList();
-        public TiledList objGroup = new TiledList();
+        public TiledList tileset;
+        public TiledList layer;
+        public TiledList objGroup;
         public PropertyDict property;
         
         public Map(string filename)
@@ -21,8 +23,8 @@ namespace TiledSharp
             var xMap = xDoc.Element("map");
             
             version = (string)xMap.Attribute("version");
-            orientation = (Orientation) Enum.Parse(
-                            typeof(Orientation),
+            orientation = (OrientationType) Enum.Parse(
+                            typeof(OrientationType),
                             xMap.Attribute("orientation").Value,
                             true);
             width = (int)xMap.Attribute("width");
@@ -30,19 +32,22 @@ namespace TiledSharp
             tileWidth = (int)xMap.Attribute("tilewidth");
             tileHeight = (int)xMap.Attribute("tileheight");
             
+            tileset = new TiledList();
             foreach (var e in xMap.Elements("tileset"))
                 tileset.Add(new Tileset(e));
             
+            layer = new TiledList();
             foreach (var e in xMap.Elements("layer"))
                 layer.Add(new Layer(e, width, height));
             
+            objGroup = new TiledList();
             foreach (var e in xMap.Elements("objectgroup"))
                 objGroup.Add(new MapObjectGroup(e));
             
             property = new PropertyDict(xMap.Element("properties"));
         }
         
-        public enum Orientation : byte
+        public enum OrientationType : byte
             { Orthogonal, Isometric, Hexagonal, Shifted }
     }
 }
