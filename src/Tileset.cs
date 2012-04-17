@@ -24,9 +24,31 @@ namespace TiledSharp
         // TMX tileset element
         public Tileset(XElement xTileset)
         {
+            var xFirstGid = xTileset.Attribute("firstgid");
             var source = (string)xTileset.Attribute("source");
-            if (source == null)
+   
+            if (source != null)
             {
+                // source is always preceded by firstgid
+                firstGid = (uint)xFirstGid;
+                    
+                // Everything else is in the TSX file
+                var xDocTileset = ReadXml(source);
+                var ts = new Tileset(xDocTileset);
+                Name = ts.Name;
+                tileWidth = ts.tileWidth;
+                tileHeight = ts.tileHeight;
+                spacing = ts.spacing;
+                margin = ts.margin;
+                image = ts.image;
+                tile = ts.tile;
+            }
+            else
+            {
+                // firstgid is always in TMX, but not TSX
+                if (xFirstGid != null)
+                    firstGid = (uint)xFirstGid;
+                
                 Name = (string)xTileset.Attribute("name");
                 image = new Image(xTileset.Element("image"));
                 tileWidth = (int)xTileset.Attribute("tilewidth");
@@ -48,22 +70,6 @@ namespace TiledSharp
                     tile.Add(id, new PropertyDict(xProp));
                 }
             }
-            else
-            {
-                // Get firstGid from the TMX file
-                firstGid = (uint)xTileset.Attribute("firstgid");
-                
-                // Everything else is in the TSX file
-                var xDocTileset = ReadXml(source);
-                var ts = new Tileset(xDocTileset);
-                Name = ts.Name;
-                tileWidth = ts.tileWidth;
-                tileHeight = ts.tileHeight;
-                spacing = ts.spacing;
-                margin = ts.margin;
-                image = ts.image;
-                tile = ts.tile;
-            }            
         }
         
         public class Image
