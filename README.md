@@ -46,24 +46,24 @@ To import a TMX file into your C# application:
     ```
 
 Map data fields correspond closely to the TMX file structure. For a complete
-listing, see the [TiledSharp Data Hierarchy][].
+listing, see the [TiledSharp Data Hierarchy].
  
 Although TiledSharp can handle objects with the same name, it is not
-recommended. For more information, see the [TiledList][] specification.
+recommended. For more information, see the [TiledList] specification.
 
 Notes
 -----
-TiledSharp parses XML files produced by [Tiled][], an open-source (GPL) tile
+TiledSharp parses XML files produced by [Tiled], an open-source (GPL) tile
 map editor developed and maintained by Thorbjørn Lindeijer.
 
-Zlib decompression in TiledSharp uses the Zlib implementation of [DotNetZip][]
+Zlib decompression in TiledSharp uses the Zlib implementation of [DotNetZip]
 v1.9.1.8.
 
 Licensing
 ---------
-[TiledSharp][] is distributed under the [Apache 2.0 License][].
+[TiledSharp] is distributed under the [Apache 2.0 License].
 
-[DotNetZip][] is distributed under the [Microsoft Public License][Ms-PL].
+[DotNetZip] is distributed under the [Microsoft Public License][Ms-PL].
 
 Contact
 -------
