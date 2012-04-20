@@ -63,7 +63,8 @@ Licensing
 ---------
 [TiledSharp] is distributed under the [Apache 2.0 License].
 
-[DotNetZip] is distributed under the [Microsoft Public License][Ms-PL].
+Support code from [DotNetZip] is distributed under the
+[Microsoft Public License][Ms-PL].
 
 Contact
 -------
@@ -73,7 +74,7 @@ Marshall Ward (<marshall.ward@gmail.com>)
 [Tiled]: http://mapeditor.org
 [Map]: https://github.com/marshallward/TiledSharp/wiki/Map
 [TMX]: https://github.com/bjorn/tiled/wiki/TMX-Map-Format
-[TiledSharp Data Hierarchy]: https://github.com/marshallward/TiledSharp/wiki/TiledSharp-Data-Hierarchy
+[TiledSharp Data Hierarchy]: wiki/TiledSharp-Data-Hierarchy
 [TiledList]: https://github.com/marshallward/TiledSharp/wiki/TiledList
 [DotNetZip]: http://dotnetzip.codeplex.com
 [Apache 2.0 License]: http://www.apache.org/licenses/LICENSE-2.0.txt
