@@ -11,7 +11,7 @@ namespace TiledSharp
 {
     public class TmxLayer : ITmxElement
     {
-        public string Name {get; set;}
+        public string Name {get; private set;}
         
         public double opacity = 1.0;
         public bool visible = true;

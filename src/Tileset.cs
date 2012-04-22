@@ -10,7 +10,7 @@ namespace TiledSharp
 {
     public class TmxTileset : TmxDocument, ITmxElement
     {
-        public string Name {get; set;}
+        public string Name {get; private set;}
         
         public uint firstGid;
         public int tileWidth, tileHeight;

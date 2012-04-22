@@ -10,7 +10,7 @@ namespace TiledSharp
 {
     public class TmxObjectGroup : ITmxElement
     {
-        public string Name {get; set;}
+        public string Name {get; private set;}
         
         public uint? color;
         public double opacity = 1.0;
@@ -46,7 +46,7 @@ namespace TiledSharp
         
         public class TmxObject : ITmxElement
         {
-            public string Name {get; set;}
+            public string Name {get; private set;}
             
             public TmxObjectType objType;
             public string type;

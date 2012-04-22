@@ -39,7 +39,7 @@ namespace TiledSharp
     
     public interface ITmxElement
     {
-        string Name {get; set;}
+        string Name {get;}
     }
     
     public class TmxList : KeyedCollection<string, ITmxElement>
@@ -47,23 +47,25 @@ namespace TiledSharp
         public static Dictionary<Tuple<TmxList, string>, int> nameCount
             = new Dictionary<Tuple<TmxList, string>, int>();
         
-        public new void Add(ITmxElement tList)
+        public new void Add(ITmxElement t)
         {
             // Rename duplicate entries by appending a number
-            var key = Tuple.Create<TmxList, string> (this, tList.Name);
-            if (this.Contains(tList.Name))
-            {
+            var key = Tuple.Create<TmxList, string> (this, t.Name);
+            if (this.Contains(t.Name))
                 nameCount[key] += 1;
-                tList.Name = tList.Name + " " + nameCount[key];
-            }
-            else nameCount.Add(key, 0);
-            
-            base.Add(tList);
+            else
+                nameCount.Add(key, 0);
+            base.Add(t);
         }
         
-        protected override string GetKeyForItem(ITmxElement tList)
+        protected override string GetKeyForItem(ITmxElement t)
         {
-            return tList.Name;
+            var key = Tuple.Create<TmxList, string> (this, t.Name);
+            var count = nameCount[key];
+            if (count == 0)
+                return t.Name;
+            else
+                return t.Name + count;
         }
     }
     
