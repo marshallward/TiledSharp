@@ -10,15 +10,15 @@ namespace TiledSharp
     {
         public string Version {get; private set;}
         public OrientationType Orientation {get; private set;}
-        public int width;
-        public int height;
-        public int tileWidth;
-        public int tileHeight;
+        public int Width {get; private set;}
+        public int Height {get; private set;}
+        public int TileWidth {get; private set;}
+        public int TileHeight {get; private set;}
         
-        public TmxList tileset;
-        public TmxList layer;
-        public TmxList objGroup;
-        public PropertyDict property;
+        public TmxList Tileset {get; private set;}
+        public TmxList Layer {get; private set;}
+        public TmxList ObjectGroup {get; private set;}
+        public PropertyDict Property {get; private set;}
         
         public TmxMap(string filename)
         {
@@ -30,24 +30,24 @@ namespace TiledSharp
                                     typeof(OrientationType),
                                     xMap.Attribute("orientation").Value,
                                     true);
-            width = (int)xMap.Attribute("width");
-            height = (int)xMap.Attribute("height");
-            tileWidth = (int)xMap.Attribute("tilewidth");
-            tileHeight = (int)xMap.Attribute("tileheight");
+            Width = (int)xMap.Attribute("width");
+            Height = (int)xMap.Attribute("height");
+            TileWidth = (int)xMap.Attribute("tilewidth");
+            TileHeight = (int)xMap.Attribute("tileheight");
             
-            tileset = new TmxList();
+            Tileset = new TmxList();
             foreach (var e in xMap.Elements("tileset"))
-                tileset.Add(new TmxTileset(e));
+                Tileset.Add(new TmxTileset(e));
             
-            layer = new TmxList();
+            Layer = new TmxList();
             foreach (var e in xMap.Elements("layer"))
-                layer.Add(new TmxLayer(e, width, height));
+                Layer.Add(new TmxLayer(e, Width, Height));
             
-            objGroup = new TmxList();
+            ObjectGroup = new TmxList();
             foreach (var e in xMap.Elements("objectgroup"))
-                objGroup.Add(new TmxObjectGroup(e));
+                ObjectGroup.Add(new TmxObjectGroup(e));
             
-            property = new PropertyDict(xMap.Element("properties"));
+            Property = new PropertyDict(xMap.Element("properties"));
         }
         
         public enum OrientationType : byte
