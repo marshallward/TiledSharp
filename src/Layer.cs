@@ -15,7 +15,7 @@ namespace TiledSharp
         public double Opacity {get; private set;}
         public bool Visible {get; private set;}
         
-        public List<LayerTile> tile = new List<LayerTile>();
+        public List<TmxLayerTile> Tile {get; private set;}
         public PropertyDict Property {get; private set;}
         
         public TmxLayer(XElement xLayer, int width, int height)
@@ -37,6 +37,7 @@ namespace TiledSharp
             var xData = xLayer.Element("data");
             var encoding = (string)xData.Attribute("encoding");
             
+            Tile = new List<TmxLayerTile>();
             if (encoding == "base64")
             {
                 var base64data = Convert.FromBase64String((string)xData.Value);
@@ -56,7 +57,7 @@ namespace TiledSharp
                 using (var br = new BinaryReader(stream))
                     for (int j = 0; j < height; j++)
                         for (int i = 0; i < width; i++)
-                            tile.Add(new LayerTile(br.ReadUInt32(), i, j));
+                            Tile.Add(new TmxLayerTile(br.ReadUInt32(), i, j));
             }
             else if (encoding == "csv")
             {
@@ -67,7 +68,7 @@ namespace TiledSharp
                     var gid = uint.Parse(s.Trim());
                     var x = k % width;
                     var y = k / width;
-                    tile.Add(new LayerTile(gid, x, y));
+                    Tile.Add(new TmxLayerTile(gid, x, y));
                     k++;
                 }
             }
@@ -79,7 +80,7 @@ namespace TiledSharp
                     var gid = (uint)e.Attribute("gid");
                     var x = k % width;
                     var y = k / width;
-                    tile.Add(new LayerTile(gid, x, y));
+                    Tile.Add(new TmxLayerTile(gid, x, y));
                     k++;
                 }
             }
@@ -89,35 +90,44 @@ namespace TiledSharp
         }
     }
     
-    public class LayerTile
+    public class TmxLayerTile
     {
         // Tile flip bit flags
         const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
         const uint FLIPPED_VERTICALLY_FLAG   = 0x40000000;
         const uint FLIPPED_DIAGONALLY_FLAG   = 0x20000000;
         
-        public uint gid;            // Global tile ID
-        public int x, y;            // Coordinate position
-        public bool hflip = false;  // Horizontal flip
-        public bool vflip = false;  // Vertical flip
-        public bool dflip = false;  // Diagonal flip 
+        public uint GID {get; private set;}
+        public int X {get; private set;}
+        public int Y {get; private set;}
+        public bool HorizontalFlip {get; private set;}
+        public bool VerticalFlip {get; private set;}
+        public bool DiagonalFlip {get; private set;}
         
-        public LayerTile(uint id, int xi, int yi)
+        public TmxLayerTile(uint id, int x, int y)
         {
-            gid = id;
-            x = xi;
-            y = yi;
+            GID = id;
+            X = x;
+            Y = y;
             
             // Scan for tile flip bit flags
-            if ( (gid & FLIPPED_HORIZONTALLY_FLAG) != 0)
-                hflip = true;
-            if ( (gid & FLIPPED_VERTICALLY_FLAG) != 0)
-                vflip = true;
-            if ( (gid & FLIPPED_DIAGONALLY_FLAG) != 0)
-                dflip = true;
+            if ((GID & FLIPPED_HORIZONTALLY_FLAG) != 0)
+                HorizontalFlip = true;
+            else
+                HorizontalFlip = false;
+
+            if ((GID & FLIPPED_VERTICALLY_FLAG) != 0)
+                VerticalFlip = true;
+            else
+                VerticalFlip = false;
+            
+            if ((GID & FLIPPED_DIAGONALLY_FLAG) != 0)
+                DiagonalFlip = true;
+            else
+                DiagonalFlip = false;
             
             // Zero the bit flags
-            gid &= ~(FLIPPED_HORIZONTALLY_FLAG |
+            GID &= ~(FLIPPED_HORIZONTALLY_FLAG |
                      FLIPPED_VERTICALLY_FLAG |
                      FLIPPED_DIAGONALLY_FLAG);
         }

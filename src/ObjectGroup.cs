@@ -11,12 +11,12 @@ namespace TiledSharp
     public class TmxObjectGroup : ITmxElement
     {
         public string Name {get; private set;}
-        
         public uint? color;
         public double Opacity {get; private set;}
         public bool Visible {get; private set;}
         
-        public TmxList obj = new TmxList();
+        // Naughty boy, using a keyword...
+        public TmxList obj;
         public PropertyDict Property {get; private set;}
         
         public TmxObjectGroup(XElement xObjectGroup)
@@ -42,6 +42,7 @@ namespace TiledSharp
             else
                 Visible = (bool)xVisible;
             
+            obj = new TmxList();
             foreach (var e in xObjectGroup.Elements("object"))
                 obj.Add(new TmxObject(e));
             
@@ -53,13 +54,14 @@ namespace TiledSharp
             public string Name {get; private set;}
             
             public TmxObjectType objType;
-            public string type;
-            public int x, y;
+            public string Type {get; private set;}
+            public int X {get; private set;}
+            public int Y {get; private set;}
             public int? width, height;
             public int? gid;
             
             public List<Tuple<int,int>> points;
-            public PropertyDict property;
+            public PropertyDict Property {get; private set;}
             
             public TmxObject(XElement xObject)
             {
@@ -67,9 +69,9 @@ namespace TiledSharp
                 if (xName == null) Name = "";
                 else Name = (string)xName;
                 
-                type = (string)xObject.Attribute("type");
-                x = (int)xObject.Attribute("x");
-                y = (int)xObject.Attribute("y");
+                Type = (string)xObject.Attribute("type");
+                X = (int)xObject.Attribute("x");
+                Y = (int)xObject.Attribute("y");
                 width = (int?)xObject.Attribute("width");
                 height = (int?)xObject.Attribute("height");
                 
@@ -95,7 +97,7 @@ namespace TiledSharp
                 }
                 else objType = TmxObjectType.Basic;
                 
-                property = new PropertyDict(xObject.Element("properties"));
+                Property = new PropertyDict(xObject.Element("properties"));
             }
             
             public List<Tuple<int, int>> ParsePoints(XElement xPoints)
