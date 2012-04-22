@@ -82,7 +82,7 @@ namespace TiledSharp
         public class TmxImage
         {
             public string Source {get; private set;}
-            public uint? trans;                     
+            public uint? Trans {get; private set;}
             public int Width {get; private set;}
             public int Height {get; private set;}
             
@@ -92,7 +92,7 @@ namespace TiledSharp
                 
                 var xTrans = (string)xImage.Attribute("trans");
                 if (xTrans != null)
-                    trans = UInt32.Parse(xTrans, NumberStyles.HexNumber);
+                    Trans = UInt32.Parse(xTrans, NumberStyles.HexNumber);
                 
                 Width = (int)xImage.Attribute("width");
                 Height = (int)xImage.Attribute("height");

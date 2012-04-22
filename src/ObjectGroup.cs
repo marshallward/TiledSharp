@@ -11,12 +11,10 @@ namespace TiledSharp
     public class TmxObjectGroup : ITmxElement
     {
         public string Name {get; private set;}
-        public uint? color;
+        public uint? Color {get; private set;}
         public double Opacity {get; private set;}
         public bool Visible {get; private set;}
-        
-        // Naughty boy, using a keyword...
-        public TmxList obj;
+        public TmxList Object {get; private set;}
         public PropertyDict Property {get; private set;}
         
         public TmxObjectGroup(XElement xObjectGroup)
@@ -27,7 +25,7 @@ namespace TiledSharp
             if (xColor != null)
             {
                 xColor = xColor.TrimStart("#".ToCharArray());
-                color = UInt32.Parse(xColor, NumberStyles.HexNumber);
+                Color = UInt32.Parse(xColor, NumberStyles.HexNumber);
             }
             
             var xOpacity = xObjectGroup.Attribute("opacity");
@@ -42,25 +40,27 @@ namespace TiledSharp
             else
                 Visible = (bool)xVisible;
             
-            obj = new TmxList();
+            Object = new TmxList();
             foreach (var e in xObjectGroup.Elements("object"))
-                obj.Add(new TmxObject(e));
+                Object.Add(new TmxObject(e));
             
             Property = new PropertyDict(xObjectGroup.Element("properties"));
         }
         
         public class TmxObject : ITmxElement
         {
+            // Many TmxObjectTypes are distinguished by null values in fields
+            // It might be smart to subclass TmxObject
             public string Name {get; private set;}
-            
-            public TmxObjectType objType;
+            public TmxObjectType ObjectType {get; private set;}
             public string Type {get; private set;}
             public int X {get; private set;}
             public int Y {get; private set;}
-            public int? width, height;
-            public int? gid;
+            public int? Width {get; private set;}
+            public int? Height {get; private set;}
+            public int? Gid {get; private set;}
             
-            public List<Tuple<int,int>> points;
+            public List<Tuple<int,int>> Points {get; private set;}
             public PropertyDict Property {get; private set;}
             
             public TmxObject(XElement xObject)
@@ -72,8 +72,8 @@ namespace TiledSharp
                 Type = (string)xObject.Attribute("type");
                 X = (int)xObject.Attribute("x");
                 Y = (int)xObject.Attribute("y");
-                width = (int?)xObject.Attribute("width");
-                height = (int?)xObject.Attribute("height");
+                Width = (int?)xObject.Attribute("width");
+                Height = (int?)xObject.Attribute("height");
                 
                 // Assess object type and assign appropriate content
                 var xGid = xObject.Attribute("gid");
@@ -82,20 +82,20 @@ namespace TiledSharp
                 
                 if (xGid != null)
                 {
-                    gid = (int?)xGid;
-                    objType = TmxObjectType.Tile;
+                    Gid = (int?)xGid;
+                    ObjectType = TmxObjectType.Tile;
                 }
                 else if (xPolygon != null)
                 {
-                    points = ParsePoints(xPolygon);  // Fill this in
-                    objType = TmxObjectType.Polygon;
+                    Points = ParsePoints(xPolygon);  // Fill this in
+                    ObjectType = TmxObjectType.Polygon;
                 }
                 else if (xPolyline != null)
                 {
-                    points = ParsePoints(xPolyline);  // Fill in
-                    objType = TmxObjectType.Polyline;
+                    Points = ParsePoints(xPolyline);  // Fill in
+                    ObjectType = TmxObjectType.Polyline;
                 }
-                else objType = TmxObjectType.Basic;
+                else ObjectType = TmxObjectType.Basic;
                 
                 Property = new PropertyDict(xObject.Element("properties"));
             }
