@@ -40,9 +40,9 @@ To import a TMX file into your C# application:
     var map = new TmxMap("someMap.tmx");
 
     var version = map.Version;
-    var myTileset = map.tileset["myTileset"];
-    var myLayer = map.layer[2];
-    var hiddenChest = map.objGroup["Chests"].obj["hiddenChest"];
+    var myTileset = map.Tileset["myTileset"];
+    var myLayer = map.Layer[2];
+    var hiddenChest = map.ObjectGroup["Chests"].Object["hiddenChest"];
     ```
 
 Map data fields correspond closely to the TMX file structure. For a complete
