@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public class MapObjectGroup : ITiledElement
+    public class TmxObjectGroup : ITmxElement
     {
         public string Name {get; set;}
         
@@ -13,10 +13,10 @@ namespace TiledSharp
         public double opacity = 1.0;
         public bool visible = true;
         
-        public TiledList obj = new TiledList();
+        public TmxList obj = new TmxList();
         public PropertyDict property;
         
-        public MapObjectGroup(XElement xObjectGroup)
+        public TmxObjectGroup(XElement xObjectGroup)
         {
             Name = (string)xObjectGroup.Attribute("name");
             
@@ -36,16 +36,16 @@ namespace TiledSharp
                 visible = (bool)xVisible;
             
             foreach (var e in xObjectGroup.Elements("object"))
-                obj.Add(new MapObject(e));
+                obj.Add(new TmxObject(e));
             
             property = new PropertyDict(xObjectGroup.Element("properties"));
         }
         
-        public class MapObject : ITiledElement
+        public class TmxObject : ITmxElement
         {
             public string Name {get; set;}
             
-            public MapObjectType objType;
+            public TmxObjectType objType;
             public string type;
             public int x, y;
             public int? width, height;
@@ -54,7 +54,7 @@ namespace TiledSharp
             public List<Tuple<int,int>> points;
             public PropertyDict property;
             
-            public MapObject(XElement xObject)
+            public TmxObject(XElement xObject)
             {
                 var xName = xObject.Attribute("name");
                 if (xName == null) Name = "";
@@ -74,19 +74,19 @@ namespace TiledSharp
                 if (xGid != null)
                 {
                     gid = (int?)xGid;
-                    objType = MapObjectType.Tile;
+                    objType = TmxObjectType.Tile;
                 }
                 else if (xPolygon != null)
                 {
                     points = ParsePoints(xPolygon);  // Fill this in
-                    objType = MapObjectType.Polygon;
+                    objType = TmxObjectType.Polygon;
                 }
                 else if (xPolyline != null)
                 {
                     points = ParsePoints(xPolyline);  // Fill in
-                    objType = MapObjectType.Polyline;
+                    objType = TmxObjectType.Polyline;
                 }
-                else objType = MapObjectType.Basic;
+                else objType = TmxObjectType.Basic;
                 
                 property = new PropertyDict(xObject.Element("properties"));
             }
@@ -108,7 +108,7 @@ namespace TiledSharp
             }
         }
         
-        public enum MapObjectType : byte
+        public enum TmxObjectType : byte
         {
             Basic,
             Tile,

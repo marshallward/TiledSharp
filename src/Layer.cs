@@ -6,7 +6,7 @@ using System.IO.Compression;
 
 namespace TiledSharp
 {
-    public class Layer : ITiledElement
+    public class TmxLayer : ITmxElement
     {
         public string Name {get; set;}
         
@@ -16,7 +16,7 @@ namespace TiledSharp
         public List<LayerTile> tile = new List<LayerTile>();
         public PropertyDict property;
         
-        public Layer(XElement xLayer, int width, int height)
+        public TmxLayer(XElement xLayer, int width, int height)
         {
             Name = (string)xLayer.Attribute("name");
             

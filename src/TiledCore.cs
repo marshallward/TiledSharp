@@ -7,8 +7,9 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public class TiledXML
+    public class TmxDocument
     {
+        // Subclass XDocument? Override XDocument.Load?
         protected XDocument ReadXml(string filepath)
         {
             XDocument xDoc;
@@ -33,20 +34,20 @@ namespace TiledSharp
         }
     }
     
-    public interface ITiledElement
+    public interface ITmxElement
     {
         string Name {get; set;}
     }
     
-    public class TiledList : KeyedCollection<string, ITiledElement>
+    public class TmxList : KeyedCollection<string, ITmxElement>
     {
-        public static Dictionary<Tuple<TiledList, string>, int> nameCount
-            = new Dictionary<Tuple<TiledList, string>, int>();
+        public static Dictionary<Tuple<TmxList, string>, int> nameCount
+            = new Dictionary<Tuple<TmxList, string>, int>();
         
-        public new void Add(ITiledElement tList)
+        public new void Add(ITmxElement tList)
         {
             // Rename duplicate entries by appending a number
-            var key = Tuple.Create<TiledList, string> (this, tList.Name);
+            var key = Tuple.Create<TmxList, string> (this, tList.Name);
             if (this.Contains(tList.Name))
             {
                 nameCount[key] += 1;
@@ -57,7 +58,7 @@ namespace TiledSharp
             base.Add(tList);
         }
         
-        protected override string GetKeyForItem(ITiledElement tList)
+        protected override string GetKeyForItem(ITmxElement tList)
         {
             return tList.Name;
         }
@@ -65,11 +66,11 @@ namespace TiledSharp
     
     public class PropertyDict : Dictionary<string, string>
     {
-        public PropertyDict(XElement xml_prop)
+        public PropertyDict(XElement xmlProp)
         {
-            if (xml_prop == null) return;
+            if (xmlProp == null) return;
             
-            foreach (var p in xml_prop.Elements("property"))
+            foreach (var p in xmlProp.Elements("property"))
             {
                 var pname = p.Attribute("name").Value;
                 var pval = p.Attribute("value").Value;

@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace TiledSharp
 {
-    public class Tileset : TiledXML, ITiledElement
+    public class TmxTileset : TmxDocument, ITmxElement
     {
         public string Name {get; set;}
         
@@ -19,10 +19,10 @@ namespace TiledSharp
         public PropertyDict property;
         
         // TSX file
-        public Tileset(XDocument xDoc) : this(xDoc.Element("tileset")) { }
+        public TmxTileset(XDocument xDoc) : this(xDoc.Element("tileset")) { }
         
         // TMX tileset element
-        public Tileset(XElement xTileset)
+        public TmxTileset(XElement xTileset)
         {
             var xFirstGid = xTileset.Attribute("firstgid");
             var source = (string)xTileset.Attribute("source");
@@ -34,7 +34,7 @@ namespace TiledSharp
                     
                 // Everything else is in the TSX file
                 var xDocTileset = ReadXml(source);
-                var ts = new Tileset(xDocTileset);
+                var ts = new TmxTileset(xDocTileset);
                 Name = ts.Name;
                 tileWidth = ts.tileWidth;
                 tileHeight = ts.tileHeight;

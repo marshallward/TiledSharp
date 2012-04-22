@@ -38,7 +38,6 @@
     <Compile Include="src\Map.cs" />
     <Compile Include="src\Layer.cs" />
     <Compile Include="src\Tileset.cs" />
-    <Compile Include="src\ObjectGroup.cs" />
     <Compile Include="src\AssemblyInfo.cs" />
     <Compile Include="src\zlib\CRC32.cs" />
     <Compile Include="src\zlib\Deflate.cs" />
@@ -53,6 +52,7 @@
     <Compile Include="src\zlib\ZlibCodec.cs" />
     <Compile Include="src\zlib\ZlibConstants.cs" />
     <Compile Include="src\zlib\ZlibStream.cs" />
+    <Compile Include="src\ObjectGroup.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

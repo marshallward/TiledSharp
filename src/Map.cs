@@ -3,46 +3,46 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public class Map : TiledXML
+    public class TmxMap : TmxDocument
     {
-        public string version;
-        public OrientationType orientation;
+        public string Version {get; private set;}
+        public OrientationType Orientation {get; private set;}
         public int width;
         public int height;
         public int tileWidth;
         public int tileHeight;
         
-        public TiledList tileset;
-        public TiledList layer;
-        public TiledList objGroup;
+        public TmxList tileset;
+        public TmxList layer;
+        public TmxList objGroup;
         public PropertyDict property;
         
-        public Map(string filename)
+        public TmxMap(string filename)
         {
             XDocument xDoc = ReadXml(filename);
             var xMap = xDoc.Element("map");
             
-            version = (string)xMap.Attribute("version");
-            orientation = (OrientationType) Enum.Parse(
-                            typeof(OrientationType),
-                            xMap.Attribute("orientation").Value,
-                            true);
+            Version = (string)xMap.Attribute("version");
+            Orientation = (OrientationType) Enum.Parse(
+                                    typeof(OrientationType),
+                                    xMap.Attribute("orientation").Value,
+                                    true);
             width = (int)xMap.Attribute("width");
             height = (int)xMap.Attribute("height");
             tileWidth = (int)xMap.Attribute("tilewidth");
             tileHeight = (int)xMap.Attribute("tileheight");
             
-            tileset = new TiledList();
+            tileset = new TmxList();
             foreach (var e in xMap.Elements("tileset"))
-                tileset.Add(new Tileset(e));
+                tileset.Add(new TmxTileset(e));
             
-            layer = new TiledList();
+            layer = new TmxList();
             foreach (var e in xMap.Elements("layer"))
-                layer.Add(new Layer(e, width, height));
+                layer.Add(new TmxLayer(e, width, height));
             
-            objGroup = new TiledList();
+            objGroup = new TmxList();
             foreach (var e in xMap.Elements("objectgroup"))
-                objGroup.Add(new MapObjectGroup(e));
+                objGroup.Add(new TmxObjectGroup(e));
             
             property = new PropertyDict(xMap.Element("properties"));
         }
