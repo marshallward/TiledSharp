@@ -11,15 +11,15 @@ namespace TiledSharp
     public class TmxTileset : TmxDocument, ITmxElement
     {
         public string Name {get; private set;}
-        
-        public uint firstGid;
-        public int tileWidth, tileHeight;
-        public int spacing = 0;
-        public int margin = 0;
+        public uint FirstGID {get; private set;}
+        public int TileWidth {get; private set;}
+        public int TileHeight {get; private set;}
+        public int Spacing {get; private set;}
+        public int Margin {get; private set;}
         
         public Image image;
         public Dictionary<int, PropertyDict> tile;
-        public PropertyDict property;
+        public PropertyDict Property {get; private set;}
         
         // TSX file
         public TmxTileset(XDocument xDoc) : this(xDoc.Element("tileset")) { }
@@ -33,16 +33,16 @@ namespace TiledSharp
             if (source != null)
             {
                 // source is always preceded by firstgid
-                firstGid = (uint)xFirstGid;
+                FirstGID = (uint)xFirstGid;
                     
                 // Everything else is in the TSX file
                 var xDocTileset = ReadXml(source);
                 var ts = new TmxTileset(xDocTileset);
                 Name = ts.Name;
-                tileWidth = ts.tileWidth;
-                tileHeight = ts.tileHeight;
-                spacing = ts.spacing;
-                margin = ts.margin;
+                TileWidth = ts.TileWidth;
+                TileHeight = ts.TileHeight;
+                Spacing = ts.Spacing;
+                Margin = ts.Margin;
                 image = ts.image;
                 tile = ts.tile;
             }
@@ -50,20 +50,24 @@ namespace TiledSharp
             {
                 // firstgid is always in TMX, but not TSX
                 if (xFirstGid != null)
-                    firstGid = (uint)xFirstGid;
+                    FirstGID = (uint)xFirstGid;
                 
                 Name = (string)xTileset.Attribute("name");
                 image = new Image(xTileset.Element("image"));
-                tileWidth = (int)xTileset.Attribute("tilewidth");
-                tileHeight = (int)xTileset.Attribute("tileheight");
+                TileWidth = (int)xTileset.Attribute("tilewidth");
+                TileHeight = (int)xTileset.Attribute("tileheight");
                 
                 var xSpacing = xTileset.Attribute("spacing");
-                if (xSpacing != null)
-                    spacing = (int)xSpacing;
+                if (xSpacing == null)
+                    Spacing = 0;
+                else
+                    Spacing = (int)xSpacing;
                 
-                var xMargin = (int?)xTileset.Attribute("margin");
-                if (xMargin != null)
-                    margin = (int)xMargin;
+                var xMargin = xTileset.Attribute("margin");
+                if (xMargin == null)
+                    Margin = 0;
+                else
+                    Margin = (int)xMargin;
                 
                 tile = new Dictionary<int, PropertyDict>();
                 foreach (var xml_tile in xTileset.Elements("tile"))

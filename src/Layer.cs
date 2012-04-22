@@ -12,24 +12,27 @@ namespace TiledSharp
     public class TmxLayer : ITmxElement
     {
         public string Name {get; private set;}
-        
-        public double opacity = 1.0;
-        public bool visible = true;
+        public double Opacity {get; private set;}
+        public bool Visible {get; private set;}
         
         public List<LayerTile> tile = new List<LayerTile>();
-        public PropertyDict property;
+        public PropertyDict Property {get; private set;}
         
         public TmxLayer(XElement xLayer, int width, int height)
         {
             Name = (string)xLayer.Attribute("name");
             
             var xOpacity = xLayer.Attribute("opacity");
-            if (xOpacity != null)
-                opacity = (double)xOpacity;
+            if (xOpacity == null)
+                Opacity = 1.0;
+            else
+                Opacity = (double)xOpacity;
             
             var xVisible = xLayer.Attribute("visible");
-            if (xVisible != null)
-                visible = (bool)xVisible;
+            if (xVisible == null)
+                Visible = true;
+            else
+                Visible = (bool)xVisible;
             
             var xData = xLayer.Element("data");
             var encoding = (string)xData.Attribute("encoding");
@@ -82,7 +85,7 @@ namespace TiledSharp
             }
             else throw new Exception("Tiled: Unknown encoding.");
             
-            property = new PropertyDict(xLayer.Element("properties"));
+            Property = new PropertyDict(xLayer.Element("properties"));
         }
     }
     

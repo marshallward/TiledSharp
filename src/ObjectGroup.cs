@@ -13,11 +13,11 @@ namespace TiledSharp
         public string Name {get; private set;}
         
         public uint? color;
-        public double opacity = 1.0;
-        public bool visible = true;
+        public double Opacity {get; private set;}
+        public bool Visible {get; private set;}
         
         public TmxList obj = new TmxList();
-        public PropertyDict property;
+        public PropertyDict Property {get; private set;}
         
         public TmxObjectGroup(XElement xObjectGroup)
         {
@@ -31,17 +31,21 @@ namespace TiledSharp
             }
             
             var xOpacity = xObjectGroup.Attribute("opacity");
-            if (xOpacity != null)
-                opacity = (double)xOpacity;
+            if (xOpacity == null)
+                Opacity = 1.0;
+            else
+                Opacity = (double)xOpacity;
             
             var xVisible = xObjectGroup.Attribute("visible");
-            if (xVisible != null)
-                visible = (bool)xVisible;
+            if (xVisible == null)
+                Visible = true;
+            else
+                Visible = (bool)xVisible;
             
             foreach (var e in xObjectGroup.Elements("object"))
                 obj.Add(new TmxObject(e));
             
-            property = new PropertyDict(xObjectGroup.Element("properties"));
+            Property = new PropertyDict(xObjectGroup.Element("properties"));
         }
         
         public class TmxObject : ITmxElement
