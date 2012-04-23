@@ -14,8 +14,9 @@ namespace TiledSharp
         public uint? Color {get; private set;}
         public double Opacity {get; private set;}
         public bool Visible {get; private set;}
-        public TmxList Object {get; private set;}
-        public PropertyDict Property {get; private set;}
+        
+        public TmxList Objects {get; private set;}
+        public PropertyDict Properties {get; private set;}
         
         public TmxObjectGroup(XElement xObjectGroup)
         {
@@ -40,11 +41,11 @@ namespace TiledSharp
             else
                 Visible = (bool)xVisible;
             
-            Object = new TmxList();
+            Objects = new TmxList();
             foreach (var e in xObjectGroup.Elements("object"))
-                Object.Add(new TmxObject(e));
+                Objects.Add(new TmxObject(e));
             
-            Property = new PropertyDict(xObjectGroup.Element("properties"));
+            Properties = new PropertyDict(xObjectGroup.Element("properties"));
         }
         
         public class TmxObject : ITmxElement
@@ -61,7 +62,7 @@ namespace TiledSharp
             public int? Gid {get; private set;}
             
             public List<Tuple<int,int>> Points {get; private set;}
-            public PropertyDict Property {get; private set;}
+            public PropertyDict Properties {get; private set;}
             
             public TmxObject(XElement xObject)
             {
@@ -97,7 +98,7 @@ namespace TiledSharp
                 }
                 else ObjectType = TmxObjectType.Basic;
                 
-                Property = new PropertyDict(xObject.Element("properties"));
+                Properties = new PropertyDict(xObject.Element("properties"));
             }
             
             public List<Tuple<int, int>> ParsePoints(XElement xPoints)

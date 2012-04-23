@@ -15,10 +15,10 @@ namespace TiledSharp
         public int TileWidth {get; private set;}
         public int TileHeight {get; private set;}
         
-        public TmxList Tileset {get; private set;}
-        public TmxList Layer {get; private set;}
-        public TmxList ObjectGroup {get; private set;}
-        public PropertyDict Property {get; private set;}
+        public TmxList Tilesets {get; private set;}
+        public TmxList Layers {get; private set;}
+        public TmxList ObjectGroups {get; private set;}
+        public PropertyDict Properties {get; private set;}
         
         public TmxMap(string filename)
         {
@@ -35,22 +35,27 @@ namespace TiledSharp
             TileWidth = (int)xMap.Attribute("tilewidth");
             TileHeight = (int)xMap.Attribute("tileheight");
             
-            Tileset = new TmxList();
+            Tilesets = new TmxList();
             foreach (var e in xMap.Elements("tileset"))
-                Tileset.Add(new TmxTileset(e));
+                Tilesets.Add(new TmxTileset(e));
             
-            Layer = new TmxList();
+            Layers = new TmxList();
             foreach (var e in xMap.Elements("layer"))
-                Layer.Add(new TmxLayer(e, Width, Height));
+                Layers.Add(new TmxLayer(e, Width, Height));
             
-            ObjectGroup = new TmxList();
+            ObjectGroups = new TmxList();
             foreach (var e in xMap.Elements("objectgroup"))
-                ObjectGroup.Add(new TmxObjectGroup(e));
+                ObjectGroups.Add(new TmxObjectGroup(e));
             
-            Property = new PropertyDict(xMap.Element("properties"));
+            Properties = new PropertyDict(xMap.Element("properties"));
         }
         
         public enum OrientationType : byte
-            { Orthogonal, Isometric, Hexagonal, Shifted }
+        {
+            Orthogonal,
+            Isometric,
+            Hexagonal,
+            Shifted
+        }
     }
 }

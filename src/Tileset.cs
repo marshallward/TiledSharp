@@ -18,8 +18,8 @@ namespace TiledSharp
         public int Margin {get; private set;}
         
         public TmxImage Image {get; private set;}
-        public Dictionary<int, PropertyDict> Tile {get; private set;}
-        public PropertyDict Property {get; private set;}
+        public Dictionary<int, PropertyDict> Tiles {get; private set;}
+        public PropertyDict Properties {get; private set;}
         
         // TSX file constructor
         public TmxTileset(XDocument xDoc) : this(xDoc.Element("tileset")) { }
@@ -44,7 +44,7 @@ namespace TiledSharp
                 Spacing = ts.Spacing;
                 Margin = ts.Margin;
                 Image = ts.Image;
-                Tile = ts.Tile;
+                Tiles = ts.Tiles;
             }
             else
             {
@@ -69,12 +69,12 @@ namespace TiledSharp
                 else
                     Margin = (int)xMargin;
                 
-                Tile = new Dictionary<int, PropertyDict>();
+                Tiles = new Dictionary<int, PropertyDict>();
                 foreach (var xml_tile in xTileset.Elements("tile"))
                 {
                     var id = (int)xml_tile.Attribute("id");
                     var xProp = xml_tile.Element("properties");
-                    Tile.Add(id, new PropertyDict(xProp));
+                    Tiles.Add(id, new PropertyDict(xProp));
                 }
             }
         }

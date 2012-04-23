@@ -15,8 +15,8 @@ namespace TiledSharp
         public double Opacity {get; private set;}
         public bool Visible {get; private set;}
         
-        public List<TmxLayerTile> Tile {get; private set;}
-        public PropertyDict Property {get; private set;}
+        public List<TmxLayerTile> Tiles {get; private set;}
+        public PropertyDict Properties {get; private set;}
         
         public TmxLayer(XElement xLayer, int width, int height)
         {
@@ -37,7 +37,7 @@ namespace TiledSharp
             var xData = xLayer.Element("data");
             var encoding = (string)xData.Attribute("encoding");
             
-            Tile = new List<TmxLayerTile>();
+            Tiles = new List<TmxLayerTile>();
             if (encoding == "base64")
             {
                 var base64data = Convert.FromBase64String((string)xData.Value);
@@ -57,7 +57,7 @@ namespace TiledSharp
                 using (var br = new BinaryReader(stream))
                     for (int j = 0; j < height; j++)
                         for (int i = 0; i < width; i++)
-                            Tile.Add(new TmxLayerTile(br.ReadUInt32(), i, j));
+                            Tiles.Add(new TmxLayerTile(br.ReadUInt32(), i, j));
             }
             else if (encoding == "csv")
             {
@@ -68,7 +68,7 @@ namespace TiledSharp
                     var gid = uint.Parse(s.Trim());
                     var x = k % width;
                     var y = k / width;
-                    Tile.Add(new TmxLayerTile(gid, x, y));
+                    Tiles.Add(new TmxLayerTile(gid, x, y));
                     k++;
                 }
             }
@@ -80,13 +80,13 @@ namespace TiledSharp
                     var gid = (uint)e.Attribute("gid");
                     var x = k % width;
                     var y = k / width;
-                    Tile.Add(new TmxLayerTile(gid, x, y));
+                    Tiles.Add(new TmxLayerTile(gid, x, y));
                     k++;
                 }
             }
             else throw new Exception("Tiled: Unknown encoding.");
             
-            Property = new PropertyDict(xLayer.Element("properties"));
+            Properties = new PropertyDict(xLayer.Element("properties"));
         }
     }
     
