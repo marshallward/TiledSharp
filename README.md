@@ -72,10 +72,10 @@ Marshall Ward (<marshall.ward@gmail.com>)
 
 [TiledSharp]: https://github.com/marshallward/TiledSharp
 [Tiled]: http://mapeditor.org
-[TmxMap]: https://github.com/marshallward/TiledSharp/wiki/Map
+[TmxMap]: https://github.com/marshallward/TiledSharp/wiki/TmxMap
 [TMX]: https://github.com/bjorn/tiled/wiki/TMX-Map-Format
 [TiledSharp Data Hierarchy]: https://github.com/marshallward/TiledSharp/wiki/TiledSharp-Data-Hierarchy
-[TmxList]: https://github.com/marshallward/TiledSharp/wiki/TiledList
+[TmxList]: https://github.com/marshallward/TiledSharp/wiki/TmxList
 [DotNetZip]: http://dotnetzip.codeplex.com
 [Apache 2.0 License]: http://www.apache.org/licenses/LICENSE-2.0.txt
 [Ms-PL]: http://www.microsoft.com/en-us/openness/licenses.aspx#MPL
