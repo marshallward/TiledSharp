@@ -29,9 +29,9 @@ To import a TMX file into your C# application:
   ::
 
        var map = new TmxMap("someMap.tmx");
-
-   TiledSharp supports both resource names and file paths, and should work as
-   expected in most situations. For more details, please consult the wiki.
+ 
+  TiledSharp supports both resource names and file paths, and should work as
+  expected in most situations. For more details, please consult the wiki.
 
 - Access the TMX data using the Map fields. Principal classes can be accessed
   by either name or index.
