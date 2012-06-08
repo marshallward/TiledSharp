@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyProduct("TiledSharp")]
 [assembly: AssemblyCopyright("Copyright 2012 Marshall Ward")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("en-AU")]
+[assembly: AssemblyCulture("")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
