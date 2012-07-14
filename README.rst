@@ -23,8 +23,6 @@ To import a TMX file into your C# application:
 
 - Import the TiledSharp namespace::
 
-.. code:: csharp
-
     using TiledSharp;
 
 - Create a Map object using the constructor::
