@@ -53,6 +53,7 @@
     <Compile Include="src\zlib\ZlibConstants.cs" />
     <Compile Include="src\zlib\ZlibStream.cs" />
     <Compile Include="src\ObjectGroup.cs" />
+    <Compile Include="src\ImageLayer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

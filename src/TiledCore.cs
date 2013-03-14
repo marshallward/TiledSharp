@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Xml.Linq;
@@ -16,14 +17,14 @@ namespace TiledSharp
         protected XDocument ReadXml(string filepath)
         {
             XDocument xDoc;
-            
+
             var asm = Assembly.GetEntryAssembly();
             var manifest = asm.GetManifestResourceNames();
-            
+
             var fileResPath = filepath.Replace(
                     Path.DirectorySeparatorChar.ToString(), ".");
             var fileRes = Array.Find(manifest, s => s.EndsWith(fileResPath));
-            
+
             // If there is a resource in the assembly, load the resource
             // Otherwise, assume filepath is an explicit path
             if (fileRes != null)
@@ -32,21 +33,21 @@ namespace TiledSharp
                 xDoc = XDocument.Load(xmlStream);
             }
             else xDoc = XDocument.Load(filepath);
-            
+
             return xDoc;
         }
     }
-    
+
     public interface ITmxElement
     {
         string Name {get;}
     }
-    
+
     public class TmxList : KeyedCollection<string, ITmxElement>
     {
         public static Dictionary<Tuple<TmxList, string>, int> nameCount
             = new Dictionary<Tuple<TmxList, string>, int>();
-        
+
         public new void Add(ITmxElement t)
         {
             // Rename duplicate entries by appending a number
@@ -57,7 +58,7 @@ namespace TiledSharp
                 nameCount.Add(key, 0);
             base.Add(t);
         }
-        
+
         protected override string GetKeyForItem(ITmxElement t)
         {
             var key = Tuple.Create<TmxList, string> (this, t.Name);
@@ -68,19 +69,39 @@ namespace TiledSharp
                 return t.Name + count;
         }
     }
-    
+
     public class PropertyDict : Dictionary<string, string>
     {
         public PropertyDict(XElement xmlProp)
         {
             if (xmlProp == null) return;
-            
+
             foreach (var p in xmlProp.Elements("property"))
             {
                 var pname = p.Attribute("name").Value;
                 var pval = p.Attribute("value").Value;
                 Add(pname, pval);
             }
+        }
+    }
+
+    public class TmxImage
+    {
+        public string Source {get; private set;}
+        public uint? Trans {get; private set;}
+        public int Width {get; private set;}
+        public int Height {get; private set;}
+
+        public TmxImage(XElement xImage)
+        {
+            Source = (string)xImage.Attribute("source");
+
+            var xTrans = (string)xImage.Attribute("trans");
+            if (xTrans != null)
+                Trans = UInt32.Parse(xTrans, NumberStyles.HexNumber);
+
+            Width = (int)xImage.Attribute("width");
+            Height = (int)xImage.Attribute("height");
         }
     }
 }
