@@ -57,6 +57,7 @@ namespace TiledSharp
             public string Type {get; private set;}
             public int X {get; private set;}
             public int Y {get; private set;}
+            public bool Visible {get; private set;}
             public int? Width {get; private set;}
             public int? Height {get; private set;}
             public int? Gid {get; private set;}
@@ -67,12 +68,21 @@ namespace TiledSharp
             public TmxObject(XElement xObject)
             {
                 var xName = xObject.Attribute("name");
-                if (xName == null) Name = "";
-                else Name = (string)xName;
+                if (xName == null)
+                    Name = "";
+                else
+                    Name = (string)xName;
 
                 Type = (string)xObject.Attribute("type");
                 X = (int)xObject.Attribute("x");
                 Y = (int)xObject.Attribute("y");
+                
+                var xVisible = xObject.Attribute("visible");
+                if (xVisible == null)
+                    Visible = true;
+                else
+                    Visible = (bool)xVisible;
+                                
                 Width = (int?)xObject.Attribute("width");
                 Height = (int?)xObject.Attribute("height");
 
