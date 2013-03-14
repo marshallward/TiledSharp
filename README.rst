@@ -54,10 +54,10 @@ The following 0.9.0 features have been implemented:
 * Map backgroundcolor
 * Imagelayer elements
 * Individual object visibility
+* Ellipse Objects
 
 The following 0.9.0 features need to be implemented
 
-* Ellipse objects
 * Tileset terraintypes
 * Data elements of images
 * Terrain and Probaility elements of Tileset tiles

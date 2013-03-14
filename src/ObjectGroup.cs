@@ -76,18 +76,19 @@ namespace TiledSharp
                 Type = (string)xObject.Attribute("type");
                 X = (int)xObject.Attribute("x");
                 Y = (int)xObject.Attribute("y");
-                
+
                 var xVisible = xObject.Attribute("visible");
                 if (xVisible == null)
                     Visible = true;
                 else
                     Visible = (bool)xVisible;
-                                
+
                 Width = (int?)xObject.Attribute("width");
                 Height = (int?)xObject.Attribute("height");
 
                 // Assess object type and assign appropriate content
                 var xGid = xObject.Attribute("gid");
+                var xEllipse = xObject.Element("ellipse");
                 var xPolygon = xObject.Element("polygon");
                 var xPolyline = xObject.Element("polyline");
 
@@ -96,14 +97,18 @@ namespace TiledSharp
                     Gid = (int?)xGid;
                     ObjectType = TmxObjectType.Tile;
                 }
+                else if (xEllipse != null)
+                {
+                    ObjectType = TmxObjectType.Ellipse;
+                }
                 else if (xPolygon != null)
                 {
-                    Points = ParsePoints(xPolygon);  // Fill this in
+                    Points = ParsePoints(xPolygon);
                     ObjectType = TmxObjectType.Polygon;
                 }
                 else if (xPolyline != null)
                 {
-                    Points = ParsePoints(xPolyline);  // Fill in
+                    Points = ParsePoints(xPolyline);
                     ObjectType = TmxObjectType.Polyline;
                 }
                 else ObjectType = TmxObjectType.Basic;
@@ -132,6 +137,7 @@ namespace TiledSharp
         {
             Basic,
             Tile,
+            Ellipse,
             Polygon,
             Polyline
         }
