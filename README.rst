@@ -56,6 +56,7 @@ The following 0.9.0 features have been implemented:
 * Individual object visibility
 
 The following 0.9.0 features need to be implemented
+
 * Ellipse objects
 * Tileset terraintypes
 * Data elements of images
