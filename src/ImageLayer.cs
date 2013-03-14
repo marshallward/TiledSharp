@@ -11,9 +11,7 @@ namespace TiledSharp
         public string Name {get; private set;}
         public int Width {get; private set;}
         public int Height {get; private set;}
- 
-        public int X {get; private set;}
-        public int Y {get; private set;}
+
         public bool Visible {get; private set;}
         public double Opacity {get; private set;}
 
@@ -26,18 +24,6 @@ namespace TiledSharp
             Name = (string)xImageLayer.Attribute("name");
             Width = (int)xImageLayer.Attribute("width");
             Height = (int)xImageLayer.Attribute("height");
-
-            var xX = xImageLayer.Attribute("x");
-            if (xX == null)
-                X = 0;
-            else
-                X = (int)xX;
-
-            var xY = xImageLayer.Attribute("y");
-            if (xY == null)
-                Y = 0;
-            else
-                Y = (int)xY;
 
             var xVisible = xImageLayer.Attribute("visible");
             if (xVisible == null)
