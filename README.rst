@@ -49,6 +49,10 @@ recommended. For more information, see the TmxList_ specification.
 
 Tiled 0.9.0 Status Report
 -------------------------
+Most of the new elements added in 0.9.0 are only needed in the Tiled_
+application, although I'll try to add them to TiledSharp for the sake of
+completeness.
+
 The following 0.9.0 features have been implemented:
 
 * Map backgroundcolor
@@ -60,7 +64,7 @@ The following 0.9.0 features need to be implemented
 
 * Tileset terraintypes
 * Data elements of images
-* Terrain and Probaility elements of Tileset tiles
+* Terrain and Probability elements of Tileset tiles
 * Individual images for tileset tiles
 
 
@@ -83,7 +87,7 @@ License`_.
 
 Contact
 -------
-Marshall Ward (marshall.ward@gmail.com)
+Marshall Ward <tiledsharp@marshallward.org>
 
 .. _TMX: https://github.com/bjorn/tiled/wiki/TMX-Map-Format
 .. _Tiled: http://mapeditor.org
