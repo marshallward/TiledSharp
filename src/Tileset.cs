@@ -3,6 +3,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml.Linq;
 
 namespace TiledSharp
@@ -21,22 +22,28 @@ namespace TiledSharp
         public PropertyDict Properties {get; private set;}
 
         // TSX file constructor
-        public TmxTileset(XDocument xDoc) : this(xDoc.Element("tileset")) { }
+        public TmxTileset(XDocument xDoc, string tmxDir) :
+            this(xDoc.Element("tileset"), tmxDir) { }
 
         // TMX tileset element constructor
-        public TmxTileset(XElement xTileset)
+        public TmxTileset(XElement xTileset, string tmxDir = null)
         {
             var xFirstGid = xTileset.Attribute("firstgid");
             var source = (string)xTileset.Attribute("source");
 
             if (source != null)
             {
+                // Prepend the parent TMX directory if necessary
+                if (tmxDir != null)
+                    source = Path.Combine(tmxDir, source);
+
                 // source is always preceded by firstgid
                 FirstGid = (uint)xFirstGid;
 
                 // Everything else is in the TSX file
                 var xDocTileset = ReadXml(source);
-                var ts = new TmxTileset(xDocTileset);
+                var ts = new TmxTileset(xDocTileset, TmxParentDir);
+
                 Name = ts.Name;
                 TileWidth = ts.TileWidth;
                 TileHeight = ts.TileHeight;
@@ -52,7 +59,7 @@ namespace TiledSharp
                     FirstGid = (uint)xFirstGid;
 
                 Name = (string)xTileset.Attribute("name");
-                Image = new TmxImage(xTileset.Element("image"));
+                Image = new TmxImage(xTileset.Element("image"), tmxDir);
                 TileWidth = (int)xTileset.Attribute("tilewidth");
                 TileHeight = (int)xTileset.Attribute("tileheight");
 

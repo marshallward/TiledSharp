@@ -13,6 +13,8 @@ namespace TiledSharp
 {
     public class TmxDocument
     {
+        public string TmxParentDir {get; private set;}
+
         // Subclass XDocument? Override XDocument.Load?
         protected XDocument ReadXml(string filepath)
         {
@@ -31,8 +33,13 @@ namespace TiledSharp
             {
                 Stream xmlStream = asm.GetManifestResourceStream(fileRes);
                 xDoc = XDocument.Load(xmlStream);
+                TmxParentDir = null;
             }
-            else xDoc = XDocument.Load(filepath);
+            else
+            {
+                xDoc = XDocument.Load(filepath);
+                TmxParentDir = Path.GetDirectoryName(filepath);
+            }
 
             return xDoc;
         }
@@ -92,9 +99,12 @@ namespace TiledSharp
         public int Width {get; private set;}
         public int Height {get; private set;}
 
-        public TmxImage(XElement xImage)
+        public TmxImage(XElement xImage, string parentDir = null)
         {
             Source = (string)xImage.Attribute("source");
+
+            if (parentDir != null)
+                Source = Path.Combine(parentDir, Source);
 
             var xTrans = (string)xImage.Attribute("trans");
             if (xTrans != null)

@@ -37,7 +37,7 @@ namespace TiledSharp
             Height = (int)xMap.Attribute("height");
             TileWidth = (int)xMap.Attribute("tilewidth");
             TileHeight = (int)xMap.Attribute("tileheight");
- 
+
             var xBackgroundColor = (string)xMap.Attribute("backgroundcolor");
             if (xBackgroundColor != null)
             {
@@ -48,7 +48,7 @@ namespace TiledSharp
 
             Tilesets = new TmxList();
             foreach (var e in xMap.Elements("tileset"))
-                Tilesets.Add(new TmxTileset(e));
+                Tilesets.Add(new TmxTileset(e, TmxParentDir));
 
             Layers = new TmxList();
             foreach (var e in xMap.Elements("layer"))
