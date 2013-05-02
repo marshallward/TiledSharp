@@ -60,7 +60,7 @@ namespace TiledSharp
 
             ImageLayers = new TmxList();
             foreach (var e in xMap.Elements("imagelayer"))
-                ImageLayers.Add(new TmxImageLayer(e));
+                ImageLayers.Add(new TmxImageLayer(e, TmxParentDir));
 
             Properties = new PropertyDict(xMap.Element("properties"));
         }
