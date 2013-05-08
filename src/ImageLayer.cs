@@ -19,7 +19,7 @@ namespace TiledSharp
  
         public PropertyDict Properties {get; private set;}
 
-        public TmxImageLayer(XElement xImageLayer, string parentDir = null)
+        public TmxImageLayer(XElement xImageLayer, string tmxDir = "")
         {
             Name = (string)xImageLayer.Attribute("name");
             Width = (int)xImageLayer.Attribute("width");
@@ -37,7 +37,7 @@ namespace TiledSharp
             else
                 Opacity = (double)xOpacity;
 
-            Image = new TmxImage(xImageLayer.Element("image"), parentDir);
+            Image = new TmxImage(xImageLayer.Element("image"), tmxDir);
             
             Properties = new PropertyDict(xImageLayer.Element("properties"));
         }

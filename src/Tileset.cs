@@ -34,15 +34,14 @@ namespace TiledSharp
             if (source != null)
             {
                 // Prepend the parent TMX directory if necessary
-                if (tmxDir != null)
-                    source = Path.Combine(tmxDir, source);
+                source = Path.Combine(tmxDir, source);
 
                 // source is always preceded by firstgid
                 FirstGid = (uint)xFirstGid;
 
                 // Everything else is in the TSX file
                 var xDocTileset = ReadXml(source);
-                var ts = new TmxTileset(xDocTileset, TmxParentDir);
+                var ts = new TmxTileset(xDocTileset, TmxDirectory);
 
                 Name = ts.Name;
                 TileWidth = ts.TileWidth;

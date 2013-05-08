@@ -48,7 +48,7 @@ namespace TiledSharp
 
             Tilesets = new TmxList();
             foreach (var e in xMap.Elements("tileset"))
-                Tilesets.Add(new TmxTileset(e, TmxParentDir));
+                Tilesets.Add(new TmxTileset(e, TmxDirectory));
 
             Layers = new TmxList();
             foreach (var e in xMap.Elements("layer"))
@@ -60,7 +60,7 @@ namespace TiledSharp
 
             ImageLayers = new TmxList();
             foreach (var e in xMap.Elements("imagelayer"))
-                ImageLayers.Add(new TmxImageLayer(e, TmxParentDir));
+                ImageLayers.Add(new TmxImageLayer(e, TmxDirectory));
 
             Properties = new PropertyDict(xMap.Element("properties"));
         }
