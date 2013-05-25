@@ -11,7 +11,7 @@ namespace TiledSharp
     public class TmxTileset : TmxDocument, ITmxElement
     {
         public string Name {get; private set;}
-        public uint FirstGid {get; private set;}
+        public int FirstGid {get; private set;}
         public int TileWidth {get; private set;}
         public int TileHeight {get; private set;}
         public int Spacing {get; private set;}
@@ -37,7 +37,7 @@ namespace TiledSharp
                 source = Path.Combine(tmxDir, source);
 
                 // source is always preceded by firstgid
-                FirstGid = (uint)xFirstGid;
+                FirstGid = (int)xFirstGid;
 
                 // Everything else is in the TSX file
                 var xDocTileset = ReadXml(source);
@@ -55,7 +55,7 @@ namespace TiledSharp
             {
                 // firstgid is always in TMX, but not TSX
                 if (xFirstGid != null)
-                    FirstGid = (uint)xFirstGid;
+                    FirstGid = (int)xFirstGid;
 
                 Name = (string)xTileset.Attribute("name");
                 Image = new TmxImage(xTileset.Element("image"), tmxDir);
