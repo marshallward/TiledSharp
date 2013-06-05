@@ -27,13 +27,13 @@ To import a TMX file into your C# application:
 - Create a Map object using the constructor::
 
     var map = new TmxMap("someMap.tmx");
- 
+
   TiledSharp supports both resource names and file paths, and should work as
   expected in most situations. For more details, please consult the wiki.
 
 - Access the TMX data using the Map fields. Principal classes can be accessed
   by either name or index::
-  
+
     var map = new TmxMap("someMap.tmx");
     var version = map.Version;
     var myTileset = map.Tilesets["myTileset"];
@@ -93,7 +93,7 @@ Marshall Ward <tiledsharp@marshallward.org>
 .. _Tiled: http://mapeditor.org
 .. _TmxMap: https://github.com/marshallward/TiledSharp/wiki/TmxMap
 .. _TiledSharp: https://github.com/marshallward/TiledSharp
-.. _TiledSharp Data Hierarchy: 
+.. _TiledSharp Data Hierarchy:
     https://github.com/marshallward/TiledSharp/wiki/TiledSharp-Data-Hierarchy
 .. _TmxList: https://github.com/marshallward/TiledSharp/wiki/TmxList
 .. _DotNetZip: http://dotnetzip.codeplex.com
