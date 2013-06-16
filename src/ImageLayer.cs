@@ -16,7 +16,7 @@ namespace TiledSharp
         public double Opacity {get; private set;}
 
         public TmxImage Image {get; private set;}
- 
+
         public PropertyDict Properties {get; private set;}
 
         public TmxImageLayer(XElement xImageLayer, string tmxDir = "")
@@ -38,7 +38,7 @@ namespace TiledSharp
                 Opacity = (double)xOpacity;
 
             Image = new TmxImage(xImageLayer.Element("image"), tmxDir);
-            
+
             Properties = new PropertyDict(xImageLayer.Element("properties"));
         }
     }

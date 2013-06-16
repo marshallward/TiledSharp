@@ -17,6 +17,7 @@ namespace TiledSharp
         public int Spacing {get; private set;}
         public int Margin {get; private set;}
 
+        public TmxTileOffset TileOffset {get; private set;}
         public TmxImage Image {get; private set;}
         public Dictionary<int, PropertyDict> Tiles {get; private set;}
         public PropertyDict Properties {get; private set;}
@@ -48,6 +49,7 @@ namespace TiledSharp
                 TileHeight = ts.TileHeight;
                 Spacing = ts.Spacing;
                 Margin = ts.Margin;
+                TileOffset = ts.TileOffset;
                 Image = ts.Image;
                 Tiles = ts.Tiles;
             }
@@ -58,6 +60,7 @@ namespace TiledSharp
                     FirstGid = (int)xFirstGid;
 
                 Name = (string)xTileset.Attribute("name");
+                TileOffset = new TmxTileOffset(xTileset.Element("tileoffset"));
                 Image = new TmxImage(xTileset.Element("image"), tmxDir);
                 TileWidth = (int)xTileset.Attribute("tilewidth");
                 TileHeight = (int)xTileset.Attribute("tileheight");
@@ -81,6 +84,23 @@ namespace TiledSharp
                     var xProp = xml_tile.Element("properties");
                     Tiles.Add(id, new PropertyDict(xProp));
                 }
+            }
+        }
+    }
+
+    public class TmxTileOffset
+    {
+        public int X {get; private set;}
+        public int Y {get; private set;}
+
+        public TmxTileOffset(XElement xTileOffset)
+        {
+            if (xTileOffset == null) {
+                X = 0;
+                Y = 0;
+            } else {
+                X = (int)xTileOffset.Attribute("x");
+                Y = (int)xTileOffset.Attribute("y");
             }
         }
     }

@@ -59,6 +59,7 @@ The following 0.9.0 features have been implemented:
 * Imagelayer elements
 * Individual object visibility
 * Ellipse Objects
+* Tileset's TileOffset
 
 The following 0.9.0 features need to be implemented
 
