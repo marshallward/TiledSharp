@@ -87,10 +87,10 @@ namespace TiledSharp
                     Margin = (int)xMargin;
 
                 Tiles = new Dictionary<int, PropertyDict>();
-                foreach (var xml_tile in xTileset.Elements("tile"))
+                foreach (var xTile in xTileset.Elements("tile"))
                 {
-                    var id = (int)xml_tile.Attribute("id");
-                    var xProp = xml_tile.Element("properties");
+                    var id = (int)xTile.Attribute("id");
+                    var xProp = xTile.Element("properties");
                     Tiles.Add(id, new PropertyDict(xProp));
                 }
             }
