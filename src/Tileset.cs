@@ -19,7 +19,7 @@ namespace TiledSharp
 
         public TmxTileOffset TileOffset {get; private set;}
         public TmxImage Image {get; private set;}
-        public TmxList Terrains {get; private set;}
+        public TmxList<TmxTerrain> Terrains {get; private set;}
         public Dictionary<int, TmxTile> Tiles {get; private set;}
         public PropertyDict Properties {get; private set;}
 
@@ -81,7 +81,7 @@ namespace TiledSharp
                 TileOffset = new TmxTileOffset(xTileset.Element("tileoffset"));
                 Image = new TmxImage(xTileset.Element("image"), tmxDir);
 
-                Terrains = new TmxList();
+                Terrains = new TmxList<TmxTerrain>();
                 var xTerrainType = xTileset.Element("terraintype");
                 if (xTerrainType != null) {
                     foreach (var e in xTerrainType.Elements("terrain"))
@@ -158,7 +158,8 @@ namespace TiledSharp
             private set { TerrainEdges[3] = value; }
         }
 
-        public TmxTile(XElement xTile, TmxList Terrains, string tmxDir = "")
+        public TmxTile(XElement xTile, TmxList<TmxTerrain> Terrains,
+                       string tmxDir = "")
         {
             var strTerrain = ((string)xTile.Attribute("terrain")).Split(',');
 
@@ -166,7 +167,7 @@ namespace TiledSharp
             for (var i = 0; i < 4; i++) {
                 var success = int.TryParse(strTerrain[i], out result);
                 if (success)
-                    TerrainEdges[i] = (TmxTerrain)Terrains[result];
+                    TerrainEdges[i] = Terrains[result];
                 else
                     TerrainEdges[i] = null;
             }

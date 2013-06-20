@@ -15,7 +15,7 @@ namespace TiledSharp
         public double Opacity {get; private set;}
         public bool Visible {get; private set;}
 
-        public TmxList Objects {get; private set;}
+        public TmxList<TmxObject> Objects {get; private set;}
         public PropertyDict Properties {get; private set;}
 
         public TmxObjectGroup(XElement xObjectGroup)
@@ -41,7 +41,7 @@ namespace TiledSharp
             else
                 Visible = (bool)xVisible;
 
-            Objects = new TmxList();
+            Objects = new TmxList<TmxObject>();
             foreach (var e in xObjectGroup.Elements("object"))
                 Objects.Add(new TmxObject(e));
 
