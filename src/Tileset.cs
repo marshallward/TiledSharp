@@ -92,7 +92,7 @@ namespace TiledSharp
                 foreach (var xTile in xTileset.Elements("tile"))
                 {
                     var id = (int)xTile.Attribute("id");
-                    var tile = new TmxTile(xTile, tmxDir);
+                    var tile = new TmxTile(xTile, Terrains, tmxDir);
                     Tiles.Add(id, tile);
                 }
             }
@@ -133,42 +133,42 @@ namespace TiledSharp
     public class TmxTile
     {
         // TODO: List of TmxTerrain's, not int id's
-        public List<int?> Terrain {get; private set;}
+        public List<TmxTerrain> TerrainEdges {get; private set;}
         public double Probability {get; private set;}
         public TmxImage Image {get; private set;}
         public PropertyDict Properties {get; private set;}
 
         // Human-readable aliases to the Terrain markers
-        public int? TopLeft {
-            get { return Terrain[0]; }
-            private set { Terrain[0] = value; }
+        public TmxTerrain TopLeft {
+            get { return TerrainEdges[0]; }
+            private set { TerrainEdges[0] = value; }
         }
 
-        public int? TopRight {
-            get { return Terrain[1]; }
-            private set { Terrain[1] = value; }
+        public TmxTerrain TopRight {
+            get { return TerrainEdges[1]; }
+            private set { TerrainEdges[1] = value; }
         }
 
-        public int? BottomLeft {
-            get { return Terrain[2]; }
-            private set { Terrain[2] = value; }
+        public TmxTerrain BottomLeft {
+            get { return TerrainEdges[2]; }
+            private set { TerrainEdges[2] = value; }
         }
-        public int? BottomRight {
-            get { return Terrain[3]; }
-            private set { Terrain[3] = value; }
+        public TmxTerrain BottomRight {
+            get { return TerrainEdges[3]; }
+            private set { TerrainEdges[3] = value; }
         }
 
-        public TmxTile(XElement xTile, string tmxDir = "")
+        public TmxTile(XElement xTile, TmxList Terrains, string tmxDir = "")
         {
-            int result;
             var strTerrain = ((string)xTile.Attribute("terrain")).Split(',');
 
+            int result;
             for (var i = 0; i < 4; i++) {
                 var success = int.TryParse(strTerrain[i], out result);
                 if (success)
-                    Terrain[i] = result;
+                    TerrainEdges[i] = (TmxTerrain)Terrains[result];
                 else
-                    Terrain[i] = null;
+                    TerrainEdges[i] = null;
             }
 
             var xProbability = xTile.Attribute("probability");
