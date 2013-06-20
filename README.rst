@@ -60,13 +60,11 @@ The following 0.9.0 features have been implemented:
 * Individual object visibility
 * Ellipse Objects
 * Tileset's TileOffset
+* Tileset terraintypes and tile terrains (needs testing)
 
 The following 0.9.0 features need to be implemented
 
-* Tileset terraintypes
 * Data elements of images
-* Terrain and Probability elements of Tileset tiles
-* Individual images for tileset tiles
 
 
 Notes
