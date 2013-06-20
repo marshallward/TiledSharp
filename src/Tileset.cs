@@ -19,6 +19,7 @@ namespace TiledSharp
 
         public TmxTileOffset TileOffset {get; private set;}
         public TmxImage Image {get; private set;}
+        public TmxList Terrains {get; private set;}
         public Dictionary<int, PropertyDict> Tiles {get; private set;}
         public PropertyDict Properties {get; private set;}
 
@@ -60,10 +61,18 @@ namespace TiledSharp
                     FirstGid = (int)xFirstGid;
 
                 Name = (string)xTileset.Attribute("name");
-                TileOffset = new TmxTileOffset(xTileset.Element("tileoffset"));
-                Image = new TmxImage(xTileset.Element("image"), tmxDir);
                 TileWidth = (int)xTileset.Attribute("tilewidth");
                 TileHeight = (int)xTileset.Attribute("tileheight");
+
+                TileOffset = new TmxTileOffset(xTileset.Element("tileoffset"));
+                Image = new TmxImage(xTileset.Element("image"), tmxDir);
+
+                Terrains = new TmxList();
+                var xTerrainType = xTileset.Element("terraintype");
+                if (xTerrainType != null) {
+                    foreach (var e in xTerrainType.Elements("terrain"))
+                        Terrains.Add(new TmxTerrain(e));
+                }
 
                 var xSpacing = xTileset.Attribute("spacing");
                 if (xSpacing == null)
@@ -102,6 +111,19 @@ namespace TiledSharp
                 X = (int)xTileOffset.Attribute("x");
                 Y = (int)xTileOffset.Attribute("y");
             }
+        }
+    }
+
+    public class TmxTerrain : ITmxElement
+    {
+        public string Name {get; private set;}
+        public int Tile {get; private set;}
+        public PropertyDict Properties {get; private set;}
+
+        public TmxTerrain(XElement xTerrain)
+        {
+            Tile = (int)xTerrain.Attribute("tile");
+            Properties = new PropertyDict(xTerrain.Element("properties"));
         }
     }
 }
