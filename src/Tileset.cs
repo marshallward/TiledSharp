@@ -141,21 +141,17 @@ namespace TiledSharp
         // Human-readable aliases to the Terrain markers
         public TmxTerrain TopLeft {
             get { return TerrainEdges[0]; }
-            private set { TerrainEdges[0] = value; }
         }
 
         public TmxTerrain TopRight {
             get { return TerrainEdges[1]; }
-            private set { TerrainEdges[1] = value; }
         }
 
         public TmxTerrain BottomLeft {
             get { return TerrainEdges[2]; }
-            private set { TerrainEdges[2] = value; }
         }
         public TmxTerrain BottomRight {
             get { return TerrainEdges[3]; }
-            private set { TerrainEdges[3] = value; }
         }
 
         public TmxTile(XElement xTile, TmxList<TmxTerrain> Terrains,

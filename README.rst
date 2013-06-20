@@ -61,10 +61,13 @@ The following 0.9.0 features have been implemented:
 * Ellipse Objects
 * Tileset's TileOffset
 * Tileset terraintypes and tile terrains (needs testing)
+* TmxList elements now return their type, rather than ITmxElement
 
 The following 0.9.0 features need to be implemented
 
-* Data elements of images
+* Abstraction of Data elements (should be shared by Images and Layers)
+* clean ToString subroutines
+* Fix HTML color handling
 
 
 Notes
