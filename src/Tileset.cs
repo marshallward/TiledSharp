@@ -20,7 +20,7 @@ namespace TiledSharp
         public TmxTileOffset TileOffset {get; private set;}
         public TmxImage Image {get; private set;}
         public TmxList Terrains {get; private set;}
-        public Dictionary<int, PropertyDict> Tiles {get; private set;}
+        public Dictionary<int, TmxTile> Tiles {get; private set;}
         public PropertyDict Properties {get; private set;}
 
         // TSX file constructor
@@ -28,7 +28,7 @@ namespace TiledSharp
             this(xDoc.Element("tileset"), tmxDir) { }
 
         // TMX tileset element constructor
-        public TmxTileset(XElement xTileset, string tmxDir = null)
+        public TmxTileset(XElement xTileset, string tmxDir = "")
         {
             var xFirstGid = xTileset.Attribute("firstgid");
             var source = (string)xTileset.Attribute("source");
@@ -45,6 +45,7 @@ namespace TiledSharp
                 var xDocTileset = ReadXml(source);
                 var ts = new TmxTileset(xDocTileset, TmxDirectory);
 
+                // TODO: Look into some way to iterate over fields (reflection?)
                 Name = ts.Name;
                 TileWidth = ts.TileWidth;
                 TileHeight = ts.TileHeight;
@@ -52,6 +53,7 @@ namespace TiledSharp
                 Margin = ts.Margin;
                 TileOffset = ts.TileOffset;
                 Image = ts.Image;
+                Terrains = ts.Terrains;
                 Tiles = ts.Tiles;
             }
             else
@@ -63,16 +65,6 @@ namespace TiledSharp
                 Name = (string)xTileset.Attribute("name");
                 TileWidth = (int)xTileset.Attribute("tilewidth");
                 TileHeight = (int)xTileset.Attribute("tileheight");
-
-                TileOffset = new TmxTileOffset(xTileset.Element("tileoffset"));
-                Image = new TmxImage(xTileset.Element("image"), tmxDir);
-
-                Terrains = new TmxList();
-                var xTerrainType = xTileset.Element("terraintype");
-                if (xTerrainType != null) {
-                    foreach (var e in xTerrainType.Elements("terrain"))
-                        Terrains.Add(new TmxTerrain(e));
-                }
 
                 var xSpacing = xTileset.Attribute("spacing");
                 if (xSpacing == null)
@@ -86,12 +78,22 @@ namespace TiledSharp
                 else
                     Margin = (int)xMargin;
 
-                Tiles = new Dictionary<int, PropertyDict>();
+                TileOffset = new TmxTileOffset(xTileset.Element("tileoffset"));
+                Image = new TmxImage(xTileset.Element("image"), tmxDir);
+
+                Terrains = new TmxList();
+                var xTerrainType = xTileset.Element("terraintype");
+                if (xTerrainType != null) {
+                    foreach (var e in xTerrainType.Elements("terrain"))
+                        Terrains.Add(new TmxTerrain(e));
+                }
+
+                Tiles = new Dictionary<int, TmxTile>();
                 foreach (var xTile in xTileset.Elements("tile"))
                 {
                     var id = (int)xTile.Attribute("id");
-                    var xProp = xTile.Element("properties");
-                    Tiles.Add(id, new PropertyDict(xProp));
+                    var tile = new TmxTile(xTile, tmxDir);
+                    Tiles.Add(id, tile);
                 }
             }
         }
@@ -122,8 +124,63 @@ namespace TiledSharp
 
         public TmxTerrain(XElement xTerrain)
         {
+            Name = (string)xTerrain.Attribute("name");
             Tile = (int)xTerrain.Attribute("tile");
             Properties = new PropertyDict(xTerrain.Element("properties"));
+        }
+    }
+
+    public class TmxTile
+    {
+        // TODO: List of TmxTerrain's, not int id's
+        public List<int?> Terrain {get; private set;}
+        public double Probability {get; private set;}
+        public TmxImage Image {get; private set;}
+        public PropertyDict Properties {get; private set;}
+
+        // Human-readable aliases to the Terrain markers
+        public int? TopLeft {
+            get { return Terrain[0]; }
+            private set { Terrain[0] = value; }
+        }
+
+        public int? TopRight {
+            get { return Terrain[1]; }
+            private set { Terrain[1] = value; }
+        }
+
+        public int? BottomLeft {
+            get { return Terrain[2]; }
+            private set { Terrain[2] = value; }
+        }
+        public int? BottomRight {
+            get { return Terrain[3]; }
+            private set { Terrain[3] = value; }
+        }
+
+        public TmxTile(XElement xTile, string tmxDir = "")
+        {
+            int result;
+            var strTerrain = ((string)xTile.Attribute("terrain")).Split(',');
+
+            for (var i = 0; i < 4; i++) {
+                var success = int.TryParse(strTerrain[i], out result);
+                if (success)
+                    Terrain[i] = result;
+                else
+                    Terrain[i] = null;
+            }
+
+            var xProbability = xTile.Attribute("probability");
+            if (xProbability != null) {
+                Probability = (double)xProbability;
+            } else {
+                Probability = 1.0;
+            }
+
+            Image = new TmxImage(xTile.Element("image"), tmxDir);
+
+            Properties = new PropertyDict(xTile.Element("properties"));
         }
     }
 }

@@ -15,7 +15,6 @@ namespace TiledSharp
     {
         public string TmxDirectory {get; private set;}
 
-        // Subclass XDocument? Override XDocument.Load?
         protected XDocument ReadXml(string filepath)
         {
             XDocument xDoc;
