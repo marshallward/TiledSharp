@@ -34,7 +34,7 @@ namespace TiledSharp
             else
                 Visible = (bool)xVisible;
 
-            // TODO: Parse this separately (accessed by both Layer and Image)
+            // TODO: Combine with TmxImage data decoding
             var xData = xLayer.Element("data");
             var encoding = (string)xData.Attribute("encoding");
 

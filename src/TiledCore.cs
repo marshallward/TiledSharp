@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Reflection;
 using System.Xml.Linq;
 
@@ -93,17 +94,42 @@ namespace TiledSharp
 
     public class TmxImage
     {
+        public string Format {get; private set;}
         public string Source {get; private set;}
+        public Stream Data {get; private set;}
         public uint? Trans {get; private set;}
         public int Width {get; private set;}
         public int Height {get; private set;}
 
         public TmxImage(XElement xImage, string tmxDir = "")
         {
-            Source = (string)xImage.Attribute("source");
+            var xSource = (string)xImage.Attribute("source");
 
-            // Append directory if present
-            Source = Path.Combine(tmxDir, Source);
+            if (xSource != null)
+                // Append directory if present
+                Source = Path.Combine(tmxDir, Source);
+            else {
+                Format = (string)xImage.Attribute("format");
+                // TODO: Combine with TmxLayer data decoding
+                var xData = xImage.Element("data");
+                var encoding = (string)xData.Attribute("encoding");
+
+                if (encoding == "base64")
+                {
+                    var b64data = Convert.FromBase64String((string)xData.Value);
+                    Data = new MemoryStream(b64data, false);
+
+                    var compression = (string)xData.Attribute("compression");
+                    if (compression == "gzip")
+                        Data = new GZipStream(Data,
+                                            CompressionMode.Decompress, false);
+                    else if (compression == "zlib")
+                        Data = new Ionic.Zlib.ZlibStream(Data,
+                                Ionic.Zlib.CompressionMode.Decompress, false);
+                    else if (compression != null)
+                        throw new Exception("Tiled: Unknown compression.");
+                }
+            }
 
             var xTrans = (string)xImage.Attribute("trans");
             if (xTrans != null)

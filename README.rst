@@ -49,11 +49,7 @@ recommended. For more information, see the TmxList_ specification.
 
 Tiled 0.9.0 Status Report
 -------------------------
-Most of the new elements added in 0.9.0 are only needed in the Tiled_
-application, although I'll try to add them to TiledSharp for the sake of
-completeness.
-
-The following 0.9.0 features have been implemented:
+To the best of my knowledge, all new 0.9.0 features have been implemented:
 
 * Map: backgroundcolor
 * Imagelayer
@@ -61,22 +57,22 @@ The following 0.9.0 features have been implemented:
 * Ellipse
 * Tileset: TileOffset
 * Tileset: Terraintype, Terrain
+* Image: format and data (base64 embedded image) (*completely untested*)
 
-The following 0.9.0 features need to be implemented:
-
-* Image: format
-* Tileset.Tile: Current DS is a id-keyed dictionary. Maybe that is dumb.
+I am still in the process of testing most of these new features.
 
 The following new T# features have been added or changed:
 
 * TmxList elements now return their type, rather than ITmxElement
 * TmxObject.Width and Height are no longer nullable
 
-The following new T# features need to be added:
+The following new T# features may need to be added or redesigned:
 
+* Tileset.Tile: Current DS is a id-keyed dictionary. Maybe that is dumb.
 * TmxData object; generalization of data decoding to TmxLayer and TmxImage
 * cleaner ToString field output
-* Settle on a non-uint based HTML color storage (System.Drawing.Color?)
+* Settle on a non-uint based HTML color storage
+* Develop test cases and automated testing
 
 
 Notes
