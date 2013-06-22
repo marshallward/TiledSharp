@@ -57,7 +57,7 @@ To the best of my knowledge, all new 0.9.0 features have been implemented:
 * Ellipse
 * Tileset: TileOffset
 * Tileset: Terraintype, Terrain
-* Image: format and data (base64 embedded image) (*completely untested*)
+* Image: format and data (base64 embedded image) *(completely untested)*
 
 I am still in the process of testing most of these new features.
 
@@ -68,7 +68,7 @@ The following new T# features have been added or changed:
 
 The following new T# features may need to be added or redesigned:
 
-* Tileset.Tile: Current DS is a id-keyed dictionary. Maybe that is dumb.
+* Tileset.Tile: Current dictionary key is tile id. Maybe that is dumb.
 * TmxData object; generalization of data decoding to TmxLayer and TmxImage
 * cleaner ToString field output
 * Settle on a non-uint based HTML color storage
