@@ -55,19 +55,28 @@ completeness.
 
 The following 0.9.0 features have been implemented:
 
-* Map backgroundcolor
-* Imagelayer elements
-* Individual object visibility
-* Ellipse Objects
-* Tileset's TileOffset
-* Tileset terraintypes and tile terrains (needs testing)
+* Map: backgroundcolor
+* Imagelayer
+* Object: visible, rotation
+* Ellipse
+* Tileset: TileOffset
+* Tileset: Terraintype, Terrain
+
+The following 0.9.0 features need to be implemented:
+
+* Image: format
+* Tileset.Tile: Current DS is a id-keyed dictionary. Maybe that is dumb.
+
+The following new T# features have been added or changed:
+
 * TmxList elements now return their type, rather than ITmxElement
+* TmxObject.Width and Height are no longer nullable
 
-The following 0.9.0 features need to be implemented
+The following new T# features need to be added:
 
-* Abstraction of Data elements (should be shared by Images and Layers)
-* clean ToString subroutines
-* Fix HTML color handling
+* TmxData object; generalization of data decoding to TmxLayer and TmxImage
+* cleaner ToString field output
+* Settle on a non-uint based HTML color storage (System.Drawing.Color?)
 
 
 Notes

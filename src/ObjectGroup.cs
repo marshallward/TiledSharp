@@ -57,10 +57,11 @@ namespace TiledSharp
             public string Type {get; private set;}
             public int X {get; private set;}
             public int Y {get; private set;}
-            public bool Visible {get; private set;}
-            public int? Width {get; private set;}
-            public int? Height {get; private set;}
+            public int Width {get; private set;}
+            public int Height {get; private set;}
+            public double Rotation {get; private set;}
             public int? Gid {get; private set;}
+            public bool Visible {get; private set;}
 
             public List<Tuple<int,int>> Points {get; private set;}
             public PropertyDict Properties {get; private set;}
@@ -83,8 +84,23 @@ namespace TiledSharp
                 else
                     Visible = (bool)xVisible;
 
-                Width = (int?)xObject.Attribute("width");
-                Height = (int?)xObject.Attribute("height");
+                var xWidth = xObject.Attribute("width");
+                if (xWidth == null)
+                    Width = 0;
+                else
+                    Width = (int)xWidth;
+
+                var xHeight = xObject.Attribute("height");
+                if (xHeight == null)
+                    Height = 0;
+                else
+                    Height = (int)xHeight;
+
+                var xRotation = xObject.Attribute("rotation");
+                if (xRotation == null)
+                    Rotation = 0.0;
+                else
+                    Rotation = (double)xRotation;
 
                 // Assess object type and assign appropriate content
                 var xGid = xObject.Attribute("gid");

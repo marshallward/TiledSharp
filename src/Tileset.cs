@@ -10,8 +10,8 @@ namespace TiledSharp
 {
     public class TmxTileset : TmxDocument, ITmxElement
     {
-        public string Name {get; private set;}
         public int FirstGid {get; private set;}
+        public string Name {get; private set;}
         public int TileWidth {get; private set;}
         public int TileHeight {get; private set;}
         public int Spacing {get; private set;}
@@ -132,7 +132,8 @@ namespace TiledSharp
 
     public class TmxTile
     {
-        // TODO: List of TmxTerrain's, not int id's
+        // NOTE: No reference to id outside of Dictionary key
+        //       TMX representation is more of a list
         public List<TmxTerrain> TerrainEdges {get; private set;}
         public double Probability {get; private set;}
         public TmxImage Image {get; private set;}

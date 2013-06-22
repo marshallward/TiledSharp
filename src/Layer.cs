@@ -34,6 +34,7 @@ namespace TiledSharp
             else
                 Visible = (bool)xVisible;
 
+            // TODO: Parse this separately (accessed by both Layer and Image)
             var xData = xLayer.Element("data");
             var encoding = (string)xData.Attribute("encoding");
 
@@ -97,7 +98,7 @@ namespace TiledSharp
         const uint FLIPPED_VERTICALLY_FLAG   = 0x40000000;
         const uint FLIPPED_DIAGONALLY_FLAG   = 0x20000000;
 
-        public int GID {get; private set;}
+        public int Gid {get; private set;}
         public int X {get; private set;}
         public int Y {get; private set;}
         public bool HorizontalFlip {get; private set;}
@@ -106,33 +107,33 @@ namespace TiledSharp
 
         public TmxLayerTile(uint id, int x, int y)
         {
-            var rawGID = id;
+            var rawGid = id;
             X = x;
             Y = y;
 
             // Scan for tile flip bit flags
-            if ((rawGID & FLIPPED_HORIZONTALLY_FLAG) != 0)
+            if ((rawGid & FLIPPED_HORIZONTALLY_FLAG) != 0)
                 HorizontalFlip = true;
             else
                 HorizontalFlip = false;
 
-            if ((rawGID & FLIPPED_VERTICALLY_FLAG) != 0)
+            if ((rawGid & FLIPPED_VERTICALLY_FLAG) != 0)
                 VerticalFlip = true;
             else
                 VerticalFlip = false;
 
-            if ((rawGID & FLIPPED_DIAGONALLY_FLAG) != 0)
+            if ((rawGid & FLIPPED_DIAGONALLY_FLAG) != 0)
                 DiagonalFlip = true;
             else
                 DiagonalFlip = false;
 
             // Zero the bit flags
-            rawGID &= ~(FLIPPED_HORIZONTALLY_FLAG |
+            rawGid &= ~(FLIPPED_HORIZONTALLY_FLAG |
                         FLIPPED_VERTICALLY_FLAG |
                         FLIPPED_DIAGONALLY_FLAG);
 
             // Save GID remainder to int
-            GID = (int)rawGID;
+            Gid = (int)rawGid;
         }
     }
 }
