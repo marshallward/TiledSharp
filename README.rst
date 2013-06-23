@@ -26,25 +26,29 @@ To import a TMX file into your C# application:
 
 - Import the TiledSharp namespace (optional):
 
-.. code:: csharp
+  .. code:: csharp
 
-    using TiledSharp;
+     using TiledSharp;
 
-- Create a Map object using the constructor::
+- Create a Map object using the constructor:
 
-    var map = new TmxMap("someMap.tmx");
+  .. code:: csharp
+
+     var map = new TmxMap("someMap.tmx");
 
   TiledSharp supports both resource names and file paths, and should work as
   expected in most situations. For more details, please consult the wiki.
 
 - Access the TMX data using the Map fields. Principal classes can be accessed
-  by either name or index::
+  by either name or index:
 
-    var map = new TmxMap("someMap.tmx");
-    var version = map.Version;
-    var myTileset = map.Tilesets["myTileset"];
-    var myLayer = map.Layers[2];
-    var hiddenChest = map.ObjectGroups["Chests"].Objects["hiddenChest"];
+  .. code:: csharp
+
+     var map = new TmxMap("someMap.tmx");
+     var version = map.Version;
+     var myTileset = map.Tilesets["myTileset"];
+     var myLayer = map.Layers[2];
+     var hiddenChest = map.ObjectGroups["Chests"].Objects["hiddenChest"];
 
 Map data fields correspond closely to the TMX file structure. For a complete
 listing, see the `TiledSharp Data Hierarchy`_.
@@ -105,6 +109,7 @@ Marshall Ward <tiledsharp@marshallward.org>
 
 .. _TMX: https://github.com/bjorn/tiled/wiki/TMX-Map-Format
 .. _Tiled: http://mapeditor.org
+.. _Tesserae: https://github.com/marshallward/Tesserae
 .. _TmxMap: https://github.com/marshallward/TiledSharp/wiki/TmxMap
 .. _TiledSharp: https://github.com/marshallward/TiledSharp
 .. _TiledSharp Data Hierarchy:
