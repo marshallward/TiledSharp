@@ -21,13 +21,7 @@ namespace TiledSharp
         public TmxObjectGroup(XElement xObjectGroup)
         {
             Name = (string)xObjectGroup.Attribute("name");
-
-            var xColor = xObjectGroup.Attribute("color");
-            if (xColor != null)
-                Color = new TmxColor(xObjectGroup.Attribute("color"));
-            else
-                Color = null;
-
+            Color = new TmxColor(xObjectGroup.Attribute("color"));
             Opacity = (double?)xObjectGroup.Attribute("opacity") ?? 1.0;
             Visible = (bool?)xObjectGroup.Attribute("visible") ?? true;
 
@@ -50,7 +44,6 @@ namespace TiledSharp
             public int Width {get; private set;}
             public int Height {get; private set;}
             public double Rotation {get; private set;}
-            // TODO: Get the actual tile reference, not just Gid
             public TmxLayerTile Tile {get; private set;}
             public bool Visible {get; private set;}
 

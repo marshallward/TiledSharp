@@ -131,12 +131,7 @@ namespace TiledSharp
                 }
             }
 
-            var xTrans = xImage.Attribute("trans");
-            if (xTrans != null)
-                Trans = new TmxColor(xImage.Attribute("trans"));
-            else
-                Trans = null;
-
+            Trans = new TmxColor(xImage.Attribute("trans"));
             Width = (int)xImage.Attribute("width");
             Height = (int)xImage.Attribute("height");
         }
@@ -150,6 +145,8 @@ namespace TiledSharp
 
         public TmxColor(XAttribute xColor)
         {
+            if (xColor == null) return;
+
             var colorStr = ((string)xColor).TrimStart("#".ToCharArray());
 
             R = int.Parse(colorStr.Substring(0, 2), NumberStyles.HexNumber);
