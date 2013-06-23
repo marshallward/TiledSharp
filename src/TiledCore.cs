@@ -136,6 +136,7 @@ namespace TiledSharp
                 Trans = new TmxColor(xImage.Attribute("trans"));
             else
                 Trans = null;
+
             Width = (int)xImage.Attribute("width");
             Height = (int)xImage.Attribute("height");
         }

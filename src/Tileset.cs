@@ -65,18 +65,8 @@ namespace TiledSharp
                 Name = (string)xTileset.Attribute("name");
                 TileWidth = (int)xTileset.Attribute("tilewidth");
                 TileHeight = (int)xTileset.Attribute("tileheight");
-
-                var xSpacing = xTileset.Attribute("spacing");
-                if (xSpacing == null)
-                    Spacing = 0;
-                else
-                    Spacing = (int)xSpacing;
-
-                var xMargin = xTileset.Attribute("margin");
-                if (xMargin == null)
-                    Margin = 0;
-                else
-                    Margin = (int)xMargin;
+                Spacing = (int?)xTileset.Attribute("spacing") ?? 0;
+                Margin = (int?)xTileset.Attribute("margin") ?? 0;
 
                 TileOffset = new TmxTileOffset(xTileset.Element("tileoffset"));
                 Image = new TmxImage(xTileset.Element("image"), tmxDir);
@@ -169,12 +159,7 @@ namespace TiledSharp
                     TerrainEdges[i] = null;
             }
 
-            var xProbability = xTile.Attribute("probability");
-            if (xProbability != null) {
-                Probability = (double)xProbability;
-            } else {
-                Probability = 1.0;
-            }
+            Probability = (double?)xTile.Attribute("probability") ?? 1.0;
 
             Image = new TmxImage(xTile.Element("image"), tmxDir);
 

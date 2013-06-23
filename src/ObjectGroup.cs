@@ -28,17 +28,8 @@ namespace TiledSharp
             else
                 Color = null;
 
-            var xOpacity = xObjectGroup.Attribute("opacity");
-            if (xOpacity == null)
-                Opacity = 1.0;
-            else
-                Opacity = (double)xOpacity;
-
-            var xVisible = xObjectGroup.Attribute("visible");
-            if (xVisible == null)
-                Visible = true;
-            else
-                Visible = (bool)xVisible;
+            Opacity = (double?)xObjectGroup.Attribute("opacity") ?? 1.0;
+            Visible = (bool?)xObjectGroup.Attribute("visible") ?? true;
 
             Objects = new TmxList<TmxObject>();
             foreach (var e in xObjectGroup.Elements("object"))
@@ -67,39 +58,14 @@ namespace TiledSharp
 
             public TmxObject(XElement xObject)
             {
-                var xName = xObject.Attribute("name");
-                if (xName == null)
-                    Name = "";
-                else
-                    Name = (string)xName;
-
+                Name = (string)xObject.Attribute("name") ?? "";
                 Type = (string)xObject.Attribute("type");
                 X = (int)xObject.Attribute("x");
                 Y = (int)xObject.Attribute("y");
-
-                var xVisible = xObject.Attribute("visible");
-                if (xVisible == null)
-                    Visible = true;
-                else
-                    Visible = (bool)xVisible;
-
-                var xWidth = xObject.Attribute("width");
-                if (xWidth == null)
-                    Width = 0;
-                else
-                    Width = (int)xWidth;
-
-                var xHeight = xObject.Attribute("height");
-                if (xHeight == null)
-                    Height = 0;
-                else
-                    Height = (int)xHeight;
-
-                var xRotation = xObject.Attribute("rotation");
-                if (xRotation == null)
-                    Rotation = 0.0;
-                else
-                    Rotation = (double)xRotation;
+                Visible = (bool?)xObject.Attribute("visible") ?? true;
+                Width = (int?)xObject.Attribute("width") ?? 0;
+                Height = (int?)xObject.Attribute("height") ?? 0;
+                Rotation = (double?)xObject.Attribute("rotation") ?? 0.0;
 
                 // Assess object type and assign appropriate content
                 var xGid = xObject.Attribute("gid");

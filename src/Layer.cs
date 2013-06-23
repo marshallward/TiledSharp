@@ -21,18 +21,8 @@ namespace TiledSharp
         public TmxLayer(XElement xLayer, int width, int height)
         {
             Name = (string)xLayer.Attribute("name");
-
-            var xOpacity = xLayer.Attribute("opacity");
-            if (xOpacity == null)
-                Opacity = 1.0;
-            else
-                Opacity = (double)xOpacity;
-
-            var xVisible = xLayer.Attribute("visible");
-            if (xVisible == null)
-                Visible = true;
-            else
-                Visible = (bool)xVisible;
+            Opacity = (double?)xLayer.Attribute("opacity") ?? 1.0;
+            Visible = (bool?)xLayer.Attribute("visible") ?? true;
 
             // TODO: Combine with TmxImage data decoding
             var xData = xLayer.Element("data");

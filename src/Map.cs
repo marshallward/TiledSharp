@@ -40,8 +40,7 @@ namespace TiledSharp
 
             var xBackgroundColor = xMap.Attribute("backgroundcolor");
             if (xBackgroundColor != null)
-                BackgroundColor =
-                    new TmxColor(xMap.Attribute("backgroundcolor"));
+                BackgroundColor = new TmxColor(xBackgroundColor);
             else
                 BackgroundColor = null;
 
