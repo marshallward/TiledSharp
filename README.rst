@@ -64,11 +64,11 @@ To the best of my knowledge, all new 0.9.0 features have been implemented:
 
 * Map: backgroundcolor
 * Imagelayer
-* Object: visible, rotation, **(h|v)flip** (not yet supported)
+* Object: visible, rotation, tile flip
 * Ellipse
 * Tileset: TileOffset
 * Tileset: Terraintype, Terrain
-* Image: format and data (base64 embedded image) *(completely untested)*
+* Image: format and data (base64 embedded image) *(untested)*
 
 I am still in the process of testing most of these new features.
 

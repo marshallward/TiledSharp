@@ -50,7 +50,8 @@ namespace TiledSharp
             public int Width {get; private set;}
             public int Height {get; private set;}
             public double Rotation {get; private set;}
-            public int? Gid {get; private set;}
+            // TODO: Get the actual tile reference, not just Gid
+            public TmxLayerTile Tile {get; private set;}
             public bool Visible {get; private set;}
 
             public List<Tuple<int,int>> Points {get; private set;}
@@ -75,7 +76,7 @@ namespace TiledSharp
 
                 if (xGid != null)
                 {
-                    Gid = (int?)xGid;
+                    Tile = new TmxLayerTile((uint)xGid, X, Y);
                     ObjectType = TmxObjectType.Tile;
                 }
                 else if (xEllipse != null)
