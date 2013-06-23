@@ -45,7 +45,6 @@ namespace TiledSharp
                 var xDocTileset = ReadXml(source);
                 var ts = new TmxTileset(xDocTileset, TmxDirectory);
 
-                // TODO: Look into some way to iterate over fields (reflection?)
                 Name = ts.Name;
                 TileWidth = ts.TileWidth;
                 TileHeight = ts.TileHeight;
