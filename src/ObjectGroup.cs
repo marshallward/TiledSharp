@@ -21,7 +21,12 @@ namespace TiledSharp
         public TmxObjectGroup(XElement xObjectGroup)
         {
             Name = (string)xObjectGroup.Attribute("name");
-            Color = new TmxColor(xObjectGroup.Attribute("color"));
+
+            var xColor = xObjectGroup.Attribute("color");
+            if (xColor != null)
+                Color = new TmxColor(xObjectGroup.Attribute("color"));
+            else
+                Color = null;
 
             var xOpacity = xObjectGroup.Attribute("opacity");
             if (xOpacity == null)

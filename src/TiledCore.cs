@@ -103,11 +103,11 @@ namespace TiledSharp
 
         public TmxImage(XElement xImage, string tmxDir = "")
         {
-            var xSource = (string)xImage.Attribute("source");
+            var xSource = xImage.Attribute("source");
 
             if (xSource != null)
                 // Append directory if present
-                Source = Path.Combine(tmxDir, Source);
+                Source = Path.Combine(tmxDir, (string)xSource);
             else {
                 Format = (string)xImage.Attribute("format");
                 // TODO: Combine with TmxLayer data decoding
@@ -131,7 +131,11 @@ namespace TiledSharp
                 }
             }
 
-            Trans = new TmxColor(xImage.Attribute("trans"));
+            var xTrans = xImage.Attribute("trans");
+            if (xTrans != null)
+                Trans = new TmxColor(xImage.Attribute("trans"));
+            else
+                Trans = null;
             Width = (int)xImage.Attribute("width");
             Height = (int)xImage.Attribute("height");
         }
