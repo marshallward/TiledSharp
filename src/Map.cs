@@ -15,8 +15,7 @@ namespace TiledSharp
         public int Height {get; private set;}
         public int TileWidth {get; private set;}
         public int TileHeight {get; private set;}
-        // TODO: Update to System.Drawing (or something else)
-        public uint? BackgroundColor {get; private set;}
+        public TmxColor BackgroundColor {get; private set;}
 
         public TmxList<TmxTileset> Tilesets {get; private set;}
         public TmxList<TmxLayer> Layers {get; private set;}
@@ -38,15 +37,7 @@ namespace TiledSharp
             Height = (int)xMap.Attribute("height");
             TileWidth = (int)xMap.Attribute("tilewidth");
             TileHeight = (int)xMap.Attribute("tileheight");
-
-            // TODO: Update to System.Drawing
-            var xBackgroundColor = (string)xMap.Attribute("backgroundcolor");
-            if (xBackgroundColor != null)
-            {
-                xBackgroundColor = xBackgroundColor.TrimStart("#".ToCharArray());
-                BackgroundColor = UInt32.Parse(xBackgroundColor,
-                                               NumberStyles.HexNumber);
-            }
+            BackgroundColor = new TmxColor(xMap.Attribute("backgroundcolor"));
 
             Tilesets = new TmxList<TmxTileset>();
             foreach (var e in xMap.Elements("tileset"))

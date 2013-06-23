@@ -11,7 +11,7 @@ namespace TiledSharp
     public class TmxObjectGroup : ITmxElement
     {
         public string Name {get; private set;}
-        public uint? Color {get; private set;}
+        public TmxColor Color {get; private set;}
         public double Opacity {get; private set;}
         public bool Visible {get; private set;}
 
@@ -21,13 +21,7 @@ namespace TiledSharp
         public TmxObjectGroup(XElement xObjectGroup)
         {
             Name = (string)xObjectGroup.Attribute("name");
-
-            var xColor = (string)xObjectGroup.Attribute("color");
-            if (xColor != null)
-            {
-                xColor = xColor.TrimStart("#".ToCharArray());
-                Color = UInt32.Parse(xColor, NumberStyles.HexNumber);
-            }
+            Color = new TmxColor(xObjectGroup.Attribute("color"));
 
             var xOpacity = xObjectGroup.Attribute("opacity");
             if (xOpacity == null)

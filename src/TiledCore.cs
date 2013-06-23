@@ -97,7 +97,7 @@ namespace TiledSharp
         public string Format {get; private set;}
         public string Source {get; private set;}
         public Stream Data {get; private set;}
-        public uint? Trans {get; private set;}
+        public TmxColor Trans {get; private set;}
         public int Width {get; private set;}
         public int Height {get; private set;}
 
@@ -131,12 +131,25 @@ namespace TiledSharp
                 }
             }
 
-            var xTrans = (string)xImage.Attribute("trans");
-            if (xTrans != null)
-                Trans = UInt32.Parse(xTrans, NumberStyles.HexNumber);
-
+            Trans = new TmxColor(xImage.Attribute("trans"));
             Width = (int)xImage.Attribute("width");
             Height = (int)xImage.Attribute("height");
+        }
+    }
+
+    public class TmxColor
+    {
+        public int R;
+        public int G;
+        public int B;
+
+        public TmxColor(XAttribute xColor)
+        {
+            var colorStr = ((string)xColor).TrimStart("#".ToCharArray());
+
+            R = int.Parse(colorStr.Substring(0, 2), NumberStyles.HexNumber);
+            G = int.Parse(colorStr.Substring(2, 2), NumberStyles.HexNumber);
+            B = int.Parse(colorStr.Substring(4, 2), NumberStyles.HexNumber);
         }
     }
 }

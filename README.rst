@@ -63,16 +63,17 @@ I am still in the process of testing most of these new features.
 
 The following new T# features have been added or changed:
 
-* TmxList elements now return their type, rather than ITmxElement
+* TmxList elements now return their type, rather than their interface
 * TmxObject.Width and Height are no longer nullable
+* Colors are now stored under a platform-neutral TmxColor class
 
 The following new T# features may need to be added or redesigned:
 
 * Tileset.Tile: Current dictionary key is tile id. Maybe that is dumb.
 * TmxData object; generalization of data decoding to TmxLayer and TmxImage
 * cleaner ToString field output
-* Settle on a non-uint based HTML color storage
 * Develop test cases and automated testing
+* Add a "ReadXmlAttribute" function that resolves default cases
 
 
 Notes
