@@ -20,7 +20,7 @@ namespace TiledSharp
         public TmxTileOffset TileOffset {get; private set;}
         public TmxImage Image {get; private set;}
         public TmxList<TmxTerrain> Terrains {get; private set;}
-        public Dictionary<int, TmxTilesetTile> Tiles {get; private set;}
+        public List<TmxTilesetTile> Tiles {get; private set;}
         public PropertyDict Properties {get; private set;}
 
         // TSX file constructor
@@ -78,12 +78,11 @@ namespace TiledSharp
                         Terrains.Add(new TmxTerrain(e));
                 }
 
-                Tiles = new Dictionary<int, TmxTilesetTile>();
+                Tiles = new List<TmxTilesetTile>();
                 foreach (var xTile in xTileset.Elements("tile"))
                 {
-                    var id = (int)xTile.Attribute("id");
                     var tile = new TmxTilesetTile(xTile, Terrains, tmxDir);
-                    Tiles.Add(id, tile);
+                    Tiles.Add(tile);
                 }
             }
         }
@@ -122,8 +121,7 @@ namespace TiledSharp
 
     public class TmxTilesetTile
     {
-        // NOTE: No reference to id outside of Dictionary key
-        //       TMX representation is more of a list
+        public int Id {get; private set;}
         public List<TmxTerrain> TerrainEdges {get; private set;}
         public double Probability {get; private set;}
         public TmxImage Image {get; private set;}
@@ -148,6 +146,8 @@ namespace TiledSharp
         public TmxTilesetTile(XElement xTile, TmxList<TmxTerrain> Terrains,
                        string tmxDir = "")
         {
+            Id = (int)xTile.Attribute("id");
+
             var strTerrain = ((string)xTile.Attribute("terrain")).Split(',');
 
             int result;

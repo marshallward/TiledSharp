@@ -14,7 +14,8 @@ on any external framework beyond .NET, such as XNA Game Studio, MonoGame, or
 the Playstation Mobile SDK. However, it can be used as an interface between TMX
 data and external games.
 
-For an example of a TSX Map renderer, see my Tesserae_ project.
+For an example of an XNA Map renderer using TiledSharp, see my Tesserae_
+project.
 
 
 Usage
@@ -63,7 +64,7 @@ To the best of my knowledge, all new 0.9.0 features have been implemented:
 
 * Map: backgroundcolor
 * Imagelayer
-* Object: visible, rotation
+* Object: visible, rotation, **(h|v)flip** (not yet supported)
 * Ellipse
 * Tileset: TileOffset
 * Tileset: Terraintype, Terrain
@@ -79,11 +80,9 @@ The following new T# features have been added or changed:
 
 The following new T# features may need to be added or redesigned:
 
-* Tileset.Tile: Current dictionary key is tile id. Maybe that is dumb.
 * TmxData object; generalization of data decoding to TmxLayer and TmxImage
 * cleaner ToString field output
 * Develop test cases and automated testing
-* Add a "ReadXmlAttribute" function that resolves default cases
 
 
 Notes
