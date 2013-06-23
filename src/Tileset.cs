@@ -55,6 +55,7 @@ namespace TiledSharp
                 Image = ts.Image;
                 Terrains = ts.Terrains;
                 Tiles = ts.Tiles;
+                Properties = ts.Properties;
             }
             else
             {
@@ -84,6 +85,8 @@ namespace TiledSharp
                     var tile = new TmxTilesetTile(xTile, Terrains, tmxDir);
                     Tiles.Add(tile);
                 }
+
+                Properties = new PropertyDict(xTileset.Element("properties"));
             }
         }
     }
