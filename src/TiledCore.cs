@@ -110,25 +110,9 @@ namespace TiledSharp
                 Source = Path.Combine(tmxDir, (string)xSource);
             else {
                 Format = (string)xImage.Attribute("format");
-                // TODO: Combine with TmxLayer data decoding
                 var xData = xImage.Element("data");
-                var encoding = (string)xData.Attribute("encoding");
-
-                if (encoding == "base64")
-                {
-                    var b64data = Convert.FromBase64String((string)xData.Value);
-                    Data = new MemoryStream(b64data, false);
-
-                    var compression = (string)xData.Attribute("compression");
-                    if (compression == "gzip")
-                        Data = new GZipStream(Data,
-                                            CompressionMode.Decompress, false);
-                    else if (compression == "zlib")
-                        Data = new Ionic.Zlib.ZlibStream(Data,
-                                Ionic.Zlib.CompressionMode.Decompress, false);
-                    else if (compression != null)
-                        throw new Exception("Tiled: Unknown compression.");
-                }
+                var decodedStream = new TmxBase64Data(xData);
+                Data = decodedStream.Data;
             }
 
             Trans = new TmxColor(xImage.Attribute("trans"));
@@ -152,6 +136,32 @@ namespace TiledSharp
             R = int.Parse(colorStr.Substring(0, 2), NumberStyles.HexNumber);
             G = int.Parse(colorStr.Substring(2, 2), NumberStyles.HexNumber);
             B = int.Parse(colorStr.Substring(4, 2), NumberStyles.HexNumber);
+        }
+    }
+
+    public class TmxBase64Data
+    {
+        // NOTE: This is a throwaway class to share base64 data decoding.
+        //       Maybe there is a better way?
+        public Stream Data {get; private set;}
+
+        public TmxBase64Data(XElement xData)
+        {
+            if ((string)xData.Attribute("encoding") != "base64")
+                throw new Exception(
+                    "TmxDataStream: Only Base64-encoded data is supported.");
+
+            var rawData = Convert.FromBase64String((string)xData.Value);
+            Data = new MemoryStream(rawData, false);
+
+            var compression = (string)xData.Attribute("compression");
+            if (compression == "gzip")
+                Data = new GZipStream(Data, CompressionMode.Decompress, false);
+            else if (compression == "zlib")
+                Data = new Ionic.Zlib.ZlibStream(Data,
+                        Ionic.Zlib.CompressionMode.Decompress, false);
+            else if (compression != null)
+                throw new Exception("TmxDataStream: Unknown compression.");
         }
     }
 }

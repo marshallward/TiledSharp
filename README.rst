@@ -79,7 +79,7 @@ The following new T# features have been added or changed:
 
 The following new T# features may need to be added or redesigned:
 
-* TmxData object; generalization of data decoding to TmxLayer and TmxImage
+* Fix the TmxList name collision problems
 * cleaner ToString field output
 * Develop test cases and automated testing
 

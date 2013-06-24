@@ -24,25 +24,14 @@ namespace TiledSharp
             Opacity = (double?)xLayer.Attribute("opacity") ?? 1.0;
             Visible = (bool?)xLayer.Attribute("visible") ?? true;
 
-            // TODO: Combine with TmxImage data decoding
             var xData = xLayer.Element("data");
             var encoding = (string)xData.Attribute("encoding");
 
             Tiles = new List<TmxLayerTile>();
             if (encoding == "base64")
             {
-                var base64data = Convert.FromBase64String((string)xData.Value);
-                Stream stream = new MemoryStream(base64data, false);
-
-                var compression = (string)xData.Attribute("compression");
-                if (compression == "gzip")
-                    stream = new GZipStream(stream, CompressionMode.Decompress,
-                                            false);
-                else if (compression == "zlib")
-                    stream = new Ionic.Zlib.ZlibStream(stream,
-                                Ionic.Zlib.CompressionMode.Decompress, false);
-                else if (compression != null)
-                    throw new Exception("Tiled: Unknown compression.");
+                var decodedStream = new TmxBase64Data(xData);
+                var stream = decodedStream.Data;
 
                 using (stream)
                 using (var br = new BinaryReader(stream))
