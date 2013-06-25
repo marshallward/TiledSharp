@@ -111,6 +111,7 @@ namespace TiledSharp
     {
         public string Name {get; private set;}
         public int Tile {get; private set;}
+
         public PropertyDict Properties {get; private set;}
 
         public TmxTerrain(XElement xTerrain)
@@ -126,6 +127,7 @@ namespace TiledSharp
         public int Id {get; private set;}
         public List<TmxTerrain> TerrainEdges {get; private set;}
         public double Probability {get; private set;}
+
         public TmxImage Image {get; private set;}
         public PropertyDict Properties {get; private set;}
 

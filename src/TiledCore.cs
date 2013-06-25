@@ -141,15 +141,13 @@ namespace TiledSharp
 
     public class TmxBase64Data
     {
-        // NOTE: This is a throwaway class to share base64 data decoding.
-        //       Maybe there is a better way?
         public Stream Data {get; private set;}
 
         public TmxBase64Data(XElement xData)
         {
             if ((string)xData.Attribute("encoding") != "base64")
                 throw new Exception(
-                    "TmxDataStream: Only Base64-encoded data is supported.");
+                    "TmxBase64Data: Only Base64-encoded data is supported.");
 
             var rawData = Convert.FromBase64String((string)xData.Value);
             Data = new MemoryStream(rawData, false);
@@ -161,7 +159,7 @@ namespace TiledSharp
                 Data = new Ionic.Zlib.ZlibStream(Data,
                         Ionic.Zlib.CompressionMode.Decompress, false);
             else if (compression != null)
-                throw new Exception("TmxDataStream: Unknown compression.");
+                throw new Exception("TmxBase64Data: Unknown compression.");
         }
     }
 }

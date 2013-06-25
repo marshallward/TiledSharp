@@ -64,7 +64,7 @@ namespace TiledSharp
                     k++;
                 }
             }
-            else throw new Exception("Tiled: Unknown encoding.");
+            else throw new Exception("TmxLayer: Unknown encoding.");
 
             Properties = new PropertyDict(xLayer.Element("properties"));
         }
