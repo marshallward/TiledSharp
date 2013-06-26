@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 
@@ -70,10 +71,19 @@ namespace TiledSharp
         {
             var key = Tuple.Create<TmxList<T>, string> (this, t.Name);
             var count = nameCount[key];
-            if (count == 0)
-                return t.Name;
-            else
-                return t.Name + count;
+
+            var dupes = 0;
+            var itemKey = t.Name;
+
+            // For duplicate keys, append a counter
+            // For pathological cases, insert underscores to ensure uniqueness
+            while (Contains(itemKey)) {
+                itemKey = t.Name + String.Concat(Enumerable.Repeat("_", dupes))
+                            + count;
+                dupes++;
+            }
+
+            return itemKey;
         }
     }
 
