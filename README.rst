@@ -77,10 +77,10 @@ The following new T# features have been added or changed:
 * TmxList elements now return their type, rather than their interface
 * TmxObject.Width and Height are no longer nullable
 * Colors are now stored under a platform-neutral TmxColor class
+* Improved resolution of TmxList duplicate key collisions
 
 The following new T# features may need to be added or redesigned:
 
-* Fix the TmxList name collision problems
 * cleaner ToString field output
 * Develop test cases and automated testing
 
