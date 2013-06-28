@@ -33,7 +33,6 @@ namespace TiledSharp
                 var decodedStream = new TmxBase64Data(xData);
                 var stream = decodedStream.Data;
 
-                using (stream)
                 using (var br = new BinaryReader(stream))
                     for (int j = 0; j < height; j++)
                         for (int i = 0; i < width; i++)
