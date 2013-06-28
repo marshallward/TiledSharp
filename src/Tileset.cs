@@ -152,21 +152,22 @@ namespace TiledSharp
         {
             Id = (int)xTile.Attribute("id");
 
-            var strTerrain = ((string)xTile.Attribute("terrain")).Split(',');
+            TerrainEdges = new List<TmxTerrain>(4);
 
             int result;
-            for (var i = 0; i < 4; i++) {
-                var success = int.TryParse(strTerrain[i], out result);
+            TmxTerrain edge;
+            var strTerrain = ((string)xTile.Attribute("terrain")).Split(',');
+            foreach (var v in strTerrain) {
+                var success = int.TryParse(v, out result);
                 if (success)
-                    TerrainEdges[i] = Terrains[result];
+                    edge = Terrains[result];
                 else
-                    TerrainEdges[i] = null;
+                    edge = null;
+                TerrainEdges.Add(edge);
             }
 
             Probability = (double?)xTile.Attribute("probability") ?? 1.0;
-
             Image = new TmxImage(xTile.Element("image"), tmxDir);
-
             Properties = new PropertyDict(xTile.Element("properties"));
         }
     }
