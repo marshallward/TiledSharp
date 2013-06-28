@@ -90,20 +90,16 @@ namespace TiledSharp
             Y = y;
 
             // Scan for tile flip bit flags
-            if ((rawGid & FLIPPED_HORIZONTALLY_FLAG) != 0)
-                HorizontalFlip = true;
-            else
-                HorizontalFlip = false;
+            bool flip;
 
-            if ((rawGid & FLIPPED_VERTICALLY_FLAG) != 0)
-                VerticalFlip = true;
-            else
-                VerticalFlip = false;
+            flip = (rawGid & FLIPPED_HORIZONTALLY_FLAG) != 0;
+            HorizontalFlip = flip ? true : false;
 
-            if ((rawGid & FLIPPED_DIAGONALLY_FLAG) != 0)
-                DiagonalFlip = true;
-            else
-                DiagonalFlip = false;
+            flip = (rawGid & FLIPPED_VERTICALLY_FLAG) != 0;
+            VerticalFlip = flip ? true : false;
+
+            flip = (rawGid & FLIPPED_DIAGONALLY_FLAG) != 0;
+            DiagonalFlip = flip ? true : false;
 
             // Zero the bit flags
             rawGid &= ~(FLIPPED_HORIZONTALLY_FLAG |
