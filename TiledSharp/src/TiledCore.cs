@@ -21,7 +21,7 @@ namespace TiledSharp
         {
             XDocument xDoc;
 
-            var asm = Assembly.GetEntryAssembly();
+            var asm = Assembly.GetExecutingAssembly();
             var manifest = asm.GetManifestResourceNames();
 
             var fileResPath = filepath.Replace(
