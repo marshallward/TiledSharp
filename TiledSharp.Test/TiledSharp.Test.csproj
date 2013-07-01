@@ -35,10 +35,6 @@
       <Package>mono-nunit</Package>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="TiledSharpTest.cs" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <MonoDevelop>
@@ -52,5 +48,9 @@
       <Project>{E4130F8D-D301-4E0C-916D-489C4A23C9B1}</Project>
       <Name>TiledSharp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\TiledSharpTest.cs" />
   </ItemGroup>
 </Project>
