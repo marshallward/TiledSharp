@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledSharpTest", "TiledSharpTest\TiledSharpTest.csproj", "{E3434809-8A7B-4082-83E6-F42EE556D987}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledSharp", "TiledSharp\TiledSharp.csproj", "{E4130F8D-D301-4E0C-916D-489C4A23C9B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledSharp.Test", "TiledSharp.Test\TiledSharp.Test.csproj", "{E3434809-8A7B-4082-83E6-F42EE556D987}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
