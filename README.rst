@@ -58,33 +58,6 @@ Although TiledSharp can manage elements with the same name, it is not
 recommended. For more information, see the TmxList_ specification.
 
 
-Tiled 0.9.0 Status Report
--------------------------
-To the best of my knowledge, all new 0.9.0 features have been implemented:
-
-* Map: backgroundcolor
-* Imagelayer
-* Object: visible, rotation, tile flip
-* Ellipse
-* Tileset: TileOffset
-* Tileset: Terraintype, Terrain
-* Image: format and data (base64 embedded image) *(untested)*
-
-I am still in the process of testing most of these new features.
-
-The following new T# features have been added or changed:
-
-* TmxList elements now return their type, rather than their interface
-* TmxObject.Width and Height are no longer nullable
-* Colors are now stored under a platform-neutral TmxColor class
-* Improved resolution of TmxList duplicate key collisions
-
-The following new T# features may need to be added or redesigned:
-
-* cleaner ToString field output
-* Develop test cases and automated testing
-
-
 Notes
 -----
 TiledSharp parses XML files produced by Tiled_, an open-source (GPL) tile map
