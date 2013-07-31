@@ -156,8 +156,9 @@ namespace TiledSharp
 
             int result;
             TmxTerrain edge;
-            var strTerrain = ((string)xTile.Attribute("terrain")).Split(',');
-            foreach (var v in strTerrain) {
+
+            var strTerrain = (string)xTile.Attribute("terrain") ?? ",,,";
+            foreach (var v in strTerrain.Split(',')) {
                 var success = int.TryParse(v, out result);
                 if (success)
                     edge = Terrains[result];
