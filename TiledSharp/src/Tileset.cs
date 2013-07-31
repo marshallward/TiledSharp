@@ -72,7 +72,7 @@ namespace TiledSharp
                 Image = new TmxImage(xTileset.Element("image"), tmxDir);
 
                 Terrains = new TmxList<TmxTerrain>();
-                var xTerrainType = xTileset.Element("terraintype");
+                var xTerrainType = xTileset.Element("terraintypes");
                 if (xTerrainType != null) {
                     foreach (var e in xTerrainType.Elements("terrain"))
                         Terrains.Add(new TmxTerrain(e));
