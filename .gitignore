@@ -2,4 +2,5 @@
 *.userprefs
 *.pidb
 bin
+docs
 test-results
