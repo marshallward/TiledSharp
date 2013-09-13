@@ -1,0 +1,39 @@
+/**
+
+@file TiledSharp/src/Tileset.cs
+
+@class TiledSharp::TmxTileset
+@class TiledSharp::TmxTileOffset
+@class TiledSharp::TmxTerrain
+@class TiledSharp::TmxTilesetTile
+
+@property   TmxTileset::FirstGid
+@brief      First gid
+
+@property   TmxTileset::Name
+@property   TmxTileset::TileWidth
+@property   TmxTileset::TileHeight
+@property   TmxTileset::Spacing
+@property   TmxTileset::Margin
+@property   TmxTileset::TileOffset
+@property   TmxTileset::Image
+@property   TmxTileset::Terrains
+@property   TmxTileset::Tiles
+@property   TmxTileset::Properties
+
+@property   TmxTileOffset::X
+@property   TmxTileOffset::Y
+
+@property   TmxTerrain::Name
+@property   TmxTerrain::Tile
+@property   TmxTerrain::Properties
+
+@property   TmxTilesetTile::Id
+@property   TmxTilesetTile::TerrainEdges
+@property   TmxTilesetTile::Properties
+@property   TmxTilesetTile::TopLeft
+@property   TmxTilesetTile::TopRight
+@property   TmxTilesetTile::BottomLeft
+@property   TmxTilesetTile::BottomRight
+
+*/
