@@ -14,9 +14,6 @@ on any external framework beyond .NET, such as Windows, XNA/MonoGame, Unity, or
 PSM. However, it can be used as an interface between TMX data and external
 games.
 
-For an example of an XNA Map renderer using TiledSharp, see my Tesserae_
-project.
-
 
 Usage
 -----
@@ -81,7 +78,6 @@ Marshall Ward <tiledsharp@marshallward.org>
 
 .. _TMX: https://github.com/bjorn/tiled/wiki/TMX-Map-Format
 .. _Tiled: http://mapeditor.org
-.. _Tesserae: https://github.com/marshallward/Tesserae
 .. _TmxMap: https://github.com/marshallward/TiledSharp/wiki/TmxMap
 .. _TiledSharp: https://github.com/marshallward/TiledSharp
 .. _TiledSharp Data Hierarchy:
