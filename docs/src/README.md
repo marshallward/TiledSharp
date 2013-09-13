@@ -71,7 +71,7 @@ Support code from [DotNetZip][] is distributed under the
 Contact
 -------
 
-Marshall Ward <tiledsharp@marshallward.org>
+Marshall Ward (<tiledsharp@marshallward.org>)
 
 [TMX]: https://github.com/bjorn/tiled/wiki/TMX-Map-Format
 [Tiled]: http://mapeditor.org
