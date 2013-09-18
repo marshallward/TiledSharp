@@ -4,7 +4,7 @@
 @brief      TMX Map
 
 @class      TiledSharp::TmxMap
-@brief      TMX Map
+@brief      Container class for TMX map file
 
 @fn         TiledSharp::TmxMap::TmxMap
 @brief      Map constructor

@@ -1,0 +1,51 @@
+/**
+
+@file   TiledSharp/src/Layer.cs
+@brief  TMX layer
+
+@class  TiledSharp::TmxLayer
+@brief  Layer tile maps
+
+    @fn     TiledSharp::TmxLayer::TmxLayer
+    @brief  Tile map layer constructor
+
+    @property   TmxLayer::Name
+    @brief      Layer name
+
+    @property   TmxLayer::Opacity
+    @brief      Alpha transparency of layer
+
+    @property   TmxLayer::Visible
+    @brief      True if layer is visible
+
+    @property   TmxLayer::Tiles
+    @brief      List of layer map tiles to be rendered
+
+    @property   TmxLayer::Properties
+    @brief      User-defined layer properties
+
+@class  TiledSharp::TmxLayerTile
+@brief  Tile elements of a layer map
+
+    @fn     TiledSharp::TmxLayerTile::TmxLayerTile
+    @brief  Layer tile constructor
+
+    @property   TmxLayerTile::Gid
+    @brief      Global tileset ID
+
+    @property   TmxLayerTile::X
+    @brief      X (rightward) position of tile
+
+    @property   TmxLayerTile::Y
+    @brief      Y (downward) position of tile
+
+    @property   TmxLayerTile::HorizontalFlip
+    @brief      Horizontally flipped tile image
+
+    @property   TmxLayerTile::VerticalFlip
+    @brief      Vertically flipped tile image
+
+    @property   TmxLayerTile::DiagonalFlip
+    @brief      Diagonally flipped tile image along top left/bottom right axis
+
+*/

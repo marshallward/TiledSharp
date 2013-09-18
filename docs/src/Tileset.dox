@@ -4,7 +4,7 @@
 @brief  TMX Map Tilesets
 
 @class  TiledSharp::TmxTileset
-@brief  TMX Tileset
+@brief  Tilesets for a TMX Map
 
     @fn     TiledSharp::TmxTileset::TmxTileset(XElement, string)
     @brief  Tileset constructor for TMX source element
