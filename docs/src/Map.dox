@@ -1,10 +1,10 @@
 /*!
 
 @file       TiledSharp/src/Map.cs
-@brief      TMX Map Class
+@brief      TMX Map
 
 @class      TiledSharp::TmxMap
-@brief      TMX Map Class
+@brief      TMX Map
 
 @fn         TiledSharp::TmxMap::TmxMap
 @brief      Map constructor
@@ -40,7 +40,7 @@
 @brief      List of map layers
 
 @property   TmxMap::ObjectGroups
-@brief      List of map object groups
+@brief      List of map object layers
 
 @property   TmxMap::ImageLayers
 @brief      List of background image layers
