@@ -6,6 +6,12 @@
 @class  TiledSharp::TmxTileset
 @brief  TMX Tileset
 
+    @fn     TiledSharp::TmxTileset::TmxTileset(XElement, string)
+    @brief  Tileset constructor for TMX source element
+
+    @fn     TiledSharp::TmxTileset::TmxTileset(XDocument, string)
+    @brief  Tileset constructor for external TSX file
+
     @property   TmxTileset::FirstGid
     @brief      The global ID of the first tile in the tileset
 
@@ -42,6 +48,9 @@
 @class  TiledSharp::TmxTileOffset
 @brief  Pixel offset when drawing a tile from a related tileset
 
+    @fn         TiledSharp::TmxTileOffset::TmxTileOffset
+    @brief      Tile offset constructor
+
     @property   TmxTileOffset::X
     @brief      X (rightward) tile offset
 
@@ -50,6 +59,9 @@
 
 @class  TiledSharp::TmxTerrain
 @brief  Tiled terrain generation tool
+
+    @fn     TiledSharp::TmxTerrain::TmxTerrain
+    @brief  Terrain constructor
 
     @property   TmxTerrain::Name
     @brief      Terrain name
@@ -62,6 +74,9 @@
 
 @class  TiledSharp::TmxTilesetTile
 @brief  Terrain tile information
+
+    @fn         TiledSharp::TmxTilesetTile::TmxTilesetTile
+    @brief      Terrain tile constructor
 
     @property   TmxTilesetTile::Id
     @brief      Local tile ID
