@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['name',['Name',['../classTiledSharp_1_1TmxImageLayer.html#ae50e7280cab7fade9229583df3112000',1,'TiledSharp.TmxImageLayer.Name()'],['../classTiledSharp_1_1TmxLayer.html#aea30aade24ccacd6d75e3542ab5eb2f0',1,'TiledSharp.TmxLayer.Name()'],['../classTiledSharp_1_1TmxObjectGroup.html#af0511e4a843c367f5c7649dd440bfab0',1,'TiledSharp.TmxObjectGroup.Name()'],['../classTiledSharp_1_1TmxObjectGroup_1_1TmxObject.html#ae0a75c69d5f22e8b7ec3ff9b5a824ac1',1,'TiledSharp.TmxObjectGroup.TmxObject.Name()'],['../interfaceTiledSharp_1_1ITmxElement.html#a40afeb5fad289a3cf43c17f88423b0f4',1,'TiledSharp.ITmxElement.Name()'],['../classTiledSharp_1_1TmxTileset.html#a03defeb91bd26b1e784792df578b0e9c',1,'TiledSharp.TmxTileset.Name()'],['../classTiledSharp_1_1TmxTerrain.html#a3609539a8ee8ae0f877208e9b7bc9512',1,'TiledSharp.TmxTerrain.Name()']]],
+  ['namecount',['nameCount',['../classTiledSharp_1_1TmxList_3_01T_01_4.html#a05383caa00b9ad6faa97c0b5169af735',1,'TiledSharp::TmxList&lt; T &gt;']]]
+];

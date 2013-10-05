@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,44 +95,56 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">TiledSharp.TmxImage Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Map image.  
+ <a href="classTiledSharp_1_1TmxImage.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8e2282b72f99086d21f9a27c8f0496de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e2282b72f99086d21f9a27c8f0496de"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TmxImage</b> (XElement xImage, string tmxDir=&quot;&quot;)</td></tr>
-<tr class="separator:a8e2282b72f99086d21f9a27c8f0496de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a010b6651c71753c4d7a171401b4a67d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a010b6651c71753c4d7a171401b4a67d6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImage.html#a010b6651c71753c4d7a171401b4a67d6">TmxImage</a> (XElement xImage, string tmxDir=&quot;&quot;)</td></tr>
+<tr class="memdesc:a010b6651c71753c4d7a171401b4a67d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map image constructor. <br/></td></tr>
+<tr class="separator:a010b6651c71753c4d7a171401b4a67d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a076677920c0c590f4b5a79d26440bf86"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a076677920c0c590f4b5a79d26440bf86"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>Format</b><code> [get, set]</code></td></tr>
-<tr class="separator:a076677920c0c590f4b5a79d26440bf86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a383e2f58a0e80edafb29c1c6b1ac00e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a383e2f58a0e80edafb29c1c6b1ac00e7"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>Source</b><code> [get, set]</code></td></tr>
-<tr class="separator:a383e2f58a0e80edafb29c1c6b1ac00e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a345fcbeaa253b7b1d1922ef6b1304e70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a345fcbeaa253b7b1d1922ef6b1304e70"></a>
-Stream&#160;</td><td class="memItemRight" valign="bottom"><b>Data</b><code> [get, set]</code></td></tr>
-<tr class="separator:a345fcbeaa253b7b1d1922ef6b1304e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27abacf5e2d565681efdcabf17fdbd61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27abacf5e2d565681efdcabf17fdbd61"></a>
-<a class="el" href="classTiledSharp_1_1TmxColor.html">TmxColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Trans</b><code> [get, set]</code></td></tr>
-<tr class="separator:a27abacf5e2d565681efdcabf17fdbd61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0df322c16035c0afed8afebebffe70e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0df322c16035c0afed8afebebffe70e6"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Width</b><code> [get, set]</code></td></tr>
-<tr class="separator:a0df322c16035c0afed8afebebffe70e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af018adf4ea01f009ffc49b2826dc4c28"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af018adf4ea01f009ffc49b2826dc4c28"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Height</b><code> [get, set]</code></td></tr>
-<tr class="separator:af018adf4ea01f009ffc49b2826dc4c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fc36222dfe7a37e9cea0ca01fc74be5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fc36222dfe7a37e9cea0ca01fc74be5"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImage.html#a2fc36222dfe7a37e9cea0ca01fc74be5">Format</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a2fc36222dfe7a37e9cea0ca01fc74be5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Embedded image format (currently unused) <br/></td></tr>
+<tr class="separator:a2fc36222dfe7a37e9cea0ca01fc74be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1edd5e297ebc84e99547688e13705a63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1edd5e297ebc84e99547688e13705a63"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImage.html#a1edd5e297ebc84e99547688e13705a63">Source</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a1edd5e297ebc84e99547688e13705a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">External reference to image data. <br/></td></tr>
+<tr class="separator:a1edd5e297ebc84e99547688e13705a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93fbbbb24db0c55064b0f3ae0fc0194c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a93fbbbb24db0c55064b0f3ae0fc0194c"></a>
+Stream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImage.html#a93fbbbb24db0c55064b0f3ae0fc0194c">Data</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a93fbbbb24db0c55064b0f3ae0fc0194c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Embedded image data. <br/></td></tr>
+<tr class="separator:a93fbbbb24db0c55064b0f3ae0fc0194c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae597c04ff06a652c6fd008f0d7a2f771"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae597c04ff06a652c6fd008f0d7a2f771"></a>
+<a class="el" href="classTiledSharp_1_1TmxColor.html">TmxColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImage.html#ae597c04ff06a652c6fd008f0d7a2f771">Trans</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ae597c04ff06a652c6fd008f0d7a2f771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image transparency color. <br/></td></tr>
+<tr class="separator:ae597c04ff06a652c6fd008f0d7a2f771"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30ac6a9a314b1278b68201ae2d60ef9a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30ac6a9a314b1278b68201ae2d60ef9a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImage.html#a30ac6a9a314b1278b68201ae2d60ef9a">Width</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a30ac6a9a314b1278b68201ae2d60ef9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image pixel width. <br/></td></tr>
+<tr class="separator:a30ac6a9a314b1278b68201ae2d60ef9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2c6ddc2bf3a22c1c51e1ced75956437"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2c6ddc2bf3a22c1c51e1ced75956437"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImage.html#ac2c6ddc2bf3a22c1c51e1ced75956437">Height</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ac2c6ddc2bf3a22c1c51e1ced75956437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image pixel height. <br/></td></tr>
+<tr class="separator:ac2c6ddc2bf3a22c1c51e1ced75956437"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
+<div class="textblock"><p>Map image. </p>
+
 <p>Definition at line <a class="el" href="TiledCore_8cs_source.html#l00105">105</a> of file <a class="el" href="TiledCore_8cs_source.html">TiledCore.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/marshall/projects/newts/TiledSharp/src/<a class="el" href="TiledCore_8cs_source.html">TiledCore.cs</a></li>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/marshall/projects/TiledSharp/TiledSharp/src/<a class="el" href="TiledCore_8cs_source.html">TiledCore.cs</a></li>
+<li>src/TiledCore.dox</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 13 2013 19:31:40 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 5 2013 20:38:10 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

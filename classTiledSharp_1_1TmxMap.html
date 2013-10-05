@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>TMX Map Class.  
+<p>Container class for TMX map file.  
  <a href="classTiledSharp_1_1TmxMap.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for TiledSharp.TmxMap:</div>
@@ -105,7 +105,7 @@ Inheritance diagram for TiledSharp.TmxMap:</div>
  <div class="center">
   <img src="classTiledSharp_1_1TmxMap.png" usemap="#TiledSharp.TmxMap_map" alt=""/>
   <map id="TiledSharp.TmxMap_map" name="TiledSharp.TmxMap_map">
-<area href="classTiledSharp_1_1TmxDocument.html" alt="TiledSharp.TmxDocument" shape="rect" coords="0,0,155,24"/>
+<area href="classTiledSharp_1_1TmxDocument.html" title="TMX document importer. " alt="TiledSharp.TmxDocument" shape="rect" coords="0,0,155,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -165,7 +165,7 @@ TmxList&lt; <a class="el" href="classTiledSharp_1_1TmxLayer.html">TmxLayer</a> &
 <tr class="separator:a1852eec605312ba9af3d1ac314d354e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4fdeaa6fe0307cd5f6448da26dd2fb5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4fdeaa6fe0307cd5f6448da26dd2fb5"></a>
 TmxList&lt; <a class="el" href="classTiledSharp_1_1TmxObjectGroup.html">TmxObjectGroup</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxMap.html#aa4fdeaa6fe0307cd5f6448da26dd2fb5">ObjectGroups</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:aa4fdeaa6fe0307cd5f6448da26dd2fb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of map object groups. <br/></td></tr>
+<tr class="memdesc:aa4fdeaa6fe0307cd5f6448da26dd2fb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of map object layers. <br/></td></tr>
 <tr class="separator:aa4fdeaa6fe0307cd5f6448da26dd2fb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3208c9270ba6c2e690917973a1b7cf46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3208c9270ba6c2e690917973a1b7cf46"></a>
 TmxList&lt; <a class="el" href="classTiledSharp_1_1TmxImageLayer.html">TmxImageLayer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxMap.html#a3208c9270ba6c2e690917973a1b7cf46">ImageLayers</a><code> [get, set]</code></td></tr>
@@ -176,29 +176,31 @@ TmxList&lt; <a class="el" href="classTiledSharp_1_1TmxImageLayer.html">TmxImageL
 <tr class="memdesc:a4894c221214c5c8dff9e7529fe5aa80a"><td class="mdescLeft">&#160;</td><td class="mdescRight">User-defined map properties. <br/></td></tr>
 <tr class="separator:a4894c221214c5c8dff9e7529fe5aa80a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_classTiledSharp_1_1TmxDocument"><td colspan="2" onclick="javascript:toggleInherit('properties_classTiledSharp_1_1TmxDocument')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="classTiledSharp_1_1TmxDocument.html">TiledSharp.TmxDocument</a></td></tr>
-<tr class="memitem:a8d15dc2c5792a0127463e6fdf912d56f inherit properties_classTiledSharp_1_1TmxDocument"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d15dc2c5792a0127463e6fdf912d56f"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>TmxDirectory</b><code> [get, set]</code></td></tr>
-<tr class="separator:a8d15dc2c5792a0127463e6fdf912d56f inherit properties_classTiledSharp_1_1TmxDocument"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad87f34a29eed82182de2b95b98db73d9 inherit properties_classTiledSharp_1_1TmxDocument"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad87f34a29eed82182de2b95b98db73d9"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxDocument.html#ad87f34a29eed82182de2b95b98db73d9">TmxDirectory</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ad87f34a29eed82182de2b95b98db73d9 inherit properties_classTiledSharp_1_1TmxDocument"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parent directory of TMX file. <br/></td></tr>
+<tr class="separator:ad87f34a29eed82182de2b95b98db73d9 inherit properties_classTiledSharp_1_1TmxDocument"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classTiledSharp_1_1TmxDocument"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classTiledSharp_1_1TmxDocument')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classTiledSharp_1_1TmxDocument.html">TiledSharp.TmxDocument</a></td></tr>
-<tr class="memitem:a54339101040563756fc111b974d65c7f inherit pro_methods_classTiledSharp_1_1TmxDocument"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54339101040563756fc111b974d65c7f"></a>
-XDocument&#160;</td><td class="memItemRight" valign="bottom"><b>ReadXml</b> (string filepath)</td></tr>
-<tr class="separator:a54339101040563756fc111b974d65c7f inherit pro_methods_classTiledSharp_1_1TmxDocument"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f41575aa7da58f25858e06d9a605751 inherit pro_methods_classTiledSharp_1_1TmxDocument"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f41575aa7da58f25858e06d9a605751"></a>
+XDocument&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxDocument.html#a9f41575aa7da58f25858e06d9a605751">ReadXml</a> (string filepath)</td></tr>
+<tr class="memdesc:a9f41575aa7da58f25858e06d9a605751 inherit pro_methods_classTiledSharp_1_1TmxDocument"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse XML content of TMX file. <br/></td></tr>
+<tr class="separator:a9f41575aa7da58f25858e06d9a605751 inherit pro_methods_classTiledSharp_1_1TmxDocument"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>TMX Map Class. </p>
+<div class="textblock"><p>Container class for TMX map file. </p>
 
 <p>Definition at line <a class="el" href="Map_8cs_source.html#l00010">10</a> of file <a class="el" href="Map_8cs_source.html">Map.cs</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/marshall/projects/newts/TiledSharp/src/<a class="el" href="Map_8cs_source.html">Map.cs</a></li>
+<li>/home/marshall/projects/TiledSharp/TiledSharp/src/<a class="el" href="Map_8cs_source.html">Map.cs</a></li>
 <li>src/Map.dox</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 13 2013 19:31:40 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 5 2013 20:38:10 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

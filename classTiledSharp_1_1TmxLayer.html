@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,54 +95,66 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">TiledSharp.TmxLayer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Layer tile maps.  
+ <a href="classTiledSharp_1_1TmxLayer.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for TiledSharp.TmxLayer:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classTiledSharp_1_1TmxLayer.png" usemap="#TiledSharp.TmxLayer_map" alt=""/>
   <map id="TiledSharp.TmxLayer_map" name="TiledSharp.TmxLayer_map">
-<area href="interfaceTiledSharp_1_1ITmxElement.html" alt="TiledSharp.ITmxElement" shape="rect" coords="0,0,146,24"/>
+<area href="interfaceTiledSharp_1_1ITmxElement.html" title="TMX element interface. " alt="TiledSharp.ITmxElement" shape="rect" coords="0,0,146,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aff24b0582f7174283887b2d84c736a23"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff24b0582f7174283887b2d84c736a23"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TmxLayer</b> (XElement xLayer, int width, int height)</td></tr>
-<tr class="separator:aff24b0582f7174283887b2d84c736a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b5fd05c41a7464c5311d5d9f6e1274a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b5fd05c41a7464c5311d5d9f6e1274a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayer.html#a4b5fd05c41a7464c5311d5d9f6e1274a">TmxLayer</a> (XElement xLayer, int width, int height)</td></tr>
+<tr class="memdesc:a4b5fd05c41a7464c5311d5d9f6e1274a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tile map layer constructor. <br/></td></tr>
+<tr class="separator:a4b5fd05c41a7464c5311d5d9f6e1274a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:ad88f1e7ac68b6dd68528de8fe1488120"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad88f1e7ac68b6dd68528de8fe1488120"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>Name</b><code> [get, set]</code></td></tr>
-<tr class="separator:ad88f1e7ac68b6dd68528de8fe1488120"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43e1d1bc98e0f331ec626b370e52b118"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43e1d1bc98e0f331ec626b370e52b118"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>Opacity</b><code> [get, set]</code></td></tr>
-<tr class="separator:a43e1d1bc98e0f331ec626b370e52b118"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6762b32cb97a65d249d3121eb739ad6b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6762b32cb97a65d249d3121eb739ad6b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Visible</b><code> [get, set]</code></td></tr>
-<tr class="separator:a6762b32cb97a65d249d3121eb739ad6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afce350cd2bb73624caa480aeca63d56f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afce350cd2bb73624caa480aeca63d56f"></a>
-List&lt; <a class="el" href="classTiledSharp_1_1TmxLayerTile.html">TmxLayerTile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Tiles</b><code> [get, set]</code></td></tr>
-<tr class="separator:afce350cd2bb73624caa480aeca63d56f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91986d3067be4616f370597bd32bb115"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91986d3067be4616f370597bd32bb115"></a>
-<a class="el" href="classTiledSharp_1_1PropertyDict.html">PropertyDict</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Properties</b><code> [get, set]</code></td></tr>
-<tr class="separator:a91986d3067be4616f370597bd32bb115"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea30aade24ccacd6d75e3542ab5eb2f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea30aade24ccacd6d75e3542ab5eb2f0"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayer.html#aea30aade24ccacd6d75e3542ab5eb2f0">Name</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aea30aade24ccacd6d75e3542ab5eb2f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layer name. <br/></td></tr>
+<tr class="separator:aea30aade24ccacd6d75e3542ab5eb2f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5182cbbe2b0394929def584203ad266"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5182cbbe2b0394929def584203ad266"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayer.html#af5182cbbe2b0394929def584203ad266">Opacity</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:af5182cbbe2b0394929def584203ad266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alpha transparency of layer. <br/></td></tr>
+<tr class="separator:af5182cbbe2b0394929def584203ad266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98f4efd906308dc36eec6bfd6de3097f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98f4efd906308dc36eec6bfd6de3097f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayer.html#a98f4efd906308dc36eec6bfd6de3097f">Visible</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a98f4efd906308dc36eec6bfd6de3097f"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if layer is visible. <br/></td></tr>
+<tr class="separator:a98f4efd906308dc36eec6bfd6de3097f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6822c99c9e6141474af213b6e34a5bf0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6822c99c9e6141474af213b6e34a5bf0"></a>
+List&lt; <a class="el" href="classTiledSharp_1_1TmxLayerTile.html">TmxLayerTile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayer.html#a6822c99c9e6141474af213b6e34a5bf0">Tiles</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a6822c99c9e6141474af213b6e34a5bf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of layer map tiles to be rendered. <br/></td></tr>
+<tr class="separator:a6822c99c9e6141474af213b6e34a5bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dc00dae426841312d5ca98525cb8edf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5dc00dae426841312d5ca98525cb8edf"></a>
+<a class="el" href="classTiledSharp_1_1PropertyDict.html">PropertyDict</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayer.html#a5dc00dae426841312d5ca98525cb8edf">Properties</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a5dc00dae426841312d5ca98525cb8edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">User-defined layer properties. <br/></td></tr>
+<tr class="separator:a5dc00dae426841312d5ca98525cb8edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_interfaceTiledSharp_1_1ITmxElement"><td colspan="2" onclick="javascript:toggleInherit('properties_interfaceTiledSharp_1_1ITmxElement')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interfaceTiledSharp_1_1ITmxElement.html">TiledSharp.ITmxElement</a></td></tr>
-<tr class="memitem:a3c963361a05e5e22f7150c0727f1ae21 inherit properties_interfaceTiledSharp_1_1ITmxElement"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c963361a05e5e22f7150c0727f1ae21"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>Name</b><code> [get]</code></td></tr>
-<tr class="separator:a3c963361a05e5e22f7150c0727f1ae21 inherit properties_interfaceTiledSharp_1_1ITmxElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40afeb5fad289a3cf43c17f88423b0f4 inherit properties_interfaceTiledSharp_1_1ITmxElement"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a40afeb5fad289a3cf43c17f88423b0f4"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceTiledSharp_1_1ITmxElement.html#a40afeb5fad289a3cf43c17f88423b0f4">Name</a><code> [get]</code></td></tr>
+<tr class="memdesc:a40afeb5fad289a3cf43c17f88423b0f4 inherit properties_interfaceTiledSharp_1_1ITmxElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layer or element name. <br/></td></tr>
+<tr class="separator:a40afeb5fad289a3cf43c17f88423b0f4 inherit properties_interfaceTiledSharp_1_1ITmxElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
+<div class="textblock"><p>Layer tile maps. </p>
+
 <p>Definition at line <a class="el" href="Layer_8cs_source.html#l00012">12</a> of file <a class="el" href="Layer_8cs_source.html">Layer.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/marshall/projects/newts/TiledSharp/src/<a class="el" href="Layer_8cs_source.html">Layer.cs</a></li>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/marshall/projects/TiledSharp/TiledSharp/src/<a class="el" href="Layer_8cs_source.html">Layer.cs</a></li>
+<li>src/Layer.dox</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 13 2013 19:31:40 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 5 2013 20:38:10 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

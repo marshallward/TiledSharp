@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,44 +95,56 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">TiledSharp.TmxLayerTile Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Tile elements of a layer map.  
+ <a href="classTiledSharp_1_1TmxLayerTile.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a377840902c282a26d00e9b62251aeab7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a377840902c282a26d00e9b62251aeab7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TmxLayerTile</b> (uint id, int x, int y)</td></tr>
-<tr class="separator:a377840902c282a26d00e9b62251aeab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52d07a8a4c0d4a67050c29d2484c455b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a52d07a8a4c0d4a67050c29d2484c455b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayerTile.html#a52d07a8a4c0d4a67050c29d2484c455b">TmxLayerTile</a> (uint id, int x, int y)</td></tr>
+<tr class="memdesc:a52d07a8a4c0d4a67050c29d2484c455b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layer tile constructor. <br/></td></tr>
+<tr class="separator:a52d07a8a4c0d4a67050c29d2484c455b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a743421a31d3bd3cb492e1bb7443bf4cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a743421a31d3bd3cb492e1bb7443bf4cb"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Gid</b><code> [get, set]</code></td></tr>
-<tr class="separator:a743421a31d3bd3cb492e1bb7443bf4cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd841d6d92c8297fd4a5064374c06bf2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd841d6d92c8297fd4a5064374c06bf2"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>X</b><code> [get, set]</code></td></tr>
-<tr class="separator:abd841d6d92c8297fd4a5064374c06bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae452d0e3f06b8f0639d4f31170bcaeed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae452d0e3f06b8f0639d4f31170bcaeed"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Y</b><code> [get, set]</code></td></tr>
-<tr class="separator:ae452d0e3f06b8f0639d4f31170bcaeed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54c32ae07c9f153fb2ec53dfb4f8e858"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54c32ae07c9f153fb2ec53dfb4f8e858"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>HorizontalFlip</b><code> [get, set]</code></td></tr>
-<tr class="separator:a54c32ae07c9f153fb2ec53dfb4f8e858"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00b1899fc5c18e88ca2d035e2ae2e63e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00b1899fc5c18e88ca2d035e2ae2e63e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>VerticalFlip</b><code> [get, set]</code></td></tr>
-<tr class="separator:a00b1899fc5c18e88ca2d035e2ae2e63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16edc6c3d3c54dded65831218ad1285d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16edc6c3d3c54dded65831218ad1285d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>DiagonalFlip</b><code> [get, set]</code></td></tr>
-<tr class="separator:a16edc6c3d3c54dded65831218ad1285d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66ba8849b4215924b0a146ed2fdc250a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66ba8849b4215924b0a146ed2fdc250a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayerTile.html#a66ba8849b4215924b0a146ed2fdc250a">Gid</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a66ba8849b4215924b0a146ed2fdc250a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global tileset ID. <br/></td></tr>
+<tr class="separator:a66ba8849b4215924b0a146ed2fdc250a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa88f9856226ea430c7700e8818c85bc2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa88f9856226ea430c7700e8818c85bc2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayerTile.html#aa88f9856226ea430c7700e8818c85bc2">X</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aa88f9856226ea430c7700e8818c85bc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">X (rightward) position of tile. <br/></td></tr>
+<tr class="separator:aa88f9856226ea430c7700e8818c85bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea75c986d91f4aed2ee5194bd0da1531"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea75c986d91f4aed2ee5194bd0da1531"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayerTile.html#aea75c986d91f4aed2ee5194bd0da1531">Y</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aea75c986d91f4aed2ee5194bd0da1531"><td class="mdescLeft">&#160;</td><td class="mdescRight">Y (downward) position of tile. <br/></td></tr>
+<tr class="separator:aea75c986d91f4aed2ee5194bd0da1531"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cf987a81848c2a34c01df95314b5354"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7cf987a81848c2a34c01df95314b5354"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayerTile.html#a7cf987a81848c2a34c01df95314b5354">HorizontalFlip</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a7cf987a81848c2a34c01df95314b5354"><td class="mdescLeft">&#160;</td><td class="mdescRight">Horizontally flipped tile image. <br/></td></tr>
+<tr class="separator:a7cf987a81848c2a34c01df95314b5354"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75431789f75a1096513d64bd65341e80"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75431789f75a1096513d64bd65341e80"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayerTile.html#a75431789f75a1096513d64bd65341e80">VerticalFlip</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a75431789f75a1096513d64bd65341e80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertically flipped tile image. <br/></td></tr>
+<tr class="separator:a75431789f75a1096513d64bd65341e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d258d03928d8653e5cf485f8efcffb5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d258d03928d8653e5cf485f8efcffb5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxLayerTile.html#a4d258d03928d8653e5cf485f8efcffb5">DiagonalFlip</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a4d258d03928d8653e5cf485f8efcffb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diagonally flipped tile image along top left/bottom right axis. <br/></td></tr>
+<tr class="separator:a4d258d03928d8653e5cf485f8efcffb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
+<div class="textblock"><p>Tile elements of a layer map. </p>
+
 <p>Definition at line <a class="el" href="Layer_8cs_source.html#l00072">72</a> of file <a class="el" href="Layer_8cs_source.html">Layer.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/marshall/projects/newts/TiledSharp/src/<a class="el" href="Layer_8cs_source.html">Layer.cs</a></li>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/marshall/projects/TiledSharp/TiledSharp/src/<a class="el" href="Layer_8cs_source.html">Layer.cs</a></li>
+<li>src/Layer.dox</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 13 2013 19:31:40 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 5 2013 20:38:10 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

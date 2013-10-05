@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,29 +95,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">TiledSharp.TmxBase64Data Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base64 data decoder.  
+ <a href="classTiledSharp_1_1TmxBase64Data.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a694187428c71f0558e90bdebe84d22cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a694187428c71f0558e90bdebe84d22cc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TmxBase64Data</b> (XElement xData)</td></tr>
-<tr class="separator:a694187428c71f0558e90bdebe84d22cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58cd722eb353fbc4bcdeaa8947aa5189"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58cd722eb353fbc4bcdeaa8947aa5189"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxBase64Data.html#a58cd722eb353fbc4bcdeaa8947aa5189">TmxBase64Data</a> (XElement xData)</td></tr>
+<tr class="memdesc:a58cd722eb353fbc4bcdeaa8947aa5189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base64 data decoding constructor. <br/></td></tr>
+<tr class="separator:a58cd722eb353fbc4bcdeaa8947aa5189"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a50b63d7b145a97a2050068f4ec62695e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a50b63d7b145a97a2050068f4ec62695e"></a>
-Stream&#160;</td><td class="memItemRight" valign="bottom"><b>Data</b><code> [get, set]</code></td></tr>
-<tr class="separator:a50b63d7b145a97a2050068f4ec62695e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab04ba9878156b30d36810890eab96a82"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab04ba9878156b30d36810890eab96a82"></a>
+Stream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxBase64Data.html#ab04ba9878156b30d36810890eab96a82">Data</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ab04ba9878156b30d36810890eab96a82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream of decoded data element. <br/></td></tr>
+<tr class="separator:ab04ba9878156b30d36810890eab96a82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
+<div class="textblock"><p>Base64 data decoder. </p>
+
 <p>Definition at line <a class="el" href="TiledCore_8cs_source.html#l00154">154</a> of file <a class="el" href="TiledCore_8cs_source.html">TiledCore.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/marshall/projects/newts/TiledSharp/src/<a class="el" href="TiledCore_8cs_source.html">TiledCore.cs</a></li>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/marshall/projects/TiledSharp/TiledSharp/src/<a class="el" href="TiledCore_8cs_source.html">TiledCore.cs</a></li>
+<li>src/TiledCore.dox</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 13 2013 19:31:40 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 5 2013 20:38:10 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

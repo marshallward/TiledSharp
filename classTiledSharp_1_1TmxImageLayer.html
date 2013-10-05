@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,60 +95,74 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">TiledSharp.TmxImageLayer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>External image layer.  
+ <a href="classTiledSharp_1_1TmxImageLayer.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for TiledSharp.TmxImageLayer:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classTiledSharp_1_1TmxImageLayer.png" usemap="#TiledSharp.TmxImageLayer_map" alt=""/>
   <map id="TiledSharp.TmxImageLayer_map" name="TiledSharp.TmxImageLayer_map">
-<area href="interfaceTiledSharp_1_1ITmxElement.html" alt="TiledSharp.ITmxElement" shape="rect" coords="0,0,165,24"/>
+<area href="interfaceTiledSharp_1_1ITmxElement.html" title="TMX element interface. " alt="TiledSharp.ITmxElement" shape="rect" coords="0,0,165,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab743bf593c6742c2840f55c1d2cd293b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab743bf593c6742c2840f55c1d2cd293b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TmxImageLayer</b> (XElement xImageLayer, string tmxDir=&quot;&quot;)</td></tr>
-<tr class="separator:ab743bf593c6742c2840f55c1d2cd293b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97ec84caa622c0a39678019f37b88e8c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97ec84caa622c0a39678019f37b88e8c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImageLayer.html#a97ec84caa622c0a39678019f37b88e8c">TmxImageLayer</a> (XElement xImageLayer, string tmxDir=&quot;&quot;)</td></tr>
+<tr class="memdesc:a97ec84caa622c0a39678019f37b88e8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image layer constructor. <br/></td></tr>
+<tr class="separator:a97ec84caa622c0a39678019f37b88e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a6274d2b40f66309074fb165c3028ec5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6274d2b40f66309074fb165c3028ec5e"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>Name</b><code> [get, set]</code></td></tr>
-<tr class="separator:a6274d2b40f66309074fb165c3028ec5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbe9699b3723b7fc028e926c3fa9c7ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adbe9699b3723b7fc028e926c3fa9c7ba"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Width</b><code> [get, set]</code></td></tr>
-<tr class="separator:adbe9699b3723b7fc028e926c3fa9c7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0407131d4679506f821a6e89a6548d65"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0407131d4679506f821a6e89a6548d65"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Height</b><code> [get, set]</code></td></tr>
-<tr class="separator:a0407131d4679506f821a6e89a6548d65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a399c40f65e33716e3d506f447be8f796"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a399c40f65e33716e3d506f447be8f796"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Visible</b><code> [get, set]</code></td></tr>
-<tr class="separator:a399c40f65e33716e3d506f447be8f796"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36cbe7e5a96dc905a77a56c7e9bd9e45"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36cbe7e5a96dc905a77a56c7e9bd9e45"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>Opacity</b><code> [get, set]</code></td></tr>
-<tr class="separator:a36cbe7e5a96dc905a77a56c7e9bd9e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a997960655360e1178d765bd687392150"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a997960655360e1178d765bd687392150"></a>
-<a class="el" href="classTiledSharp_1_1TmxImage.html">TmxImage</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Image</b><code> [get, set]</code></td></tr>
-<tr class="separator:a997960655360e1178d765bd687392150"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e026e2454e8fab7874c419b65c6aca2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e026e2454e8fab7874c419b65c6aca2"></a>
-<a class="el" href="classTiledSharp_1_1PropertyDict.html">PropertyDict</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Properties</b><code> [get, set]</code></td></tr>
-<tr class="separator:a4e026e2454e8fab7874c419b65c6aca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae50e7280cab7fade9229583df3112000"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae50e7280cab7fade9229583df3112000"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImageLayer.html#ae50e7280cab7fade9229583df3112000">Name</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ae50e7280cab7fade9229583df3112000"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image name. <br/></td></tr>
+<tr class="separator:ae50e7280cab7fade9229583df3112000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f828d4d3e3a70df067de357448d78a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f828d4d3e3a70df067de357448d78a6"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImageLayer.html#a8f828d4d3e3a70df067de357448d78a6">Width</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a8f828d4d3e3a70df067de357448d78a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image layer width in tiles (unused) <br/></td></tr>
+<tr class="separator:a8f828d4d3e3a70df067de357448d78a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a792b826d3256d557c229e3011241b7e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a792b826d3256d557c229e3011241b7e5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImageLayer.html#a792b826d3256d557c229e3011241b7e5">Height</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a792b826d3256d557c229e3011241b7e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image layer height in tiles (unused) <br/></td></tr>
+<tr class="separator:a792b826d3256d557c229e3011241b7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3391ce5a0d95151c7c9998cef7b6345e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3391ce5a0d95151c7c9998cef7b6345e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImageLayer.html#a3391ce5a0d95151c7c9998cef7b6345e">Visible</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a3391ce5a0d95151c7c9998cef7b6345e"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if layer is visible. <br/></td></tr>
+<tr class="separator:a3391ce5a0d95151c7c9998cef7b6345e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad237588d7eae25bf71b7b73997b8d2df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad237588d7eae25bf71b7b73997b8d2df"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImageLayer.html#ad237588d7eae25bf71b7b73997b8d2df">Opacity</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ad237588d7eae25bf71b7b73997b8d2df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alpha transparency of layer. <br/></td></tr>
+<tr class="separator:ad237588d7eae25bf71b7b73997b8d2df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a425a2291a07ba3a4b3228ce16fe75e6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a425a2291a07ba3a4b3228ce16fe75e6e"></a>
+<a class="el" href="classTiledSharp_1_1TmxImage.html">TmxImage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImageLayer.html#a425a2291a07ba3a4b3228ce16fe75e6e">Image</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a425a2291a07ba3a4b3228ce16fe75e6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">TMX image reference. <br/></td></tr>
+<tr class="separator:a425a2291a07ba3a4b3228ce16fe75e6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7083e9777a4b98e96538f9927e9deb7e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7083e9777a4b98e96538f9927e9deb7e"></a>
+<a class="el" href="classTiledSharp_1_1PropertyDict.html">PropertyDict</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTiledSharp_1_1TmxImageLayer.html#a7083e9777a4b98e96538f9927e9deb7e">Properties</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a7083e9777a4b98e96538f9927e9deb7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">User-defined image layer properties. <br/></td></tr>
+<tr class="separator:a7083e9777a4b98e96538f9927e9deb7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_interfaceTiledSharp_1_1ITmxElement"><td colspan="2" onclick="javascript:toggleInherit('properties_interfaceTiledSharp_1_1ITmxElement')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interfaceTiledSharp_1_1ITmxElement.html">TiledSharp.ITmxElement</a></td></tr>
-<tr class="memitem:a3c963361a05e5e22f7150c0727f1ae21 inherit properties_interfaceTiledSharp_1_1ITmxElement"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c963361a05e5e22f7150c0727f1ae21"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>Name</b><code> [get]</code></td></tr>
-<tr class="separator:a3c963361a05e5e22f7150c0727f1ae21 inherit properties_interfaceTiledSharp_1_1ITmxElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40afeb5fad289a3cf43c17f88423b0f4 inherit properties_interfaceTiledSharp_1_1ITmxElement"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a40afeb5fad289a3cf43c17f88423b0f4"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceTiledSharp_1_1ITmxElement.html#a40afeb5fad289a3cf43c17f88423b0f4">Name</a><code> [get]</code></td></tr>
+<tr class="memdesc:a40afeb5fad289a3cf43c17f88423b0f4 inherit properties_interfaceTiledSharp_1_1ITmxElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layer or element name. <br/></td></tr>
+<tr class="separator:a40afeb5fad289a3cf43c17f88423b0f4 inherit properties_interfaceTiledSharp_1_1ITmxElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
+<div class="textblock"><p>External image layer. </p>
+
 <p>Definition at line <a class="el" href="ImageLayer_8cs_source.html#l00009">9</a> of file <a class="el" href="ImageLayer_8cs_source.html">ImageLayer.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/marshall/projects/newts/TiledSharp/src/<a class="el" href="ImageLayer_8cs_source.html">ImageLayer.cs</a></li>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/marshall/projects/TiledSharp/TiledSharp/src/<a class="el" href="ImageLayer_8cs_source.html">ImageLayer.cs</a></li>
+<li>src/ImageLayer.dox</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 13 2013 19:31:40 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 5 2013 20:38:10 for TiledSharp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
