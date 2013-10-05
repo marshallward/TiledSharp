@@ -3,4 +3,31 @@
 @file   TiledSharp/src/ImageLayer.cs
 @brief  TMX image layer
 
+@class  TiledSharp::TmxImageLayer
+@brief  External image layer
+
+    @fn         TiledSharp::TmxImageLayer::TmxImageLayer
+    @brief      Image layer constructor
+
+    @property   TiledSharp::TmxImageLayer::Name
+    @brief      Image name
+
+    @property   TiledSharp::TmxImageLayer::Width
+    @brief      Image layer width in tiles (unused)
+
+    @property   TiledSharp::TmxImageLayer::Height
+    @brief      Image layer height in tiles (unused)
+
+    @property   TiledSharp::TmxImageLayer::Visible
+    @brief      True if layer is visible
+
+    @property   TiledSharp::TmxImageLayer::Opacity
+    @brief      Alpha transparency of layer
+
+    @property   TiledSharp::TmxImageLayer::Image
+    @brief      TMX image reference
+
+    @property   TiledSharp::TmxImageLayer::Properties
+    @brief      User-defined image layer properties
+
 */

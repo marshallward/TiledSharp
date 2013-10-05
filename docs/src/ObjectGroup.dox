@@ -3,4 +3,10 @@
 @file   TiledSharp/src/ObjectGroup.cs
 @brief  TMX object layer
 
+@class  TiledSharp::TmxObjectGroup
+@brief  Map object layer
+
+@class  TiledSharp::TmxObjectGroup::TmxObject
+@brief  Map object element
+
 */

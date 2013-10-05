@@ -3,5 +3,25 @@
 @file   TiledSharp/src/TiledCore.cs
 @brief  Support classes
 
+@class  TiledSharp::TmxDocument
+@brief  TMX document importer
+
+@class  TiledSharp::TmxList<T>
+@brief  List of map layer elements
+
+@class  TiledSharp::PropertyDict
+@brief  User-defined property list
+
+@class  TiledSharp::TmxImage
+@brief  External image reference
+
+@class  TiledSharp::TmxColor
+@brief  RGB color components
+
+@class  TiledSharp::TmxBase64Data
+@brief  Base64-decoded data
+
+@interface  TiledSharp::ITmxElement
+@brief      TMX element interface
 
 */
