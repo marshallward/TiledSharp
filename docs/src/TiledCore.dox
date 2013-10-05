@@ -6,22 +6,87 @@
 @class  TiledSharp::TmxDocument
 @brief  TMX document importer
 
+    @fn         TiledSharp::TmxDocument::ReadXml
+    @brief      Parse XML content of TMX file
+
+    @property   TiledSharp::TmxDocument::TmxDirectory
+    @brief      Parent directory of TMX file
+
+
+@class  TiledSharp::ITmxElement
+@brief  TMX element interface
+
+    @property   TiledSharp::ITmxElement::Name
+    @brief      Layer or element name
+
 @class  TiledSharp::TmxList<T>
 @brief  List of map layer elements
+
+    @fn         TiledSharp::TmxList<T>::Add
+    @brief      Add element to TMX list
+
+    @fn         TiledSharp::TmxList<T>::GetKeyForItem
+    @brief      Map layer names to list index
+
+    @property   TiledSharp::TmxList<T>::nameCount
+    @brief      Duplicate element name counter
+
 
 @class  TiledSharp::PropertyDict
 @brief  User-defined property list
 
+    @fn     TiledSharp::PropertyDict::PropertyDict
+    @brief  Property list constructor
+
+
 @class  TiledSharp::TmxImage
-@brief  External image reference
+@brief  Map image
+
+    @fn         TiledSharp::TmxImage::TmxImage
+    @brief      Map image constructor
+
+    @property   TiledSharp::TmxImage::Format
+    @brief      Embedded image format (currently unused)
+
+    @property   TiledSharp::TmxImage::Source
+    @brief      External reference to image data
+
+    @property   TiledSharp::TmxImage::Data
+    @brief      Embedded image data
+
+    @property   TiledSharp::TmxImage::Trans
+    @brief      Image transparency color
+
+    @property   TiledSharp::TmxImage::Width
+    @brief      Image pixel width
+
+    @property   TiledSharp::TmxImage::Height
+    @brief      Image pixel height
+
 
 @class  TiledSharp::TmxColor
 @brief  RGB color components
 
-@class  TiledSharp::TmxBase64Data
-@brief  Base64-decoded data
+    @fn         TiledSharp::TmxColor::TmxColor
+    @brief      Color constructor
 
-@interface  TiledSharp::ITmxElement
-@brief      TMX element interface
+    @property   TiledSharp::TmxColor::R
+    @brief      8-bit red color depth
+
+    @property   TiledSharp::TmxColor::G
+    @brief      8-bit green color depth
+
+    @property   TiledSharp::TmxColor::B
+    @brief      8-bit blue color depth
+
+
+@class  TiledSharp::TmxBase64Data
+@brief  Base64 data decoder
+
+    @fn         TiledSharp::TmxBase64Data::TmxBase64Data
+    @brief      Base64 data decoding constructor
+
+    @property   TiledSharp::TmxBase64Data::Data
+    @brief      Stream of decoded data element
 
 */

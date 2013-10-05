@@ -6,7 +6,74 @@
 @class  TiledSharp::TmxObjectGroup
 @brief  Map object layer
 
+    @fn         TiledSharp::TmxObjectGroup::TmxObjectGroup
+    @brief      Object layer constructor
+
+    @property   TiledSharp::TmxObjectGroup::Name
+    @brief      Object layer name
+
+    @property   TiledSharp::TmxObjectGroup::Color
+    @brief      Object layer elements color
+
+    @property   TiledSharp::TmxObjectGroup::Opacity
+    @brief      Alpha transparency of object layer
+
+    @property   TiledSharp::TmxObjectGroup::Visible
+    @brief      True if object layer is visible
+
+    @property   TiledSharp::TmxObjectGroup::Objects
+    @brief      List of objects in object layer
+
+    @property   TiledSharp::TmxObjectGroup::Properties
+    @brief      User-defined object layer properties
+
+    @enum       TiledSharp::TmxObjectGroup::TmxObjectType
+    @brief      Tiled object type
+
+
 @class  TiledSharp::TmxObjectGroup::TmxObject
 @brief  Map object element
+
+    @fn         TiledSharp::TmxObject::TmxObject
+    @brief      Object constructor
+
+    @fn         TiledSharp::TmxObject::ParsePoints
+    @brief      Parse vertex point string into (X,Y) coordinate pairs
+
+    @property   TiledSharp::TmxObject::Name
+    @brief      Object name
+
+    @property   TiledSharp::TmxObject::ObjectType
+    @brief      Tiled object type
+
+    @property   TiledSharp::TmxObject::Type
+    @brief      User-defined object type
+
+    @property   TiledSharp::TmxObject::X
+    @brief      X (rightward) object position in pixels
+
+    @property   TiledSharp::TmxObject::Y
+    @brief      Y (downward) object position in pixels
+
+    @property   TiledSharp::TmxObject::Width
+    @brief      Object width in pixels
+
+    @property   TiledSharp::TmxObject::Height
+    @brief      Object height in pixels
+
+    @property   TiledSharp::TmxObject::Rotation
+    @brief      Clockwise rotation of object in degrees
+
+    @property   TiledSharp::TmxObject::Tile
+    @brief      Object tile reference
+
+    @property   TiledSharp::TmxObject::Visible
+    @brief      True if object is visible
+
+    @property   TiledSharp::TmxObject::Points
+    @brief      List of (X,Y) object vertices in pixels
+
+    @property   TiledSharp::TmxObject::Properties
+    @brief      User-defined object properties
 
 */
