@@ -49,7 +49,7 @@ To import a TMX file into your C# application:
      var hiddenChest = map.ObjectGroups["Chests"].Objects["hiddenChest"];
 
 Map data fields correspond closely to the TMX file structure. For a complete
-listing, see the `TiledSharp Data Hierarchy`_.
+listing, see the documentation_.
 
 Although TiledSharp can manage elements with the same name, it is not
 recommended. For more information, see the TmxList_ specification.
@@ -78,8 +78,11 @@ Marshall Ward <tiledsharp@marshallward.org>
 
 .. _TMX: https://github.com/bjorn/tiled/wiki/TMX-Map-Format
 .. _Tiled: http://mapeditor.org
-.. _TmxMap: https://github.com/marshallward/TiledSharp/wiki/TmxMap
+.. _TmxMap:
+    http://marshallward.github.io/TiledSharp/classTiledSharp_1_1TmxMap.html
 .. _TiledSharp: https://github.com/marshallward/TiledSharp
+.. _documentation:
+    http://marshallward.github.io/TiledSharp/index.html
 .. _TiledSharp Data Hierarchy:
     https://github.com/marshallward/TiledSharp/wiki/TiledSharp-Data-Hierarchy
 .. _TmxList: https://github.com/marshallward/TiledSharp/wiki/TmxList
