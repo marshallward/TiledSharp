@@ -66,7 +66,12 @@ v1.9.1.8.
 
 Licensing
 ---------
-TiledSharp_ is distributed under the `Apache 2.0 License`_.
+TiledSharp_ is distributed under the `Apache 2.0 License`_. The code can be
+used freely in any project, including commercial software, and does not place
+any restrictions on your own code. But any changes to TiledSharp must be
+documented explicitly.
+
+Attribution is not necessary, but always appreciated.
 
 Support code from DotNetZip_ is distributed under the `Microsoft Public
 License`_.
