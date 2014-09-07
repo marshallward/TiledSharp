@@ -14,6 +14,7 @@ namespace TiledSharp
         public TmxColor Color {get; private set;}
         public double Opacity {get; private set;}
         public bool Visible {get; private set;}
+        public DrawOrderType DrawOrder {get; private set;}
 
         public TmxList<TmxObject> Objects {get; private set;}
         public PropertyDict Properties {get; private set;}
@@ -24,6 +25,17 @@ namespace TiledSharp
             Color = new TmxColor(xObjectGroup.Attribute("color"));
             Opacity = (double?)xObjectGroup.Attribute("opacity") ?? 1.0;
             Visible = (bool?)xObjectGroup.Attribute("visible") ?? true;
+
+            DrawOrderType draworder;
+            var draworderDict = new Dictionary<string, DrawOrderType> {
+                {"unknown", DrawOrderType.UnknownOrder},
+                {"topdown", DrawOrderType.IndexOrder},
+                {"index", DrawOrderType.TopDown}
+            };
+            if (draworderDict.TryGetValue(
+                                    xObjectGroup.Attribute("draworder").Value,
+                                    out draworder))
+                DrawOrder = draworder;
 
             Objects = new TmxList<TmxObject>();
             foreach (var e in xObjectGroup.Elements("object"))
@@ -108,13 +120,20 @@ namespace TiledSharp
             }
         }
 
-        public enum TmxObjectType : byte
+        public enum TmxObjectType
         {
             Basic,
             Tile,
             Ellipse,
             Polygon,
             Polyline
+        }
+
+        public enum DrawOrderType
+        {
+            UnknownOrder = -1,
+            TopDown,
+            IndexOrder
         }
     }
 }

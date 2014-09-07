@@ -129,6 +129,7 @@ namespace TiledSharp
         public double Probability {get; private set;}
 
         public TmxImage Image {get; private set;}
+        public TmxList<TmxObjectGroup> ObjectGroups {get; private set;}
         public PropertyDict Properties {get; private set;}
 
         // Human-readable aliases to the Terrain markers
@@ -169,6 +170,11 @@ namespace TiledSharp
 
             Probability = (double?)xTile.Attribute("probability") ?? 1.0;
             Image = new TmxImage(xTile.Element("image"), tmxDir);
+
+            ObjectGroups = new TmxList<TmxObjectGroup>();
+            foreach (var e in xTile.Elements("objectgroup"))
+                ObjectGroups.Add(new TmxObjectGroup(e));
+
             Properties = new PropertyDict(xTile.Element("properties"));
         }
     }
