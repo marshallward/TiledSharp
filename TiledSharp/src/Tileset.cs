@@ -8,6 +8,9 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
+    // TODO: The design here is all wrong. A Tileset should be a list of tiles,
+    //       it shouldn't force the user to do so much tile ID management
+
     public class TmxTileset : TmxDocument, ITmxElement
     {
         public int FirstGid {get; private set;}
@@ -130,6 +133,7 @@ namespace TiledSharp
 
         public TmxImage Image {get; private set;}
         public TmxList<TmxObjectGroup> ObjectGroups {get; private set;}
+        public List<TmxAnimationFrame> AnimationFrames {get; private set;}
         public PropertyDict Properties {get; private set;}
 
         // Human-readable aliases to the Terrain markers
@@ -175,7 +179,25 @@ namespace TiledSharp
             foreach (var e in xTile.Elements("objectgroup"))
                 ObjectGroups.Add(new TmxObjectGroup(e));
 
+            AnimationFrames = new List<TmxAnimationFrame>();
+            foreach (var e in xTile.Elements("animation"))
+                AnimationFrames.Add(new TmxAnimationFrame(e));
+
             Properties = new PropertyDict(xTile.Element("properties"));
         }
     }
+
+    public class TmxAnimationFrame
+    {
+        public int Id {get; private set;}
+        public int Duration {get; private set;}
+
+        public TmxAnimationFrame(XElement xFrame)
+        {
+            Id = (int)xFrame.Attribute("tileid");
+            Duration = (int)xFrame.Attribute("duration");
+        }
+    }
+
+
 }
