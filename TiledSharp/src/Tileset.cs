@@ -127,6 +127,7 @@ namespace TiledSharp
         public int Id {get; private set;}
         public List<TmxTerrain> TerrainEdges {get; private set;}
         public double Probability {get; private set;}
+		public List<TmxTilesetTileAnimationFrame> AnimationFrames {get; private set;}
 
         public TmxImage Image {get; private set;}
         public PropertyDict Properties {get; private set;}
@@ -170,6 +171,31 @@ namespace TiledSharp
             Probability = (double?)xTile.Attribute("probability") ?? 1.0;
             Image = new TmxImage(xTile.Element("image"), tmxDir);
             Properties = new PropertyDict(xTile.Element("properties"));
+			
+			AnimationFrames = new List<TmxTilesetTileAnimationFrame>();
+			foreach (var xAnimation in xTile.Elements("animation"))
+			{
+				foreach (var xFrame in xAnimation.Elements("frame"))
+				{
+					int tileId = (int)xFrame.Attribute("tileid");
+					int duration = (int)xFrame.Attribute("duration");
+					TmxTilesetTileAnimationFrame frame = new TmxTilesetTileAnimationFrame(tileId, duration);
+					AnimationFrames.Add(frame);
+				}
+			}
         }
+		
     }
+	
+	public class TmxTilesetTileAnimationFrame
+	{
+		public int TileId {get; private set;}
+		public int Duration {get; private set;}
+		
+		public TmxTilesetTileAnimationFrame(int tileId, int duration)
+		{
+			TileId = tileId;
+			Duration = duration;
+		}
+	}
 }
