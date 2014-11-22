@@ -84,7 +84,7 @@ namespace TiledSharp
                 Tiles = new List<TmxTilesetTile>();
                 foreach (var xTile in xTileset.Elements("tile"))
                 {
-                    var tile = new TmxTilesetTile(xTile, Terrains, tmxDir);
+                    var tile = new TmxTilesetTile(xTile, Terrains, FirstGid, tmxDir);
                     Tiles.Add(tile);
                 }
 
@@ -128,6 +128,7 @@ namespace TiledSharp
     public class TmxTilesetTile
     {
         public int Id {get; private set;}
+		public int Gid {get; private set;}
         public List<TmxTerrain> TerrainEdges {get; private set;}
         public double Probability {get; private set;}
 
@@ -152,10 +153,11 @@ namespace TiledSharp
             get { return TerrainEdges[3]; }
         }
 
-        public TmxTilesetTile(XElement xTile, TmxList<TmxTerrain> Terrains,
+        public TmxTilesetTile(XElement xTile, TmxList<TmxTerrain> Terrains, int firstGid,
                        string tmxDir = "")
         {
             Id = (int)xTile.Attribute("id");
+            Gid = Id + firstGid;
 
             TerrainEdges = new List<TmxTerrain>(4);
 
