@@ -38,18 +38,17 @@ namespace TiledSharp
             TileHeight = (int)xMap.Attribute("tileheight");
             BackgroundColor = new TmxColor(xMap.Attribute("backgroundcolor"));
 
-            OrientationType orient;
             var orientDict = new Dictionary<string, OrientationType> {
                 {"unknown", OrientationType.Unknown},
                 {"orthogonal", OrientationType.Orthogonal},
                 {"isometric", OrientationType.Isometric},
                 {"staggered", OrientationType.Staggered}
             };
-            if (orientDict.TryGetValue(xMap.Attribute("orientation").Value,
-                                       out orient))
-                Orientation = orient;
 
-            RenderOrderType render;
+            var orientValue = (string) xMap.Attribute("orientation");
+            if (orientValue != null)
+                Orientation = orientDict[orientValue];
+
             var renderDict = new Dictionary<string, RenderOrderType> {
                 {"right-down", RenderOrderType.RightDown},
                 {"right-up", RenderOrderType.RightUp},
@@ -57,9 +56,9 @@ namespace TiledSharp
                 {"left-up", RenderOrderType.LeftUp}
             };
 
-            if (renderDict.TryGetValue(xMap.Attribute("renderorder").Value,
-                                       out render))
-                RenderOrder = render;
+            var renderValue = (string) xMap.Attribute("renderorder");
+            if (renderValue != null)
+                RenderOrder = renderDict[renderValue];
 
             Tilesets = new TmxList<TmxTileset>();
             foreach (var e in xMap.Elements("tileset"))
