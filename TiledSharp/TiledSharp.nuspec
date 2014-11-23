@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>TiledSharp.dll</id>
+    <id>TiledSharp</id>
     <title>TiledSharp</title>
-    <version>0.10.2.0</version>
+    <version>0.10.2-alpha001</version>
     <authors>Marshall Ward</authors>
     <owners>Marshall Ward</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.txt</licenseUrl>
