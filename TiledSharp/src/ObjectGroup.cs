@@ -27,15 +27,15 @@ namespace TiledSharp
             Visible = (bool?)xObjectGroup.Attribute("visible") ?? true;
 
             DrawOrderType draworder;
-            var draworderDict = new Dictionary<string, DrawOrderType> {
+            var drawOrderDict = new Dictionary<string, DrawOrderType> {
                 {"unknown", DrawOrderType.UnknownOrder},
                 {"topdown", DrawOrderType.IndexOrder},
                 {"index", DrawOrderType.TopDown}
             };
-            if (draworderDict.TryGetValue(
-                                    xObjectGroup.Attribute("draworder").Value,
-                                    out draworder))
-                DrawOrder = draworder;
+
+            var drawOrderValue = (string) xObjectGroup.Attribute("draworder");
+            if (drawOrderValue != null)
+                DrawOrder = drawOrderDict[drawOrderValue];
 
             Objects = new TmxList<TmxObject>();
             foreach (var e in xObjectGroup.Elements("object"))
