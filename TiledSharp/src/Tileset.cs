@@ -180,8 +180,11 @@ namespace TiledSharp
                 ObjectGroups.Add(new TmxObjectGroup(e));
 
             AnimationFrames = new List<TmxAnimationFrame>();
-            foreach (var e in xTile.Element("animation").Elements("frame"))
-                AnimationFrames.Add(new TmxAnimationFrame(e));
+            if (xTile.Element("animation") != null)
+            {
+                foreach (var e in xTile.Element("animation").Elements("frame"))
+                    AnimationFrames.Add(new TmxAnimationFrame(e));
+            }
 
             Properties = new PropertyDict(xTile.Element("properties"));
         }
