@@ -26,7 +26,6 @@ namespace TiledSharp
             Opacity = (double?)xObjectGroup.Attribute("opacity") ?? 1.0;
             Visible = (bool?)xObjectGroup.Attribute("visible") ?? true;
 
-            DrawOrderType draworder;
             var drawOrderDict = new Dictionary<string, DrawOrderType> {
                 {"unknown", DrawOrderType.UnknownOrder},
                 {"topdown", DrawOrderType.IndexOrder},
