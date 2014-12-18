@@ -22,25 +22,29 @@ namespace TiledSharp
             XDocument xDoc;
 
             var asm = Assembly.GetEntryAssembly();
-            var manifest = asm.GetManifestResourceNames();
 
-            var fileResPath = filepath.Replace(
+            if (asm != null)
+            {
+                var manifest = asm.GetManifestResourceNames();
+
+                var fileResPath = filepath.Replace(
                     Path.DirectorySeparatorChar.ToString(), ".");
-            var fileRes = Array.Find(manifest, s => s.EndsWith(fileResPath));
+                var fileRes = Array.Find(manifest, s => s.EndsWith(fileResPath));
 
-            // If there is a resource in the assembly, load the resource
-            // Otherwise, assume filepath is an explicit path
-            if (fileRes != null)
-            {
-                Stream xmlStream = asm.GetManifestResourceStream(fileRes);
-                xDoc = XDocument.Load(xmlStream);
-                TmxDirectory = "";
+                // If there is a resource in the assembly, load the resource
+                // Otherwise, assume filepath is an explicit path
+                if (fileRes != null)
+                {
+                    Stream xmlStream = asm.GetManifestResourceStream(fileRes);
+                    xDoc = XDocument.Load(xmlStream);
+                    TmxDirectory = "";
+
+                    return xDoc;
+                }
             }
-            else
-            {
-                xDoc = XDocument.Load(filepath);
-                TmxDirectory = Path.GetDirectoryName(filepath);
-            }
+
+            xDoc = XDocument.Load(filepath);
+            TmxDirectory = Path.GetDirectoryName(filepath);
 
             return xDoc;
         }
