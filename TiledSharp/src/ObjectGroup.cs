@@ -80,7 +80,9 @@ namespace TiledSharp
 
                 if (xGid != null)
                 {
-                    Tile = new TmxLayerTile((uint)xGid, X, Y);
+                    Tile = new TmxLayerTile((uint)xGid,
+                                            Convert.ToInt32(Math.Round(X)),
+                                            Convert.ToInt32(Math.Round(X)));
                     ObjectType = TmxObjectType.Tile;
                 }
                 else if (xEllipse != null)
