@@ -20,11 +20,11 @@ namespace TiledSharp
         public int Spacing {get; private set;}
         public int Margin {get; private set;}
 
+        public List<TmxTilesetTile> Tiles {get; private set;}
         public TmxTileOffset TileOffset {get; private set;}
+        public PropertyDict Properties {get; private set;}
         public TmxImage Image {get; private set;}
         public TmxList<TmxTerrain> Terrains {get; private set;}
-        public List<TmxTilesetTile> Tiles {get; private set;}
-        public PropertyDict Properties {get; private set;}
 
         // TSX file constructor
         public TmxTileset(XDocument xDoc, string tmxDir) :
@@ -34,7 +34,7 @@ namespace TiledSharp
         public TmxTileset(XElement xTileset, string tmxDir = "")
         {
             var xFirstGid = xTileset.Attribute("firstgid");
-            var source = (string)xTileset.Attribute("source");
+            var source = (string) xTileset.Attribute("source");
 
             if (source != null)
             {
@@ -42,7 +42,7 @@ namespace TiledSharp
                 source = Path.Combine(tmxDir, source);
 
                 // source is always preceded by firstgid
-                FirstGid = (int)xFirstGid;
+                FirstGid = (int) xFirstGid;
 
                 // Everything else is in the TSX file
                 var xDocTileset = ReadXml(source);
@@ -63,13 +63,13 @@ namespace TiledSharp
             {
                 // firstgid is always in TMX, but not TSX
                 if (xFirstGid != null)
-                    FirstGid = (int)xFirstGid;
+                    FirstGid = (int) xFirstGid;
 
-                Name = (string)xTileset.Attribute("name");
-                TileWidth = (int)xTileset.Attribute("tilewidth");
-                TileHeight = (int)xTileset.Attribute("tileheight");
-                Spacing = (int?)xTileset.Attribute("spacing") ?? 0;
-                Margin = (int?)xTileset.Attribute("margin") ?? 0;
+                Name = (string) xTileset.Attribute("name");
+                TileWidth = (int) xTileset.Attribute("tilewidth");
+                TileHeight = (int) xTileset.Attribute("tileheight");
+                Spacing = (int?) xTileset.Attribute("spacing") ?? 0;
+                Margin = (int?) xTileset.Attribute("margin") ?? 0;
 
                 TileOffset = new TmxTileOffset(xTileset.Element("tileoffset"));
                 Image = new TmxImage(xTileset.Element("image"), tmxDir);
@@ -131,10 +131,10 @@ namespace TiledSharp
         public List<TmxTerrain> TerrainEdges {get; private set;}
         public double Probability {get; private set;}
 
+        public PropertyDict Properties {get; private set;}
         public TmxImage Image {get; private set;}
         public TmxList<TmxObjectGroup> ObjectGroups {get; private set;}
         public List<TmxAnimationFrame> AnimationFrames {get; private set;}
-        public PropertyDict Properties {get; private set;}
 
         // Human-readable aliases to the Terrain markers
         public TmxTerrain TopLeft {

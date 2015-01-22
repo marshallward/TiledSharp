@@ -12,9 +12,9 @@ namespace TiledSharp
     {
         public string Name {get; private set;}
         public TmxColor Color {get; private set;}
+        public DrawOrderType DrawOrder {get; private set;}
         public double Opacity {get; private set;}
         public bool Visible {get; private set;}
-        public DrawOrderType DrawOrder {get; private set;}
 
         public TmxList<TmxObject> Objects {get; private set;}
         public PropertyDict Properties {get; private set;}
@@ -64,12 +64,12 @@ namespace TiledSharp
             public TmxObject(XElement xObject)
             {
                 Name = (string)xObject.Attribute("name") ?? "";
-                Type = (string)xObject.Attribute("type");
                 X = (double)xObject.Attribute("x");
                 Y = (double)xObject.Attribute("y");
-                Visible = (bool?)xObject.Attribute("visible") ?? true;
                 Width = (double?)xObject.Attribute("width") ?? 0.0;
                 Height = (double?)xObject.Attribute("height") ?? 0.0;
+                Type = (string)xObject.Attribute("type");
+                Visible = (bool?)xObject.Attribute("visible") ?? true;
                 Rotation = (double?)xObject.Attribute("rotation") ?? 0.0;
 
                 // Assess object type and assign appropriate content
