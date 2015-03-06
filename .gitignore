@@ -5,3 +5,5 @@ bin
 obj
 test-results
 *.nupkg
+*.user
+
