@@ -21,7 +21,7 @@ namespace TiledSharp
 
         public TmxObjectGroup(XElement xObjectGroup)
         {
-            Name = (string)xObjectGroup.Attribute("name");
+            Name = (string)xObjectGroup.Attribute("name") ?? "";
             Color = new TmxColor(xObjectGroup.Attribute("color"));
             Opacity = (double?)xObjectGroup.Attribute("opacity") ?? 1.0;
             Visible = (bool?)xObjectGroup.Attribute("visible") ?? true;
@@ -68,7 +68,7 @@ namespace TiledSharp
                 Y = (double)xObject.Attribute("y");
                 Width = (double?)xObject.Attribute("width") ?? 0.0;
                 Height = (double?)xObject.Attribute("height") ?? 0.0;
-                Type = (string)xObject.Attribute("type");
+                Type = (string)xObject.Attribute("type") ?? "";
                 Visible = (bool?)xObject.Attribute("visible") ?? true;
                 Rotation = (double?)xObject.Attribute("rotation") ?? 0.0;
 
