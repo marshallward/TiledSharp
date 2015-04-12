@@ -33,6 +33,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Core" />
+    <Reference Include="Zlib.Portable">
+      <HintPath>..\packages\Zlib.Portable.1.10.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\TiledCore.cs" />
@@ -40,21 +43,11 @@
     <Compile Include="src\Layer.cs" />
     <Compile Include="src\Tileset.cs" />
     <Compile Include="src\AssemblyInfo.cs" />
-    <Compile Include="src\zlib\CRC32.cs" />
-    <Compile Include="src\zlib\Deflate.cs" />
-    <Compile Include="src\zlib\DeflateStream.cs" />
-    <Compile Include="src\zlib\GZipStream.cs" />
-    <Compile Include="src\zlib\InfTree.cs" />
-    <Compile Include="src\zlib\Inflate.cs" />
-    <Compile Include="src\zlib\ParallelDeflateOutputStream.cs" />
-    <Compile Include="src\zlib\Tree.cs" />
-    <Compile Include="src\zlib\Zlib.cs" />
-    <Compile Include="src\zlib\ZlibBaseStream.cs" />
-    <Compile Include="src\zlib\ZlibCodec.cs" />
-    <Compile Include="src\zlib\ZlibConstants.cs" />
-    <Compile Include="src\zlib\ZlibStream.cs" />
     <Compile Include="src\ObjectGroup.cs" />
     <Compile Include="src\ImageLayer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
