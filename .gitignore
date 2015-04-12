@@ -6,4 +6,6 @@ obj
 test-results
 *.nupkg
 *.user
-
+#NuGet
+packages
+!packages/repositories.config
