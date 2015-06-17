@@ -58,24 +58,22 @@ namespace TiledSharp
 
     public class TmxList<T> : KeyedCollection<string, T> where T : ITmxElement
     {
-        public static Dictionary<Tuple<TmxList<T>, string>, int> nameCount
-            = new Dictionary<Tuple<TmxList<T>, string>, int>();
+        public Dictionary<string, int> nameCount
+            = new Dictionary<string, int>();
 
         public new void Add(T t)
         {
             // Rename duplicate entries by appending a number
-            var key = Tuple.Create<TmxList<T>, string> (this, t.Name);
             if (this.Contains(t.Name))
-                nameCount[key] += 1;
+                nameCount[t.Name] += 1;
             else
-                nameCount.Add(key, 0);
+                nameCount.Add(t.Name, 0);
             base.Add(t);
         }
 
         protected override string GetKeyForItem(T t)
         {
-            var key = Tuple.Create<TmxList<T>, string> (this, t.Name);
-            var count = nameCount[key];
+            var count = nameCount[t.Name];
 
             var dupes = 0;
             var itemKey = t.Name;
