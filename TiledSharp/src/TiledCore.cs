@@ -9,6 +9,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace TiledSharp
@@ -36,7 +37,10 @@ namespace TiledSharp
             if (fileRes != null)
             {
                 Stream xmlStream = asm.GetManifestResourceStream(fileRes);
-                xDoc = XDocument.Load(xmlStream);
+                using (XmlReader reader = XmlReader.Create(xmlStream))
+                {
+                    xDoc = XDocument.Load(reader);
+                }
                 TmxDirectory = "";
             }
             else
