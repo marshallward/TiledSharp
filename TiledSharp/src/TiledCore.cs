@@ -173,7 +173,8 @@ namespace TiledSharp
 
             var compression = (string)xData.Attribute("compression");
             if (compression == "gzip")
-                Data = new GZipStream(Data, CompressionMode.Decompress, false);
+                Data = new Ionic.Zlib.GZipStream(Data,
+                        Ionic.Zlib.CompressionMode.Decompress, false);
             else if (compression == "zlib")
                 Data = new Ionic.Zlib.ZlibStream(Data,
                         Ionic.Zlib.CompressionMode.Decompress, false);

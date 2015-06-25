@@ -1216,7 +1216,7 @@ namespace Ionic.Zlib
 
             // step 2: flush (sync)
             rc = compressor.Deflate(FlushType.Sync);
-            
+
             // The rc is not processed here, this is only to eliminate the warning
             if (rc != ZlibConstants.Z_OK | rc != ZlibConstants.Z_STREAM_END)
                 throw new ZlibException("Deflate: unknown return code");
@@ -1234,14 +1234,9 @@ namespace Ionic.Zlib
                 lock(_outputLock)
                 {
                     int tid = Thread.CurrentThread.GetHashCode();
-#if !SILVERLIGHT
-                    Console.ForegroundColor = (ConsoleColor) (tid % 8 + 8);
-#endif
+
                     Console.Write("{0:000} PDOS ", tid);
                     Console.WriteLine(format, varParams);
-#if !SILVERLIGHT
-                    Console.ResetColor();
-#endif
                 }
             }
         }
