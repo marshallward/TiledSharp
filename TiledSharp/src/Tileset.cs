@@ -71,8 +71,7 @@ namespace TiledSharp
                 TileHeight = (int) xTileset.Attribute("tileheight");
                 Spacing = (int?) xTileset.Attribute("spacing") ?? 0;
                 Margin = (int?) xTileset.Attribute("margin") ?? 0;
-                LastGid = (int?) xTileset.Attribute("tilecount") ?? 0;
-                LastGid += FirstGid;
+                LastGid = ((int?) xTileset.Attribute("tilecount") ?? 1) + FirstGid;
                 TileOffset = new TmxTileOffset(xTileset.Element("tileoffset"));
                 Image = new TmxImage(xTileset.Element("image"), tmxDir);
                 
