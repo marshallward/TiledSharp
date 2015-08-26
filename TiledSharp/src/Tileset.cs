@@ -1,4 +1,4 @@
-/* Distributed as part of TiledSharp, Copyright 2012 Marshall Ward
+/* Distributed as part of TiledSharp, Copyright 2012 Marshall Ward, Edited 2015, Peter Taylor
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
 using System;
@@ -14,6 +14,7 @@ namespace TiledSharp
     public class TmxTileset : TmxDocument, ITmxElement
     {
         public int FirstGid {get; private set;}
+		public int LastGid {get; private set;}
         public string Name {get; private set;}
         public int TileWidth {get; private set;}
         public int TileHeight {get; private set;}
@@ -47,8 +48,8 @@ namespace TiledSharp
                 // Everything else is in the TSX file
                 var xDocTileset = ReadXml(source);
                 var ts = new TmxTileset(xDocTileset, TmxDirectory);
-
                 Name = ts.Name;
+                LastGid = ts.LastGid;
                 TileWidth = ts.TileWidth;
                 TileHeight = ts.TileHeight;
                 Spacing = ts.Spacing;
@@ -64,16 +65,17 @@ namespace TiledSharp
                 // firstgid is always in TMX, but not TSX
                 if (xFirstGid != null)
                     FirstGid = (int) xFirstGid;
-
+                
                 Name = (string) xTileset.Attribute("name");
                 TileWidth = (int) xTileset.Attribute("tilewidth");
                 TileHeight = (int) xTileset.Attribute("tileheight");
                 Spacing = (int?) xTileset.Attribute("spacing") ?? 0;
                 Margin = (int?) xTileset.Attribute("margin") ?? 0;
-
+                LastGid = (int?) xTileset.Attribute("tilecount") ?? 0;
+                LastGid += FirstGid;
                 TileOffset = new TmxTileOffset(xTileset.Element("tileoffset"));
                 Image = new TmxImage(xTileset.Element("image"), tmxDir);
-
+                
                 Terrains = new TmxList<TmxTerrain>();
                 var xTerrainType = xTileset.Element("terraintypes");
                 if (xTerrainType != null) {
