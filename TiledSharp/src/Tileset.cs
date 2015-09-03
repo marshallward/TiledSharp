@@ -2,7 +2,7 @@
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml.Linq;
 
@@ -20,14 +20,14 @@ namespace TiledSharp
         public int Spacing {get; private set;}
         public int Margin {get; private set;}
 
-        public List<TmxTilesetTile> Tiles {get; private set;}
+        public Collection<TmxTilesetTile> Tiles {get; private set;}
         public TmxTileOffset TileOffset {get; private set;}
         public PropertyDict Properties {get; private set;}
         public TmxImage Image {get; private set;}
         public TmxList<TmxTerrain> Terrains {get; private set;}
 
         // TSX file constructor
-        public TmxTileset(XDocument xDoc, string tmxDir) :
+        public TmxTileset(XContainer xDoc, string tmxDir) :
             this(xDoc.Element("tileset"), tmxDir) { }
 
         // TMX tileset element constructor
@@ -81,7 +81,7 @@ namespace TiledSharp
                         Terrains.Add(new TmxTerrain(e));
                 }
 
-                Tiles = new List<TmxTilesetTile>();
+                Tiles = new Collection<TmxTilesetTile>();
                 foreach (var xTile in xTileset.Elements("tile"))
                 {
                     var tile = new TmxTilesetTile(xTile, Terrains, tmxDir);
@@ -128,13 +128,13 @@ namespace TiledSharp
     public class TmxTilesetTile
     {
         public int Id {get; private set;}
-        public List<TmxTerrain> TerrainEdges {get; private set;}
+        public Collection<TmxTerrain> TerrainEdges {get; private set;}
         public double Probability {get; private set;}
 
         public PropertyDict Properties {get; private set;}
         public TmxImage Image {get; private set;}
         public TmxList<TmxObjectGroup> ObjectGroups {get; private set;}
-        public List<TmxAnimationFrame> AnimationFrames {get; private set;}
+        public Collection<TmxAnimationFrame> AnimationFrames {get; private set;}
 
         // Human-readable aliases to the Terrain markers
         public TmxTerrain TopLeft {
@@ -157,7 +157,7 @@ namespace TiledSharp
         {
             Id = (int)xTile.Attribute("id");
 
-            TerrainEdges = new List<TmxTerrain>(4);
+            TerrainEdges = new Collection<TmxTerrain>();
 
             int result;
             TmxTerrain edge;
@@ -170,6 +170,8 @@ namespace TiledSharp
                 else
                     edge = null;
                 TerrainEdges.Add(edge);
+
+                // TODO: Assert that TerrainEdges length is 4
             }
 
             Probability = (double?)xTile.Attribute("probability") ?? 1.0;
@@ -179,7 +181,7 @@ namespace TiledSharp
             foreach (var e in xTile.Elements("objectgroup"))
                 ObjectGroups.Add(new TmxObjectGroup(e));
 
-            AnimationFrames = new List<TmxAnimationFrame>();
+            AnimationFrames = new Collection<TmxAnimationFrame>();
             if (xTile.Element("animation") != null) {
                 foreach (var e in xTile.Element("animation").Elements("frame"))
                     AnimationFrames.Add(new TmxAnimationFrame(e));

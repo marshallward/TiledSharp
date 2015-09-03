@@ -3,6 +3,7 @@
 // http://www.apache.org/licenses/LICENSE-2.0
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Xml.Linq;
 
@@ -21,7 +22,7 @@ namespace TiledSharp
 
         public TmxObjectGroup(XElement xObjectGroup)
         {
-            Name = (string)xObjectGroup.Attribute("name") ?? "";
+            Name = (string)xObjectGroup.Attribute("name") ?? String.Empty;
             Color = new TmxColor(xObjectGroup.Attribute("color"));
             Opacity = (double?)xObjectGroup.Attribute("opacity") ?? 1.0;
             Visible = (bool?)xObjectGroup.Attribute("visible") ?? true;
@@ -42,97 +43,81 @@ namespace TiledSharp
 
             Properties = new PropertyDict(xObjectGroup.Element("properties"));
         }
+    }
 
-        public class TmxObject : ITmxElement
+    public class TmxObject : ITmxElement
+    {
+        // Many TmxObjectTypes are distinguished by null values in fields
+        // It might be smart to subclass TmxObject
+        public string Name {get; private set;}
+        public TmxObjectType ObjectType {get; private set;}
+        public string Type {get; private set;}
+        public double X {get; private set;}
+        public double Y {get; private set;}
+        public double Width {get; private set;}
+        public double Height {get; private set;}
+        public double Rotation {get; private set;}
+        public TmxLayerTile Tile {get; private set;}
+        public bool Visible {get; private set;}
+
+        public Collection<TmxObjectPoint> Points {get; private set;}
+        public PropertyDict Properties {get; private set;}
+
+        public TmxObject(XElement xObject)
         {
-            // Many TmxObjectTypes are distinguished by null values in fields
-            // It might be smart to subclass TmxObject
-            public string Name {get; private set;}
-            public TmxObjectType ObjectType {get; private set;}
-            public string Type {get; private set;}
-            public double X {get; private set;}
-            public double Y {get; private set;}
-            public double Width {get; private set;}
-            public double Height {get; private set;}
-            public double Rotation {get; private set;}
-            public TmxLayerTile Tile {get; private set;}
-            public bool Visible {get; private set;}
+            Name = (string)xObject.Attribute("name") ?? String.Empty;
+            X = (double)xObject.Attribute("x");
+            Y = (double)xObject.Attribute("y");
+            Width = (double?)xObject.Attribute("width") ?? 0.0;
+            Height = (double?)xObject.Attribute("height") ?? 0.0;
+            Type = (string)xObject.Attribute("type") ?? String.Empty;
+            Visible = (bool?)xObject.Attribute("visible") ?? true;
+            Rotation = (double?)xObject.Attribute("rotation") ?? 0.0;
 
-            public List<TmxObjectPoint> Points {get; private set;}
-            public PropertyDict Properties {get; private set;}
+            // Assess object type and assign appropriate content
+            var xGid = xObject.Attribute("gid");
+            var xEllipse = xObject.Element("ellipse");
+            var xPolygon = xObject.Element("polygon");
+            var xPolyline = xObject.Element("polyline");
 
-            public TmxObject(XElement xObject)
+            if (xGid != null)
             {
-                Name = (string)xObject.Attribute("name") ?? "";
-                X = (double)xObject.Attribute("x");
-                Y = (double)xObject.Attribute("y");
-                Width = (double?)xObject.Attribute("width") ?? 0.0;
-                Height = (double?)xObject.Attribute("height") ?? 0.0;
-                Type = (string)xObject.Attribute("type") ?? "";
-                Visible = (bool?)xObject.Attribute("visible") ?? true;
-                Rotation = (double?)xObject.Attribute("rotation") ?? 0.0;
-
-                // Assess object type and assign appropriate content
-                var xGid = xObject.Attribute("gid");
-                var xEllipse = xObject.Element("ellipse");
-                var xPolygon = xObject.Element("polygon");
-                var xPolyline = xObject.Element("polyline");
-
-                if (xGid != null)
-                {
-                    Tile = new TmxLayerTile((uint)xGid,
-                                            Convert.ToInt32(Math.Round(X)),
-                                            Convert.ToInt32(Math.Round(X)));
-                    ObjectType = TmxObjectType.Tile;
-                }
-                else if (xEllipse != null)
-                {
-                    ObjectType = TmxObjectType.Ellipse;
-                }
-                else if (xPolygon != null)
-                {
-                    Points = ParsePoints(xPolygon);
-                    ObjectType = TmxObjectType.Polygon;
-                }
-                else if (xPolyline != null)
-                {
-                    Points = ParsePoints(xPolyline);
-                    ObjectType = TmxObjectType.Polyline;
-                }
-                else ObjectType = TmxObjectType.Basic;
-
-                Properties = new PropertyDict(xObject.Element("properties"));
+                Tile = new TmxLayerTile((uint)xGid,
+                    Convert.ToInt32(Math.Round(X)),
+                    Convert.ToInt32(Math.Round(X)));
+                ObjectType = TmxObjectType.Tile;
             }
-
-            public List<TmxObjectPoint> ParsePoints(XElement xPoints)
+            else if (xEllipse != null)
             {
-                var points = new List<TmxObjectPoint>();
-
-                var pointString = (string)xPoints.Attribute("points");
-                var pointStringPair = pointString.Split(' ');
-                foreach (var s in pointStringPair)
-                {
-                    var pt = new TmxObjectPoint(s);
-                    points.Add(pt);
-                }
-                return points;
+                ObjectType = TmxObjectType.Ellipse;
             }
+            else if (xPolygon != null)
+            {
+                Points = ParsePoints(xPolygon);
+                ObjectType = TmxObjectType.Polygon;
+            }
+            else if (xPolyline != null)
+            {
+                Points = ParsePoints(xPolyline);
+                ObjectType = TmxObjectType.Polyline;
+            }
+            else ObjectType = TmxObjectType.Basic;
+
+            Properties = new PropertyDict(xObject.Element("properties"));
         }
 
-        public enum TmxObjectType
+        public Collection<TmxObjectPoint> ParsePoints(XElement xPoints)
         {
-            Basic,
-            Tile,
-            Ellipse,
-            Polygon,
-            Polyline
-        }
+            var points = new Collection<TmxObjectPoint>();
 
-        public enum DrawOrderType
-        {
-            UnknownOrder = -1,
-            TopDown,
-            IndexOrder
+            var pointString = (string)xPoints.Attribute("points");
+            var pointStringPair = pointString.Split(' ');
+            foreach (var s in pointStringPair)
+            {
+                var pt = new TmxObjectPoint(s);
+                points.Add(pt);
+            }
+            return points;
         }
     }
 
@@ -153,5 +138,21 @@ namespace TiledSharp
             X = double.Parse(pt[0]);
             Y = double.Parse(pt[1]);
         }
+    }
+
+    public enum TmxObjectType
+    {
+        Basic,
+        Tile,
+        Ellipse,
+        Polygon,
+        Polyline
+    }
+
+    public enum DrawOrderType
+    {
+        UnknownOrder = -1,
+        TopDown,
+        IndexOrder
     }
 }

@@ -36,12 +36,12 @@ namespace TiledSharp
             // Otherwise, assume filepath is an explicit path
             if (fileRes != null)
             {
-                Stream xmlStream = asm.GetManifestResourceStream(fileRes);
-                using (XmlReader reader = XmlReader.Create(xmlStream))
-                {
-                    xDoc = XDocument.Load(reader);
+                using (Stream xmlStream = asm.GetManifestResourceStream(fileRes)) {
+                    using (XmlReader reader = XmlReader.Create(xmlStream)) {
+                        xDoc = XDocument.Load(reader);
+                    }
                 }
-                TmxDirectory = "";
+                TmxDirectory = String.Empty;
             }
             else
             {
@@ -62,41 +62,44 @@ namespace TiledSharp
 
     public class TmxList<T> : KeyedCollection<string, T> where T : ITmxElement
     {
-        public Dictionary<string, int> nameCount
+        private Dictionary<string, int> nameCount
             = new Dictionary<string, int>();
 
         public new void Add(T t)
         {
+            var tName = t.Name;
+
             // Rename duplicate entries by appending a number
-            if (this.Contains(t.Name))
-                nameCount[t.Name] += 1;
+            if (this.Contains(tName))
+                nameCount[tName] += 1;
             else
-                nameCount.Add(t.Name, 0);
+                nameCount.Add(tName, 0);
             base.Add(t);
         }
 
-        protected override string GetKeyForItem(T t)
+        protected override string GetKeyForItem(T item)
         {
-            var count = nameCount[t.Name];
+            var name = item.Name;
+            var count = nameCount[name];
 
             var dupes = 0;
-            var itemKey = t.Name;
 
             // For duplicate keys, append a counter
             // For pathological cases, insert underscores to ensure uniqueness
-            while (Contains(itemKey)) {
-                itemKey = t.Name + String.Concat(Enumerable.Repeat("_", dupes))
-                            + count;
+            while (Contains(name)) {
+                name = name + String.Concat(Enumerable.Repeat("_", dupes))
+                            + count.ToString();
                 dupes++;
             }
 
-            return itemKey;
+            return name;
         }
     }
 
+    [Serializable]
     public class PropertyDict : Dictionary<string, string>
     {
-        public PropertyDict(XElement xmlProp)
+        public PropertyDict(XContainer xmlProp)
         {
             if (xmlProp == null) return;
 
@@ -142,9 +145,9 @@ namespace TiledSharp
 
     public class TmxColor
     {
-        public int R;
-        public int G;
-        public int B;
+        public int R {get; private set;}
+        public int G {get; private set;}
+        public int B {get; private set;}
 
         public TmxColor(XAttribute xColor)
         {

@@ -108,34 +108,34 @@ namespace TiledSharp
             foreach (var e in xMap.Elements("imagelayer"))
                 ImageLayers.Add(new TmxImageLayer(e, TmxDirectory));
         }
+    }
 
-        public enum OrientationType
-        {
-            Unknown,
-            Orthogonal,
-            Isometric,
-            Staggered,
-            Hexagonal
-        }
+    public enum OrientationType
+    {
+        Unknown,
+        Orthogonal,
+        Isometric,
+        Staggered,
+        Hexagonal
+    }
 
-        public enum StaggerAxisType
-        {
-            X,
-            Y
-        }
+    public enum StaggerAxisType
+    {
+        X,
+        Y
+    }
 
-        public enum StaggerIndexType
-        {
-            Odd,
-            Even
-        }
+    public enum StaggerIndexType
+    {
+        Odd,
+        Even
+    }
 
-        public enum RenderOrderType
-        {
-            RightDown,
-            RightUp,
-            LeftDown,
-            LeftUp
-        }
+    public enum RenderOrderType
+    {
+        RightDown,
+        RightUp,
+        LeftDown,
+        LeftUp
     }
 }

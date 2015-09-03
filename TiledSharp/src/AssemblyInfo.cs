@@ -1,5 +1,7 @@
+using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
@@ -24,3 +26,7 @@ tile map generation tool")]
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
+
+// Assume these are true, until I hear otherwise
+[assembly: CLSCompliant(true)]
+[assembly: ComVisible(true)]

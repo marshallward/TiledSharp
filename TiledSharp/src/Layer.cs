@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0
 // http://www.apache.org/licenses/LICENSE-2.0
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Xml.Linq;
 using System.IO;
 using System.IO.Compression;
@@ -15,7 +15,7 @@ namespace TiledSharp
         public double Opacity {get; private set;}
         public bool Visible {get; private set;}
 
-        public List<TmxLayerTile> Tiles {get; private set;}
+        public Collection<TmxLayerTile> Tiles {get; private set;}
         public PropertyDict Properties {get; private set;}
 
         public TmxLayer(XElement xLayer, int width, int height)
@@ -27,7 +27,7 @@ namespace TiledSharp
             var xData = xLayer.Element("data");
             var encoding = (string)xData.Attribute("encoding");
 
-            Tiles = new List<TmxLayerTile>();
+            Tiles = new Collection<TmxLayerTile>();
             if (encoding == "base64")
             {
                 var decodedStream = new TmxBase64Data(xData);
@@ -83,6 +83,7 @@ namespace TiledSharp
         public bool VerticalFlip {get; private set;}
         public bool DiagonalFlip {get; private set;}
 
+        [CLSCompliant(false)]
         public TmxLayerTile(uint id, int x, int y)
         {
             var rawGid = id;
