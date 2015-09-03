@@ -19,6 +19,7 @@ namespace TiledSharp
         public int TileHeight {get; private set;}
         public int Spacing {get; private set;}
         public int Margin {get; private set;}
+        public int? TileCount {get; private set;}
 
         public Collection<TmxTilesetTile> Tiles {get; private set;}
         public TmxTileOffset TileOffset {get; private set;}
@@ -47,12 +48,12 @@ namespace TiledSharp
                 // Everything else is in the TSX file
                 var xDocTileset = ReadXml(source);
                 var ts = new TmxTileset(xDocTileset, TmxDirectory);
-
                 Name = ts.Name;
                 TileWidth = ts.TileWidth;
                 TileHeight = ts.TileHeight;
                 Spacing = ts.Spacing;
                 Margin = ts.Margin;
+                TileCount = ts.TileCount;
                 TileOffset = ts.TileOffset;
                 Image = ts.Image;
                 Terrains = ts.Terrains;
@@ -70,7 +71,7 @@ namespace TiledSharp
                 TileHeight = (int) xTileset.Attribute("tileheight");
                 Spacing = (int?) xTileset.Attribute("spacing") ?? 0;
                 Margin = (int?) xTileset.Attribute("margin") ?? 0;
-
+                TileCount = (int?) xTileset.Attribute("tilecount");
                 TileOffset = new TmxTileOffset(xTileset.Element("tileoffset"));
                 Image = new TmxImage(xTileset.Element("image"), tmxDir);
 
@@ -202,6 +203,4 @@ namespace TiledSharp
             Duration = (int)xFrame.Attribute("duration");
         }
     }
-
-
 }
