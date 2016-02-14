@@ -30,10 +30,10 @@ namespace TiledSharp
         {
             Name = (string) xObjectGroup.Attribute("name") ?? String.Empty;
             Color = new TmxColor(xObjectGroup.Attribute("color"));
-            Opacity = (double?) xObjectGroup.Attribute("opacity") ?? 1.;
+            Opacity = (double?) xObjectGroup.Attribute("opacity") ?? 1.0;
             Visible = (bool?) xObjectGroup.Attribute("visible") ?? true;
-            OffsetX = (double?) xObjectGroup.Attribute("offsetx") ?? 0.;
-            OffsetY = (double?) xObjectGroup.Attribute("offsety") ?? 0.;
+            OffsetX = (double?) xObjectGroup.Attribute("offsetx") ?? 0.0;
+            OffsetY = (double?) xObjectGroup.Attribute("offsety") ?? 0.0;
 
             var drawOrderDict = new Dictionary<string, DrawOrderType> {
                 {"unknown", DrawOrderType.UnknownOrder},
