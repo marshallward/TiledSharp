@@ -12,21 +12,24 @@ namespace TiledSharp
     public class TmxLayer : ITmxElement
     {
         public string Name {get; private set;}
+
+        // TODO: Legacy (Tiled Java) attributes (x, y, width, height)
+
         public double Opacity {get; private set;}
         public bool Visible {get; private set; }
-        public float? XOffset {get; private set;}
-        public float? YOffset {get; private set;}
+        public double? OffsetX {get; private set;}
+        public double? OffsetY {get; private set;}
 
         public Collection<TmxLayerTile> Tiles {get; private set;}
         public PropertyDict Properties {get; private set;}
 
         public TmxLayer(XElement xLayer, int width, int height)
         {
-            Name = (string)xLayer.Attribute("name");
-            Opacity = (double?)xLayer.Attribute("opacity") ?? 1.0;
-            Visible = (bool?)xLayer.Attribute("visible") ?? true;
-            XOffset = (float?)xLayer.Attribute("offsetx");
-            YOffset = (float?)xLayer.Attribute("offsety");
+            Name = (string) xLayer.Attribute("name");
+            Opacity = (double?) xLayer.Attribute("opacity") ?? 1.;
+            Visible = (bool?) xLayer.Attribute("visible") ?? true;
+            OffsetX = (double?) xLayer.Attribute("offsetx") ?? 0.;
+            OffsetY = (double?) xLayer.Attribute("offsety") ?? 0.;
 
             var xData = xLayer.Element("data");
             var encoding = (string)xData.Attribute("encoding");

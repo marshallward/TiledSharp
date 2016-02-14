@@ -12,24 +12,28 @@ namespace TiledSharp
     public class TmxObjectGroup : ITmxElement
     {
         public string Name {get; private set;}
+
+        // TODO: Legacy (Tiled Java) attributes (x, y, width, height)
+
         public TmxColor Color {get; private set;}
         public DrawOrderType DrawOrder {get; private set;}
+
         public double Opacity {get; private set;}
-        public bool Visible {get; private set; }
-        public float? XOffset {get; private set;}
-        public float? YOffset {get; private set;}
+        public bool Visible {get; private set;}
+        public double OffsetX {get; private set;}
+        public double OffsetY {get; private set;}
 
         public TmxList<TmxObject> Objects {get; private set;}
         public PropertyDict Properties {get; private set;}
 
         public TmxObjectGroup(XElement xObjectGroup)
         {
-            Name = (string)xObjectGroup.Attribute("name") ?? String.Empty;
+            Name = (string) xObjectGroup.Attribute("name") ?? String.Empty;
             Color = new TmxColor(xObjectGroup.Attribute("color"));
-            Opacity = (double?)xObjectGroup.Attribute("opacity") ?? 1.0;
-            Visible = (bool?)xObjectGroup.Attribute("visible") ?? true;
-            XOffset = (float?)xObjectGroup.Attribute("offsetx");
-            YOffset = (float?)xObjectGroup.Attribute("offsety");
+            Opacity = (double?) xObjectGroup.Attribute("opacity") ?? 1.;
+            Visible = (bool?) xObjectGroup.Attribute("visible") ?? true;
+            OffsetX = (double?) xObjectGroup.Attribute("offsetx") ?? 0.;
+            OffsetY = (double?) xObjectGroup.Attribute("offsety") ?? 0.;
 
             var drawOrderDict = new Dictionary<string, DrawOrderType> {
                 {"unknown", DrawOrderType.UnknownOrder},
