@@ -13,7 +13,9 @@ namespace TiledSharp
     {
         public string Name {get; private set;}
         public double Opacity {get; private set;}
-        public bool Visible {get; private set;}
+        public bool Visible {get; private set; }
+        public float? XOffset {get; private set;}
+        public float? YOffset {get; private set;}
 
         public Collection<TmxLayerTile> Tiles {get; private set;}
         public PropertyDict Properties {get; private set;}
@@ -23,6 +25,8 @@ namespace TiledSharp
             Name = (string)xLayer.Attribute("name");
             Opacity = (double?)xLayer.Attribute("opacity") ?? 1.0;
             Visible = (bool?)xLayer.Attribute("visible") ?? true;
+            XOffset = (float?)xLayer.Attribute("offsetx");
+            YOffset = (float?)xLayer.Attribute("offsety");
 
             var xData = xLayer.Element("data");
             var encoding = (string)xData.Attribute("encoding");
