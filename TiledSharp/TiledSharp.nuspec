@@ -15,6 +15,6 @@
     <tags>tiled tmx tsx tile game 2D map import</tags>
   </metadata>
   <files>
-    <file src="bin/Release/TiledSharp.dll" target="lib/net40" />
+    <file src="bin/Release/TiledSharp.dll" target="lib" />
   </files>
 </package>
