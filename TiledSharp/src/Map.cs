@@ -23,6 +23,7 @@ namespace TiledSharp
         public TmxColor BackgroundColor {get; private set;}
         public int? NextObjectID {get; private set;}
 
+        public TmxList<ITmxElement> AllLayers {get; private set;}
         public TmxList<TmxTileset> Tilesets {get; private set;}
         public TmxList<TmxLayer> Layers {get; private set;}
         public TmxList<TmxObjectGroup> ObjectGroups {get; private set;}
@@ -96,17 +97,32 @@ namespace TiledSharp
             foreach (var e in xMap.Elements("tileset"))
                 Tilesets.Add(new TmxTileset(e, TmxDirectory));
 
+            AllLayers = new TmxList<ITmxElement>();
             Layers = new TmxList<TmxLayer>();
-            foreach (var e in xMap.Elements("layer"))
-                Layers.Add(new TmxLayer(e, Width, Height));
-
             ObjectGroups = new TmxList<TmxObjectGroup>();
-            foreach (var e in xMap.Elements("objectgroup"))
-                ObjectGroups.Add(new TmxObjectGroup(e));
-
             ImageLayers = new TmxList<TmxImageLayer>();
-            foreach (var e in xMap.Elements("imagelayer"))
-                ImageLayers.Add(new TmxImageLayer(e, TmxDirectory));
+
+            foreach (var e in xMap.Elements())
+            {
+                if (e.Name.LocalName.Equals("layer", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    var layer = new TmxLayer(e, Width, Height);
+                    Layers.Add(layer);
+                    AllLayers.Add(layer);
+                }
+                else if (e.Name.LocalName.Equals("objectgroup", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    var objectGroup = new TmxObjectGroup(e);
+                    ObjectGroups.Add(objectGroup);
+                    AllLayers.Add(objectGroup);
+                }
+                else if (e.Name.LocalName.Equals("imagelayer", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    var imageLayer = new TmxImageLayer(e, TmxDirectory);
+                    ImageLayers.Add(imageLayer);
+                    AllLayers.Add(imageLayer);
+                }
+            }
         }
     }
 
