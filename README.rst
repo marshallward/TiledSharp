@@ -2,8 +2,10 @@ TiledSharp
 ==========
 A .NET C# library for importing Tiled TMX tile maps
 
-*Note to current users*: I am considering some minor changes to the TiledSharp
-API.  `See the GitHub issue for more information`_.
+*Note to current users*
+
+I am considering some minor changes to the TiledSharp API.  `See the GitHub
+issue for more information`_.
 
 .. _`See the GitHub issue for more information`:
    https://github.com/marshallward/TiledSharp/issues/29
