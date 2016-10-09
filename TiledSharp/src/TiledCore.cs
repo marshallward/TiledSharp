@@ -18,11 +18,6 @@ namespace TiledSharp
     {
         public string TmxDirectory {get; private set;}
 
-        public TmxDocument()
-        {
-            TmxDirectory = string.Empty;
-        }
-
         protected XDocument ReadXml(string filepath)
         {
             XDocument xDoc;

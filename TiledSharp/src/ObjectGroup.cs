@@ -143,8 +143,10 @@ namespace TiledSharp
         public TmxObjectPoint(string s)
         {
             var pt = s.Split(',');
-            X = double.Parse(pt[0], NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture);
-            Y = double.Parse(pt[1], NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture);
+            X = double.Parse(pt[0], NumberStyles.Float,
+                             CultureInfo.InvariantCulture);
+            Y = double.Parse(pt[1], NumberStyles.Float,
+                             CultureInfo.InvariantCulture);
         }
     }
 
