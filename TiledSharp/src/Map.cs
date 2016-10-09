@@ -35,9 +35,14 @@ namespace TiledSharp
             Load(ReadXml(filename));
         }
 
-        public TmxMap(Stream fileStream)
+        public TmxMap(Stream inputStream)
         {
-            Load(XDocument.Load(fileStream));
+            Load(XDocument.Load(inputStream));
+        }
+
+        public TmxMap(XDocument xDoc)
+        {
+            Load(xDoc);
         }
          
         private void Load(XDocument xDoc)
