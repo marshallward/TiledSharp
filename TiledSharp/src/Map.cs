@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Globalization;
+using System.IO;
 
 namespace TiledSharp
 {
@@ -31,9 +32,22 @@ namespace TiledSharp
 
         public TmxMap(string filename)
         {
-            XDocument xDoc = ReadXml(filename);
-            var xMap = xDoc.Element("map");
+            Load(ReadXml(filename));
+        }
 
+        public TmxMap(Stream inputStream)
+        {
+            Load(XDocument.Load(inputStream));
+        }
+
+        public TmxMap(XDocument xDoc)
+        {
+            Load(xDoc);
+        }
+         
+        private void Load(XDocument xDoc)
+        {
+            var xMap = xDoc.Element("map");
             Version = (string) xMap.Attribute("version");
 
             Width = (int) xMap.Attribute("width");
