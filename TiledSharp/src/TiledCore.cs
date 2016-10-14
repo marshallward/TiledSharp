@@ -110,8 +110,16 @@ namespace TiledSharp
 
             foreach (var p in xmlProp.Elements("property"))
             {
-                var pname = p.Attribute("name").Value;
-                var pval = p.Attribute("value").Value;
+                string pname, pval;
+
+                pname = p.Attribute("name").Value;
+                try {
+                    pval = p.Attribute("value").Value;
+                } catch (System.NullReferenceException) {
+                    // Fallback to element value if no "value"
+                    pval = p.Value;
+                }
+
                 Add(pname, pval);
             }
         }
