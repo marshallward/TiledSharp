@@ -2,6 +2,7 @@
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml.Linq;
@@ -22,7 +23,7 @@ namespace TiledSharp
         public int? Columns {get; private set;}
         public int? TileCount {get; private set;}
 
-        public Collection<TmxTilesetTile> Tiles {get; private set;}
+        public Dictionary<int, TmxTilesetTile> Tiles {get; private set;}
         public TmxTileOffset TileOffset {get; private set;}
         public PropertyDict Properties {get; private set;}
         public TmxImage Image {get; private set;}
@@ -85,10 +86,10 @@ namespace TiledSharp
                         Terrains.Add(new TmxTerrain(e));
                 }
 
-                Tiles = new Collection<TmxTilesetTile>();
+                Tiles = new Dictionary<int, TmxTilesetTile>();
                 foreach (var xTile in xTileset.Elements("tile")) {
                     var tile = new TmxTilesetTile(xTile, Terrains, tmxDir);
-                    Tiles.Add(tile);
+                    Tiles[tile.Id] = tile;
                 }
 
                 Properties = new PropertyDict(xTileset.Element("properties"));
