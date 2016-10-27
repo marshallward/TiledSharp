@@ -188,12 +188,21 @@ namespace TiledSharp
             Data = new MemoryStream(rawData, false);
 
             var compression = (string)xData.Attribute("compression");
-            if (compression == "gzip")
-                Data = new Ionic.Zlib.GZipStream(Data,
-                        Ionic.Zlib.CompressionMode.Decompress, false);
-            else if (compression == "zlib")
-                Data = new Ionic.Zlib.ZlibStream(Data,
-                        Ionic.Zlib.CompressionMode.Decompress, false);
+            if (compression == "gzip") {
+                Data = new GZipStream (Data, CompressionMode.Decompress);
+            }
+            else if (compression == "zlib") {
+                // Strip 2-byte header and 4-byte checksum
+                // TODO: Validate header here
+                var bodyLength = rawData.Length - 6;
+                byte[] bodyData = new byte[bodyLength];
+                Array.Copy (rawData, 2, bodyData, 0, bodyLength);
+
+                var bodyStream = new MemoryStream (bodyData, false);
+                Data = new DeflateStream (bodyStream, CompressionMode.Decompress);
+
+                // TODO: Validate checksum?
+            }
             else if (compression != null)
                 throw new Exception("TmxBase64Data: Unknown compression.");
         }
