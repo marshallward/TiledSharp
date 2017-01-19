@@ -12,6 +12,7 @@ namespace TiledSharp
     public class TmxObjectGroup : ITmxElement
     {
         public string Name {get; private set;}
+		public int Index {get; private set;}
 
         // TODO: Legacy (Tiled Java) attributes (x, y, width, height)
 
@@ -26,9 +27,10 @@ namespace TiledSharp
         public TmxList<TmxObject> Objects {get; private set;}
         public PropertyDict Properties {get; private set;}
 
-        public TmxObjectGroup(XElement xObjectGroup)
+        public TmxObjectGroup(XElement xObjectGroup, int index = 0)
         {
             Name = (string) xObjectGroup.Attribute("name") ?? String.Empty;
+			Index = index;
             Color = new TmxColor(xObjectGroup.Attribute("color"));
             Opacity = (double?) xObjectGroup.Attribute("opacity") ?? 1.0;
             Visible = (bool?) xObjectGroup.Attribute("visible") ?? true;
