@@ -107,20 +107,29 @@ namespace TiledSharp
             Properties = new PropertyDict(xMap.Element("properties"));
 
             Tilesets = new TmxList<TmxTileset>();
-            foreach (var e in xMap.Elements("tileset"))
-                Tilesets.Add(new TmxTileset(e, TmxDirectory));
+			Layers = new TmxList<TmxLayer>();
+			ObjectGroups = new TmxList<TmxObjectGroup>();
+			ImageLayers = new TmxList<TmxImageLayer>();
 
-            Layers = new TmxList<TmxLayer>();
-            foreach (var e in xMap.Elements("layer"))
-                Layers.Add(new TmxLayer(e, Width, Height));
-
-            ObjectGroups = new TmxList<TmxObjectGroup>();
-            foreach (var e in xMap.Elements("objectgroup"))
-                ObjectGroups.Add(new TmxObjectGroup(e));
-
-            ImageLayers = new TmxList<TmxImageLayer>();
-            foreach (var e in xMap.Elements("imagelayer"))
-                ImageLayers.Add(new TmxImageLayer(e, TmxDirectory));
+			int layerIndex = 0;
+			foreach (var e in xMap.Elements())
+			{
+				switch (e.Name.LocalName)
+				{
+					case "tileset":
+						Tilesets.Add(new TmxTileset(e, TmxDirectory));
+						break;
+					case "layer":
+						Layers.Add(new TmxLayer(e, layerIndex++, Width, Height));
+						break;
+					case "objectgroup":
+						ObjectGroups.Add(new TmxObjectGroup(e, layerIndex++));
+						break;
+					case "imagelayer":
+						ImageLayers.Add(new TmxImageLayer(e, layerIndex++, TmxDirectory));
+						break;
+				}
+			}
         }
     }
 
