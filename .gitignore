@@ -6,4 +6,5 @@ obj
 test-results
 *.nupkg
 *.user
+*.suo
 
