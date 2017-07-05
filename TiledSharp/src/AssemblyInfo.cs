@@ -1,3 +1,4 @@
+#if !NETCOREAPP1_1
 using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -30,3 +31,4 @@ tile map generation tool")]
 // Assume these are true, until I hear otherwise
 [assembly: CLSCompliant(true)]
 [assembly: ComVisible(true)]
+#endif
