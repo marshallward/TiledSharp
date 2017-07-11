@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <AssemblyName>TiledSharp</AssemblyName>
+    <RootNamespace>TiledSharp</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
