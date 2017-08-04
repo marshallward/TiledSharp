@@ -12,6 +12,7 @@ namespace TiledSharp
     public class TmxMap : TmxDocument
     {
         public string Version {get; private set;}
+        public string TiledVersion { get; private set; }
         public int Width {get; private set;}
         public int Height {get; private set;}
         public int TileWidth {get; private set;}
@@ -49,6 +50,7 @@ namespace TiledSharp
         {
             var xMap = xDoc.Element("map");
             Version = (string) xMap.Attribute("version");
+            TiledVersion = (string)xMap.Attribute("tiledversion");
 
             Width = (int) xMap.Attribute("width");
             Height = (int) xMap.Attribute("height");
