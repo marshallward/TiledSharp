@@ -29,6 +29,7 @@ namespace TiledSharp
         public TmxList<TmxLayer> Layers {get; private set;}
         public TmxList<TmxObjectGroup> ObjectGroups {get; private set;}
         public TmxList<TmxImageLayer> ImageLayers {get; private set;}
+        public TmxList<TmxGroup> Groups { get; private set; }
         public PropertyDict Properties {get; private set;}
 
         public TmxMap(string filename)
@@ -123,6 +124,10 @@ namespace TiledSharp
             ImageLayers = new TmxList<TmxImageLayer>();
             foreach (var e in xMap.Elements("imagelayer"))
                 ImageLayers.Add(new TmxImageLayer(e, TmxDirectory));
+
+            Groups = new TmxList<TmxGroup>();
+            foreach (var e in xMap.Elements("group"))
+                Groups.Add(new TmxGroup(e, Width, Height, TmxDirectory));
         }
     }
 
