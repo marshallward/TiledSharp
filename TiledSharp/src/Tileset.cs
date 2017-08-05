@@ -134,6 +134,7 @@ namespace TiledSharp
         public int Id {get; private set;}
         public Collection<TmxTerrain> TerrainEdges {get; private set;}
         public double Probability {get; private set;}
+        public string Type { get; private set; }
 
         public PropertyDict Properties {get; private set;}
         public TmxImage Image {get; private set;}
@@ -179,6 +180,7 @@ namespace TiledSharp
             }
 
             Probability = (double?)xTile.Attribute("probability") ?? 1.0;
+            Type = (string)xTile.Attribute("type");
             Image = new TmxImage(xTile.Element("image"), tmxDir);
 
             ObjectGroups = new TmxList<TmxObjectGroup>();

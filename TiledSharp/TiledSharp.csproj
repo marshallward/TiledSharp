@@ -35,6 +35,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Group.cs" />
     <Compile Include="src\TiledCore.cs" />
     <Compile Include="src\Map.cs" />
     <Compile Include="src\Layer.cs" />

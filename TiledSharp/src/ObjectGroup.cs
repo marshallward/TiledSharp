@@ -68,6 +68,7 @@ namespace TiledSharp
         public double Rotation {get; private set;}
         public TmxLayerTile Tile {get; private set;}
         public bool Visible {get; private set;}
+        public TmxText Text { get; private set; }
 
         public Collection<TmxObjectPoint> Points {get; private set;}
         public PropertyDict Properties {get; private set;}
@@ -113,6 +114,12 @@ namespace TiledSharp
             }
             else ObjectType = TmxObjectType.Basic;
 
+            var xText = xObject.Element("text");
+            if (xText != null)
+            {
+                Text = new TmxText(xText);
+            }
+
             Properties = new PropertyDict(xObject.Element("properties"));
         }
 
@@ -152,6 +159,62 @@ namespace TiledSharp
         }
     }
 
+    public class TmxText
+    {
+        public string FontFamily { get; private set; }
+        public int PixelSize { get; private set; }
+        public bool Wrap { get; private set; }
+        public TmxColor Color { get; private set; }
+        public bool Bold { get; private set; }
+        public bool Italic { get; private set; }
+        public bool Underline { get; private set; }
+        public bool Strikeout { get; private set; }
+        public bool Kerning { get; private set; }
+        public TmxAlignment Alignment { get; private set; }
+        public string Value { get; private set; }
+
+        public TmxText(XElement xText)
+        {
+            FontFamily = (string)xText.Attribute("fontfamily") ?? "sand-serif";
+            PixelSize = (int?)xText.Attribute("pixelsize") ?? 16;
+            Wrap = (bool?)xText.Attribute("wrap") ?? false;
+            Color = new TmxColor(xText.Attribute("color"));
+            Bold = (bool?)xText.Attribute("bold") ?? false;
+            Italic = (bool?)xText.Attribute("italic") ?? false;
+            Underline = (bool?)xText.Attribute("underline") ?? false;
+            Strikeout = (bool?)xText.Attribute("strikeout") ?? false;
+            Kerning = (bool?)xText.Attribute("kerning") ?? true;
+            Alignment = new TmxAlignment(xText.Attribute("halign"), xText.Attribute("valign"));
+            Value = xText.Value;
+        }
+    }
+
+    public class TmxAlignment
+    {
+        public TmxHorizontalAlignment Horizontal { get; private set; }
+        public TmxVerticalAlignment Vertical { get; private set; }
+
+        public TmxAlignment(XAttribute halign, XAttribute valign)
+        {
+            var xHorizontal = (string)halign ?? "Left";
+            Horizontal = (TmxHorizontalAlignment)Enum.Parse(typeof(TmxHorizontalAlignment),
+                FirstLetterToUpperCase(xHorizontal));
+
+            var xVertical = (string)valign ?? "Top";
+            Vertical = (TmxVerticalAlignment)Enum.Parse(typeof(TmxVerticalAlignment),
+                FirstLetterToUpperCase(xVertical));
+        }
+
+        private string FirstLetterToUpperCase(string str)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return str;
+            }
+            return str[0].ToString().ToUpper() + str.Substring(1);
+        }
+    }
+
     public enum TmxObjectType
     {
         Basic,
@@ -166,5 +229,20 @@ namespace TiledSharp
         UnknownOrder = -1,
         TopDown,
         IndexOrder
+    }
+
+    public enum TmxHorizontalAlignment
+    {
+        Left,
+        Center,
+        Right,
+        Justify
+    }
+
+    public enum TmxVerticalAlignment
+    {
+        Top,
+        Center,
+        Bottom
     }
 }
