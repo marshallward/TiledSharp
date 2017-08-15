@@ -1,4 +1,4 @@
-#if !NETCOREAPP1_1
+#if !NETCOREAPP1_1 && !NETCOREAPP2_0
 using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
