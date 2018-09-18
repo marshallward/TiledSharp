@@ -32,22 +32,32 @@ namespace TiledSharp
         public TmxList<TmxGroup> Groups { get; private set; }
         public PropertyDict Properties {get; private set;}
 
+        // for use in Content Pipeline Projects
+        public TmxMap()
+        {
+        }
+
         public TmxMap(string filename)
         {
-            Load(ReadXml(filename));
+            LoadInner(ReadXml(filename));
         }
 
         public TmxMap(Stream inputStream)
         {
-            Load(XDocument.Load(inputStream));
+            LoadInner(XDocument.Load(inputStream));
         }
 
         public TmxMap(XDocument xDoc)
         {
-            Load(xDoc);
+            LoadInner(xDoc);
+        }
+        
+        public void LoadXml(XDocument)
+        {
+            LoadInner(ReadXml(filename));
         }
          
-        private void Load(XDocument xDoc)
+        private void LoadInner(XDocument xDoc)
         {
             var xMap = xDoc.Element("map");
             Version = (string) xMap.Attribute("version");
