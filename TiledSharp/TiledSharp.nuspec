@@ -3,7 +3,7 @@
   <metadata>
     <id>TiledSharp</id>
     <title>TiledSharp</title>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <authors>Marshall Ward</authors>
     <owners>Marshall Ward</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.txt</licenseUrl>
@@ -15,6 +15,6 @@
     <tags>tiled tmx tsx tile game 2D map import</tags>
   </metadata>
   <files>
-    <file src="bin/Release/TiledSharp.dll" target="lib" />
+    <file src="src/bin/Release/netcoreapp2.1/TiledSharp.dll" target="lib" />
   </files>
 </package>
