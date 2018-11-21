@@ -85,9 +85,6 @@ Notes
 TiledSharp parses XML files produced by Tiled_, an open-source (GPL) tile map
 editor developed and maintained by Thorbjørn Lindeijer.
 
-Zlib decompression in TiledSharp uses the Zlib implementation of DotNetZip_
-v1.9.1.8.  Minor modifications were added for use on Android and iOS.
-
 
 Licensing
 ---------
@@ -97,9 +94,6 @@ any restrictions on your own code. But any changes to TiledSharp must be
 documented explicitly.
 
 Attribution is not necessary, but always appreciated.
-
-Support code from DotNetZip_ is distributed under the `Microsoft Public
-License`_.
 
 
 Contact

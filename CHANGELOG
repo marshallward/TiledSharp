@@ -1,0 +1,24 @@
+1.0:
+    - Arbitrarily declaring a `1.0` release to reboot versioning and updates
+        - Hastily updated, apologies for missing any contributions!
+
+    - Explicit Float support for ObjectPoint
+    - TilesetTile collections are now explicit Dicts.
+        This prevents long searches through lists of tiles
+    - TMX support:
+        - Groups, Text objects, Tile types (thanks to Jakub Kurłowicz)
+        - Object IDs (thanks to Thorbjørn Lindeijer)
+    - DotNetZip and other external Zlib support has been removed, and we now
+      rely on `DeflateStream` with explicit header removal.
+    - .NET core compatibility
+        (Thanks to @yangmingzhe and @miaodadao)
+    - TmxGroup class support for TMX groups
+    - Generic input stream constructor support
+    - Additional TMX field support:
+        - Groups
+        - ObjectGroup: id, text
+        - Horizontal/vertical alignment
+
+
+0.15:
+    - lost to history
