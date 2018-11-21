@@ -1,10 +1,11 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledSharp", "TiledSharp\TiledSharp.csproj", "{DEA69B18-2787-43F0-B593-1160ADD8E9D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TiledSharp", "TiledSharp\TiledSharp.csproj", "{DEA69B18-2787-43F0-B593-1160ADD8E9D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledSharp.Test", "TiledSharp.Test\TiledSharp.Test.csproj", "{D85E75B3-2DE1-4E54-8365-6C0A32AAE00F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TiledSharp.Test", "TiledSharp.Test\TiledSharp.Test.csproj", "{D85E75B3-2DE1-4E54-8365-6C0A32AAE00F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DEA69B18-2787-43F0-B593-1160ADD8E9D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -43,5 +41,11 @@ Global
 		{D85E75B3-2DE1-4E54-8365-6C0A32AAE00F}.Release|x64.Build.0 = Release|Any CPU
 		{D85E75B3-2DE1-4E54-8365-6C0A32AAE00F}.Release|x86.ActiveCfg = Release|Any CPU
 		{D85E75B3-2DE1-4E54-8365-6C0A32AAE00F}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6D8B3FF-958E-45DF-9F71-6F28979C9465}
 	EndGlobalSection
 EndGlobal

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Globalization;
 using System.IO;
+using System.Xml;
 
 namespace TiledSharp
 {
@@ -39,7 +40,8 @@ namespace TiledSharp
 
         public TmxMap(Stream inputStream)
         {
-            Load(XDocument.Load(inputStream));
+            XmlReader xmlReader = XmlReader.Create (inputStream);
+            Load(XDocument.Load(xmlReader));
         }
 
         public TmxMap(XDocument xDoc)
