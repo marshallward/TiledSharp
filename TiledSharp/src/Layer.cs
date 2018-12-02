@@ -89,9 +89,6 @@ namespace TiledSharp
         public bool HorizontalFlip {get; private set;}
         public bool VerticalFlip {get; private set;}
         public bool DiagonalFlip {get; private set;}
-#if !NETCOREAPP
-		[CLSCompliant(false)]
-#endif
 		public TmxLayerTile(uint id, int x, int y)
         {
             var rawGid = id;
