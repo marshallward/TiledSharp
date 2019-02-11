@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public class TmxObjectGroup : ITmxElement
+    public class TmxObjectGroup : ITmxLayer
     {
         public string Name {get; private set;}
 
@@ -25,6 +25,9 @@ namespace TiledSharp
 
         public TmxList<TmxObject> Objects {get; private set;}
         public PropertyDict Properties {get; private set;}
+
+        double? ITmxLayer.OffsetX => OffsetX;
+        double? ITmxLayer.OffsetY => OffsetY;
 
         public TmxObjectGroup(XElement xObjectGroup)
         {
