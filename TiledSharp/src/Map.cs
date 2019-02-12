@@ -28,13 +28,13 @@ namespace TiledSharp
         public int? NextObjectID {get; private set;}
 
         public TmxList<TmxTileset> Tilesets {get; private set;}
-        public TmxList<TmxLayer> Layers {get; private set;}
+        public TmxList<TmxLayer> TileLayers {get; private set;}
         public TmxList<TmxObjectGroup> ObjectGroups {get; private set;}
         public TmxList<TmxImageLayer> ImageLayers {get; private set;}
         public TmxList<TmxGroup> Groups { get; private set; }
         public PropertyDict Properties {get; private set;}
 
-        public TmxList<ITmxLayer> OrderedLayers { get; private set; }
+        public TmxList<ITmxLayer> Layers { get; private set; }
 
         public TmxMap(string filename)
         {
@@ -118,8 +118,8 @@ namespace TiledSharp
             foreach (var e in xMap.Elements("tileset"))
                 Tilesets.Add(new TmxTileset(e, TmxDirectory));
 
-            OrderedLayers = new TmxList<ITmxLayer>();
-            Layers = new TmxList<TmxLayer>();
+            Layers = new TmxList<ITmxLayer>();
+            TileLayers = new TmxList<TmxLayer>();
             ObjectGroups = new TmxList<TmxObjectGroup>();
             ImageLayers = new TmxList<TmxImageLayer>();
             Groups = new TmxList<TmxGroup>();
@@ -131,7 +131,7 @@ namespace TiledSharp
                     case "layer":
                         var tileLayer = new TmxLayer(e, Width, Height);
                         layer = tileLayer;
-                        Layers.Add(tileLayer);
+                        TileLayers.Add(tileLayer);
                         break;
                     case "objectgroup":
                         var objectgroup = new TmxObjectGroup(e);
@@ -151,7 +151,7 @@ namespace TiledSharp
                     default:
                         throw new InvalidOperationException();
                 }
-                OrderedLayers.Add(layer);
+                Layers.Add(layer);
             }
         }
     }

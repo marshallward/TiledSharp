@@ -16,9 +16,9 @@ namespace TiledSharp
         public double? OffsetX { get; private set; }
         public double? OffsetY { get; private set; }
 
-        public TmxList<ITmxLayer> OrderedLayers { get; private set; }
+        public TmxList<ITmxLayer> Layers { get; private set; }
 
-        public TmxList<TmxLayer> Layers { get; private set; }
+        public TmxList<TmxLayer> TileLayers { get; private set; }
         public TmxList<TmxObjectGroup> ObjectGroups { get; private set; }
         public TmxList<TmxImageLayer> ImageLayers { get; private set; }
         public TmxList<TmxGroup> Groups { get; private set; }
@@ -34,8 +34,8 @@ namespace TiledSharp
 
             Properties = new PropertyDict(xGroup.Element("properties"));
 
-            OrderedLayers = new TmxList<ITmxLayer>();
-            Layers = new TmxList<TmxLayer>();
+            Layers = new TmxList<ITmxLayer>();
+            TileLayers = new TmxList<TmxLayer>();
             ObjectGroups = new TmxList<TmxObjectGroup>();
             ImageLayers = new TmxList<TmxImageLayer>();
             Groups = new TmxList<TmxGroup>();
@@ -47,7 +47,7 @@ namespace TiledSharp
                     case "layer":
                         var tileLayer = new TmxLayer(e, width, height);
                         layer = tileLayer;
-                        Layers.Add(tileLayer);
+                        TileLayers.Add(tileLayer);
                         break;
                     case "objectgroup":
                         var objectgroup = new TmxObjectGroup(e);
@@ -67,7 +67,7 @@ namespace TiledSharp
                     default:
                         throw new InvalidOperationException();
                 }
-                OrderedLayers.Add(layer);
+                Layers.Add(layer);
             }
         }
     }
