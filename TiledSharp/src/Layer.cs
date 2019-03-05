@@ -63,22 +63,12 @@ namespace TiledSharp
                 int k = 0;
                 foreach (var e in xData.Elements("tile"))
                 {
-                    var gid = (uint?)e.Attribute("gid");
-                    uint _gid;
-
-                    if (gid.HasValue)
-                    {
-                        _gid = (uint)gid.Value;
-                    }
-                    else
-                    {
-                        _gid = 0;
-                    }
+                    var gid = (uint?)e.Attribute("gid") ?? 0;
 
                     var x = k % width;
                     var y = k / width;
                     
-                    Tiles.Add(new TmxLayerTile(_gid, x, y));
+                    Tiles.Add(new TmxLayerTile(gid, x, y));
                     k++;
                 }
             }
