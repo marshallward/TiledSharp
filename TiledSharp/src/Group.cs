@@ -2,11 +2,12 @@
 // Licensed under the Apache License, Version 2.0
 // http://www.apache.org/licenses/LICENSE-2.0
 using System;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public class TmxGroup : ITmxElement
+    public class TmxGroup : ITmxLayer
     {
         public string Name { get; private set; }
 
@@ -15,7 +16,9 @@ namespace TiledSharp
         public double? OffsetX { get; private set; }
         public double? OffsetY { get; private set; }
 
-        public TmxList<TmxLayer> Layers { get; private set; }
+        public TmxList<ITmxLayer> Layers { get; private set; }
+
+        public TmxList<TmxLayer> TileLayers { get; private set; }
         public TmxList<TmxObjectGroup> ObjectGroups { get; private set; }
         public TmxList<TmxImageLayer> ImageLayers { get; private set; }
         public TmxList<TmxGroup> Groups { get; private set; }
@@ -31,21 +34,41 @@ namespace TiledSharp
 
             Properties = new PropertyDict(xGroup.Element("properties"));
 
-            Layers = new TmxList<TmxLayer>();
-            foreach (var e in xGroup.Elements("layer"))
-                Layers.Add(new TmxLayer(e, width, height));
-
+            Layers = new TmxList<ITmxLayer>();
+            TileLayers = new TmxList<TmxLayer>();
             ObjectGroups = new TmxList<TmxObjectGroup>();
-            foreach (var e in xGroup.Elements("objectgroup"))
-                ObjectGroups.Add(new TmxObjectGroup(e));
-
             ImageLayers = new TmxList<TmxImageLayer>();
-            foreach (var e in xGroup.Elements("imagelayer"))
-                ImageLayers.Add(new TmxImageLayer(e, tmxDirectory));
-
             Groups = new TmxList<TmxGroup>();
-            foreach (var e in xGroup.Elements("group"))
-                Groups.Add(new TmxGroup(e, width, height, tmxDirectory));
+            foreach (var e in xGroup.Elements().Where(x => x.Name == "layer" || x.Name == "objectgroup" || x.Name == "imagelayer" || x.Name == "group"))
+            {
+                ITmxLayer layer;
+                switch (e.Name.LocalName)
+                {
+                    case "layer":
+                        var tileLayer = new TmxLayer(e, width, height);
+                        layer = tileLayer;
+                        TileLayers.Add(tileLayer);
+                        break;
+                    case "objectgroup":
+                        var objectgroup = new TmxObjectGroup(e);
+                        layer = objectgroup;
+                        ObjectGroups.Add(objectgroup);
+                        break;
+                    case "imagelayer":
+                        var imagelayer = new TmxImageLayer(e, tmxDirectory);
+                        layer = imagelayer;
+                        ImageLayers.Add(imagelayer);
+                        break;
+                    case "group":
+                        var group = new TmxGroup(e, width, height, tmxDirectory);
+                        layer = group;
+                        Groups.Add(group);
+                        break;
+                    default:
+                        throw new InvalidOperationException();
+                }
+                Layers.Add(layer);
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using System.Globalization;
 using System.IO;
 using System.Xml;
+using System.Linq;
 
 namespace TiledSharp
 {
@@ -27,11 +28,13 @@ namespace TiledSharp
         public int? NextObjectID {get; private set;}
 
         public TmxList<TmxTileset> Tilesets {get; private set;}
-        public TmxList<TmxLayer> Layers {get; private set;}
+        public TmxList<TmxLayer> TileLayers {get; private set;}
         public TmxList<TmxObjectGroup> ObjectGroups {get; private set;}
         public TmxList<TmxImageLayer> ImageLayers {get; private set;}
         public TmxList<TmxGroup> Groups { get; private set; }
         public PropertyDict Properties {get; private set;}
+
+        public TmxList<ITmxLayer> Layers { get; private set; }
 
         public TmxMap(string filename)
         {
@@ -48,7 +51,7 @@ namespace TiledSharp
         {
             Load(xDoc);
         }
-         
+
         private void Load(XDocument xDoc)
         {
             var xMap = xDoc.Element("map");
@@ -115,21 +118,41 @@ namespace TiledSharp
             foreach (var e in xMap.Elements("tileset"))
                 Tilesets.Add(new TmxTileset(e, TmxDirectory));
 
-            Layers = new TmxList<TmxLayer>();
-            foreach (var e in xMap.Elements("layer"))
-                Layers.Add(new TmxLayer(e, Width, Height));
-
+            Layers = new TmxList<ITmxLayer>();
+            TileLayers = new TmxList<TmxLayer>();
             ObjectGroups = new TmxList<TmxObjectGroup>();
-            foreach (var e in xMap.Elements("objectgroup"))
-                ObjectGroups.Add(new TmxObjectGroup(e));
-
             ImageLayers = new TmxList<TmxImageLayer>();
-            foreach (var e in xMap.Elements("imagelayer"))
-                ImageLayers.Add(new TmxImageLayer(e, TmxDirectory));
-
             Groups = new TmxList<TmxGroup>();
-            foreach (var e in xMap.Elements("group"))
-                Groups.Add(new TmxGroup(e, Width, Height, TmxDirectory));
+            foreach (var e in xMap.Elements().Where(x => x.Name == "layer" || x.Name == "objectgroup" || x.Name == "imagelayer" || x.Name == "group"))
+            {
+                ITmxLayer layer;
+                switch (e.Name.LocalName)
+                {
+                    case "layer":
+                        var tileLayer = new TmxLayer(e, Width, Height);
+                        layer = tileLayer;
+                        TileLayers.Add(tileLayer);
+                        break;
+                    case "objectgroup":
+                        var objectgroup = new TmxObjectGroup(e);
+                        layer = objectgroup;
+                        ObjectGroups.Add(objectgroup);
+                        break;
+                    case "imagelayer":
+                        var imagelayer = new TmxImageLayer(e, TmxDirectory);
+                        layer = imagelayer;
+                        ImageLayers.Add(imagelayer);
+                        break;
+                    case "group":
+                        var group = new TmxGroup(e, Width, Height, TmxDirectory);
+                        layer = group;
+                        Groups.Add(group);
+                        break;
+                    default:
+                        throw new InvalidOperationException();
+                }
+                Layers.Add(layer);
+            }
         }
     }
 

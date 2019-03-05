@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public class TmxImageLayer : ITmxElement
+    public class TmxImageLayer : ITmxLayer
     {
         public string Name {get; private set;}
 
@@ -22,6 +22,9 @@ namespace TiledSharp
         public TmxImage Image {get; private set;}
 
         public PropertyDict Properties {get; private set;}
+
+        double? ITmxLayer.OffsetX => OffsetX;
+        double? ITmxLayer.OffsetY => OffsetY;
 
         public TmxImageLayer(XElement xImageLayer, string tmxDir = "")
         {

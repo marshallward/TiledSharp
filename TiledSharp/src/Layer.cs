@@ -9,7 +9,7 @@ using System.IO.Compression;
 
 namespace TiledSharp
 {
-    public class TmxLayer : ITmxElement
+    public class TmxLayer : ITmxLayer
     {
         public string Name {get; private set;}
 
@@ -89,7 +89,7 @@ namespace TiledSharp
         public bool HorizontalFlip {get; private set;}
         public bool VerticalFlip {get; private set;}
         public bool DiagonalFlip {get; private set;}
-		public TmxLayerTile(uint id, int x, int y)
+        public TmxLayerTile(uint id, int x, int y)
         {
             var rawGid = id;
             X = x;
