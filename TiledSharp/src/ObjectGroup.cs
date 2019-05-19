@@ -40,8 +40,8 @@ namespace TiledSharp
 
             var drawOrderDict = new Dictionary<string, DrawOrderType> {
                 {"unknown", DrawOrderType.UnknownOrder},
-                {"topdown", DrawOrderType.IndexOrder},
-                {"index", DrawOrderType.TopDown}
+                {"topdown", DrawOrderType.TopDown},
+                {"index", DrawOrderType.IndexOrder}
             };
 
             var drawOrderValue = (string) xObjectGroup.Attribute("draworder");
