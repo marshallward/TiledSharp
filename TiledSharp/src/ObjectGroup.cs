@@ -178,7 +178,7 @@ namespace TiledSharp
 
         public TmxText(XElement xText)
         {
-            FontFamily = (string)xText.Attribute("fontfamily") ?? "sand-serif";
+            FontFamily = (string)xText.Attribute("fontfamily") ?? "sans-serif";
             PixelSize = (int?)xText.Attribute("pixelsize") ?? 16;
             Wrap = (bool?)xText.Attribute("wrap") ?? false;
             Color = new TmxColor(xText.Attribute("color"));
