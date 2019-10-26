@@ -14,17 +14,22 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public class TmxDocument
+    public abstract class TmxDocument
     {
         public string TmxDirectory {get; private set;}
 
-        public TmxDocument()
+        protected ICustomLoader CustomLoader { get; }
+
+        public TmxDocument(ICustomLoader customLoader)
         {
+            CustomLoader = customLoader;
             TmxDirectory = string.Empty;
         }
 
         protected XDocument ReadXml(string filepath)
         {
+            if (CustomLoader != null)
+                return CustomLoader.ReadXml(filepath);
             XDocument xDoc;
 
             var asm = Assembly.GetEntryAssembly();
@@ -58,6 +63,11 @@ namespace TiledSharp
 
             return xDoc;
         }
+    }
+
+    public interface ICustomLoader
+    {
+        XDocument ReadXml(string filepath);
     }
 
     public interface ITmxElement
