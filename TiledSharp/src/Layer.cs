@@ -2,10 +2,12 @@
 // Licensed under the Apache License, Version 2.0
 // http://www.apache.org/licenses/LICENSE-2.0
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Xml.Linq;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 
 namespace TiledSharp
 {
@@ -35,6 +37,28 @@ namespace TiledSharp
             var encoding = (string)xData.Attribute("encoding");
 
             Tiles = new Collection<TmxLayerTile>();
+            IEnumerable<XElement> xChunks = xData.Elements("chunk").ToList();
+            if (xChunks.Any())
+            {
+                foreach (XElement xChunk in xChunks)
+                {
+                    int chunkWidth = (int)xChunk.Attribute("width");
+                    int chunkHeight = (int)xChunk.Attribute("height");
+                    int chunkX = (int)xChunk.Attribute("x");
+                    int chunkY = (int)xChunk.Attribute("y");
+                    ReadChunk(chunkWidth, chunkHeight, chunkX, chunkY, encoding, xChunk);
+                }
+            }
+            else
+            {
+                ReadChunk(width, height, 0, 0, encoding, xData);
+            }
+
+            Properties = new PropertyDict(xLayer.Element("properties"));
+        }
+
+        private void ReadChunk(int width, int height, int startX, int startY, string encoding, XElement xData)
+        {
             if (encoding == "base64")
             {
                 var decodedStream = new TmxBase64Data(xData);
@@ -42,19 +66,19 @@ namespace TiledSharp
 
                 using (var br = new BinaryReader(stream))
                     for (int j = 0; j < height; j++)
-                        for (int i = 0; i < width; i++)
-                            Tiles.Add(new TmxLayerTile(br.ReadUInt32(), i, j));
+                    for (int i = 0; i < width; i++)
+                        Tiles.Add(new TmxLayerTile(br.ReadUInt32(), i + startX, j + startY));
             }
             else if (encoding == "csv")
             {
-                var csvData = (string)xData.Value;
+                var csvData = (string) xData.Value;
                 int k = 0;
-                foreach (var s in csvData.Split(','))
+                foreach (var s in csvData.Split(new[] {',', '\n'}, StringSplitOptions.RemoveEmptyEntries))
                 {
                     var gid = uint.Parse(s.Trim());
                     var x = k % width;
                     var y = k / width;
-                    Tiles.Add(new TmxLayerTile(gid, x, y));
+                    Tiles.Add(new TmxLayerTile(gid, x + startX, y + startY));
                     k++;
                 }
             }
@@ -63,18 +87,16 @@ namespace TiledSharp
                 int k = 0;
                 foreach (var e in xData.Elements("tile"))
                 {
-                    var gid = (uint?)e.Attribute("gid") ?? 0;
+                    var gid = (uint?) e.Attribute("gid") ?? 0;
 
                     var x = k % width;
                     var y = k / width;
-                    
-                    Tiles.Add(new TmxLayerTile(gid, x, y));
+
+                    Tiles.Add(new TmxLayerTile(gid, x + startX, y + startY));
                     k++;
                 }
             }
             else throw new Exception("TmxLayer: Unknown encoding.");
-
-            Properties = new PropertyDict(xLayer.Element("properties"));
         }
     }
 
