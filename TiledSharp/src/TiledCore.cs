@@ -14,17 +14,22 @@ using System.Xml.Linq;
 
 namespace TiledSharp
 {
-    public class TmxDocument
+    public abstract class TmxDocument
     {
         public string TmxDirectory {get; private set;}
 
-        public TmxDocument()
+        protected ICustomLoader CustomLoader { get; }
+
+        public TmxDocument(ICustomLoader customLoader)
         {
+            CustomLoader = customLoader;
             TmxDirectory = string.Empty;
         }
 
         protected XDocument ReadXml(string filepath)
         {
+            if (CustomLoader != null)
+                return CustomLoader.ReadXml(filepath);
             XDocument xDoc;
 
             var asm = Assembly.GetEntryAssembly();
@@ -58,6 +63,11 @@ namespace TiledSharp
 
             return xDoc;
         }
+    }
+
+    public interface ICustomLoader
+    {
+        XDocument ReadXml(string filepath);
     }
 
     public interface ITmxElement
@@ -180,14 +190,15 @@ namespace TiledSharp
 
         public TmxBase64Data(XElement xData)
         {
-            if ((string)xData.Attribute("encoding") != "base64")
+            string encoding = (string) (xData.Attribute("encoding") ?? xData.Parent?.Attribute("encoding"));
+            string compression = (string) (xData.Attribute("compression") ?? xData.Parent?.Attribute("compression"));
+            if (encoding != "base64")
                 throw new Exception(
                     "TmxBase64Data: Only Base64-encoded data is supported.");
 
             var rawData = Convert.FromBase64String((string)xData.Value);
             Data = new MemoryStream(rawData, false);
 
-            var compression = (string)xData.Attribute("compression");
             if (compression == "gzip") {
                 Data = new GZipStream (Data, CompressionMode.Decompress);
             }

@@ -36,18 +36,18 @@ namespace TiledSharp
 
         public TmxList<ITmxLayer> Layers { get; private set; }
 
-        public TmxMap(string filename)
+        public TmxMap(string filename, ICustomLoader customLoader = null) : base(customLoader)
         {
             Load(ReadXml(filename));
         }
 
-        public TmxMap(Stream inputStream)
+        public TmxMap(Stream inputStream, ICustomLoader customLoader = null) : base(customLoader)
         {
             XmlReader xmlReader = XmlReader.Create (inputStream);
             Load(XDocument.Load(xmlReader));
         }
 
-        public TmxMap(XDocument xDoc)
+        public TmxMap(XDocument xDoc, ICustomLoader customLoader = null) : base(customLoader)
         {
             Load(xDoc);
         }
@@ -116,7 +116,7 @@ namespace TiledSharp
 
             Tilesets = new TmxList<TmxTileset>();
             foreach (var e in xMap.Elements("tileset"))
-                Tilesets.Add(new TmxTileset(e, TmxDirectory));
+                Tilesets.Add(new TmxTileset(e, TmxDirectory, CustomLoader));
 
             Layers = new TmxList<ITmxLayer>();
             TileLayers = new TmxList<TmxLayer>();
