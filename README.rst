@@ -2,13 +2,11 @@ TiledSharp
 ==========
 A .NET C# library for importing Tiled TMX tile maps
 
-*Note to current users*
+**NOTE**: This project is no longer being maintained.  Please consider using
+the `TiledCS`_ project, which has a similar API and supports a greater number
+of features.
 
-I am considering some minor changes to the TiledSharp API.  `See the GitHub
-issue for more information`_.
-
-.. _`See the GitHub issue for more information`:
-   https://github.com/marshallward/TiledSharp/issues/29
+.. _TiledCS: https://github.com/TheBoneJarmer/TiledCS
 
 
 About TiledSharp
