@@ -180,7 +180,10 @@ namespace TiledSharp
             }
 
             Probability = (double?)xTile.Attribute("probability") ?? 1.0;
-            Type = (string)xTile.Attribute("type");
+            if (xTile.Attribute("class") != null)
+                Type = (string)xTile.Attribute("class") ?? String.Empty;
+            else
+                Type = (string)xTile.Attribute("type") ?? String.Empty;
             Image = new TmxImage(xTile.Element("image"), tmxDir);
 
             ObjectGroups = new TmxList<TmxObjectGroup>();

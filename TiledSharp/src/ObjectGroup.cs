@@ -84,7 +84,10 @@ namespace TiledSharp
             Y = (double)xObject.Attribute("y");
             Width = (double?)xObject.Attribute("width") ?? 0.0;
             Height = (double?)xObject.Attribute("height") ?? 0.0;
-            Type = (string)xObject.Attribute("type") ?? String.Empty;
+            if (xObject.Attribute("class") != null)
+                Type = (string)xObject.Attribute("class") ?? String.Empty;
+            else
+                Type = (string)xObject.Attribute("type") ?? String.Empty;
             Visible = (bool?)xObject.Attribute("visible") ?? true;
             Rotation = (double?)xObject.Attribute("rotation") ?? 0.0;
 
